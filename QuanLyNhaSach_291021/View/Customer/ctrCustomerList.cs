@@ -13,8 +13,20 @@ namespace QuanLyNhaSach_291021.View.Customer
 {
     public partial class ctrCustomerList : DevExpress.XtraEditors.XtraUserControl
     {
-        private static ctrCustomerList _instance;
+        #region //Define Class and Variable
+        Model.Database conn = new Model.Database();
+        Controller.Common func = new Controller.Common();
+        string query = "";
+        string emptyGridText = "Không có dữ liệu";
         
+        //defind variable search and filter
+        //string searchingContent = "";
+        //string field = "";
+
+        //defind generate instance 
+
+        private static ctrCustomerList _instance;
+
         public static ctrCustomerList instance
         {
             get
@@ -26,9 +38,253 @@ namespace QuanLyNhaSach_291021.View.Customer
                 return _instance;
             }
         }
+        #endregion
+
+        #region //Contructor
+
         public ctrCustomerList()
         {
             InitializeComponent();
+
+            string placehoder = txtSearch.Properties.NullText;
+            func.createPlaceHolderControl(txtSearch, placehoder);
         }
+        
+        #endregion
+
+        #region //Setup GridView
+        //Create Serial No For GridView
+        private void gvCustomer_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column == NO)
+            {
+                if (e.RowHandle > -1)
+                {
+                    e.DisplayText = Convert.ToString(e.RowHandle + 1);
+                }
+            }
+        }
+
+        //Setup Text Align For Grid Column
+        private void gvCustomer_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if (e.Column.Name == "NO")
+            {
+                e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            }
+
+            if (e.Column.Name == "CustomerName")
+            {
+                e.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            }
+        }
+
+
+        private void gvCustomer_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            Rectangle emptyGridTextBounds;
+            int offsetFromTop = 10;
+            e.DefaultDraw();
+            Size size = e.Appearance.CalcTextSize(e.Cache, emptyGridText, e.Bounds.Width).ToSize();
+            int x = (e.Bounds.Width - size.Width) / 2;
+            int y = e.Bounds.Y + offsetFromTop;
+            emptyGridTextBounds = new Rectangle(new Point(x, y), size);
+            e.Appearance.DrawString(e.Cache, emptyGridText, emptyGridTextBounds, Brushes.Gray);
+        }
+        #endregion
+
+        #region //Create
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmCustomerDetail frm = new frmCustomerDetail();
+            frm.ShowDialog();
+            loadData();
+        }
+        #endregion
+
+        #region //Read
+
+        private void gcCustomer_Load(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void loadData()
+        {
+            query = @"Select MaKH,
+                                    TenKH, 
+                                    gt.TenGT as GioiTinh, 
+                                    ha.Anh as Anh,
+                                    lk.TenLK as LoaiKhach, 
+                                    nk.TenNK as NhomKhach, 
+                                    tk.TenTK as TaiKhoan,
+	                                NgaySinh, 
+                                    Email, 
+                                    DienThoai, 
+                                    DiaChi, 
+                                    kh.GhiChu
+                            from KhachHang as kh
+                            left join GioiTinh as gt on kh.MaGT = gt.MaGT
+                            left join HinhAnh as ha on kh.MaHA = ha.MaHA
+                            inner join LoaiKhach as lk on kh.MaLK = lk.MaLK
+                            inner join NhomKhach as nk on kh.MaNK = nk.MaNK
+                            left join TaiKhoan_KH as tk on kh.MaTK = tk.MaTK
+                            where kh.HienThi = 1";
+            DataTable dtContent = new DataTable();
+            dtContent = conn.loadData(query);
+            gcCustomer.DataSource = dtContent;
+        }
+
+        private void loadData(string _query)
+        {
+            DataTable dtContent = new DataTable();
+            dtContent = conn.loadData(_query);
+            gcCustomer.DataSource = dtContent;
+        }
+
+        #endregion
+
+        #region //Update
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            update();
+        }
+
+        private void gvCustomer_DoubleClick(object sender, EventArgs e)
+        {
+            update();
+        }
+
+        private void update()
+        {
+            if (getID() != "")
+            {
+                string ID = getID();
+                frmCustomerDetail frm = new frmCustomerDetail(ID);
+                frm.ShowDialog();
+                loadData();
+            }
+        }
+
+        #endregion
+
+        #region //Delete
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (getID() != "")
+            {
+                string ID = getID();
+                MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
+                DialogResult Result = MessageBox.Show("Bạn Có Chắc Xóa Khách Hàng Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+
+                if (Result == DialogResult.Yes)
+                {
+                    delete(ID);
+                }
+                else if (Result == DialogResult.No)
+                {
+                    MessageBox.Show("Dữ liệu vẫn tồn tại!");
+                }
+            }
+        }
+
+        private void delete(string ID)
+        {
+            if (checkConstraints(ID))
+            {
+                string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = {0}", ID);
+                if (conn.executeDatabase(query) == 1)
+                {
+                    MessageBox.Show("Xóa Dữ Liệu Thành Công!");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi! Dữ liệu chưa được xóa.");
+                }
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi Ràng Buộc! Bạn Cần Xóa Hóa Đơn Của Khách Hàng Này.");
+            }
+        }
+
+        private bool checkConstraints(string ID)
+        {
+            string query = String.Format("select count(SupplierId)  as count from Book where SupplierId = {0}", ID);
+            DataTable dt = new DataTable();
+            dt = conn.loadData(query);
+            if ((int)(dt.Rows[0]["count"]) > 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        private void handleContraints(string ID)
+        {
+
+        }
+        #endregion
+
+        #region //Get Id
+        private string getID()
+        {
+
+            if (gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, gvCustomer.Columns["CustomerId"]) != null)
+            {
+                string ID = gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, gvCustomer.Columns["CustomerId"]).ToString();
+                return ID;
+            }
+            return "";
+        }
+        #endregion
+
+        #region //Search and Filter
+
+        private void txtSearch_EditValueChanged(object sender, EventArgs e)
+        {
+            search();
+        }
+
+        private void cbbField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            search();
+        }
+
+        private void search()
+        {
+            //deleteLabelInfo();
+            //Add datatable if searching value is null, datatable will return "Search data doesn't exist"
+            string searchInfo = txtSearch.Text;
+            string field = (func.removeUnicode(cbbField.SelectedText)).Replace("Khách Hàng", "KH")
+                                                                      .Replace(" ", "");
+            if (!string.IsNullOrWhiteSpace(searchInfo))
+            {
+                int index = cbbField.SelectedIndex;
+                if (index != 0)
+                {
+                    string querySearch = String.Format(@"{0} and {1} like N'%{2}%'", query, field, searchInfo);
+                    loadData(query);
+                }
+                else
+                {
+                    String querySearch = String.Format(@"{0} where CONCAT('',  
+                                                                    MaKH, 
+                                                                    NgaySinh, 
+                                                                    Email, 
+                                                                    DienThoai, 
+                                                                    DiaChi,) like N'%{1}%'", query, searchInfo);
+                    loadData(query);
+                }
+            }
+            else
+            {
+                loadData();
+            }
+
+        }
+        #endregion
     }
 }

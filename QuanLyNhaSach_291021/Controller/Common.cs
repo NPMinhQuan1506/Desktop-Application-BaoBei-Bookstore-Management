@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyNhaSach_291021.Controller
 {
@@ -29,9 +31,9 @@ namespace QuanLyNhaSach_291021.Controller
             return Time.TotalMinutes;
         }
 
-        public string removeUnicode(string chuoiInput)
+        public string removeUnicode(string strInput)
         {
-            string stFormD = chuoiInput.Normalize(System.Text.NormalizationForm.FormD);
+            string stFormD = strInput.Normalize(System.Text.NormalizationForm.FormD);
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             string str = "";
             for (int i = 0; i <= stFormD.Length - 1; i++)
@@ -51,9 +53,9 @@ namespace QuanLyNhaSach_291021.Controller
             return sb.ToString();
         }
 
-        public bool checkNumber(string chuoiInput)
+        public bool checkNumber(string strInput)
         {
-            foreach (Char c in chuoiInput)
+            foreach (Char c in strInput)
             {
                 if (!Char.IsDigit(c))
                 {
@@ -62,5 +64,34 @@ namespace QuanLyNhaSach_291021.Controller
             }
             return true;
         }
+
+        #region //Code create placeholder Control
+        public void createPlaceHolderControl(Control control, string placeholder)
+        {
+            control.Enter += (sender, e) => control_Enter(sender, e, placeholder);
+            control.Leave += (sender, e) => control_Leave(sender, e, placeholder);
+        }
+
+        private void control_Enter(object sender, EventArgs e, string placeholder)
+        {
+            Control controlTemp = (Control)sender;
+
+            if (controlTemp.Text == placeholder)
+            {
+                controlTemp.ForeColor = Color.FromArgb(0, 0, 20);
+            }
+        }
+
+        private void control_Leave(object sender, EventArgs e, string placeholder)
+        {
+            Control controlTemp = (Control)sender;
+
+            if (controlTemp.Text == "")
+            {
+                controlTemp.Text = null;
+                controlTemp.ForeColor = Color.FromArgb(144, 142, 144);
+            }
+        }
+        #endregion
     }
 }

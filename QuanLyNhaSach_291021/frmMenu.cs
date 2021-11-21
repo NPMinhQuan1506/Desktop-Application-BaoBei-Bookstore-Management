@@ -18,13 +18,17 @@ namespace QuanLyNhaSach_291021
 
         private void aceCustomer_Click(object sender, EventArgs e)
         {
-            if (!pnContainer.Controls.Contains(View.Customer.ctrCustomerList.instance))
-            {
-                pnContainer.Controls.Add(View.Customer.ctrCustomerList.instance);
-                View.Customer.ctrCustomerList.instance.Dock = DockStyle.Fill;
-                View.Customer.ctrCustomerList.instance.BringToFront();
-            }
-            View.Customer.ctrCustomerList.instance.BringToFront();
+            //if (!pnContainer.Controls.Contains(View.Customer.ctrCustomerList.instance))
+            //{
+            //   pnContainer.Controls.Add(View.Customer.ctrCustomerList.instance);
+            //    View.Customer.ctrCustomerList.instance.Dock = DockStyle.Fill; 
+            //    View.Customer.ctrCustomerList.instance.BringToFront();
+            //}
+            //View.Customer.ctrCustomerList.instance.BringToFront();
+            pnContainer.Controls.Clear();
+            View.Customer.ctrCustomerList ctr = new View.Customer.ctrCustomerList();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
         }
     }
 }

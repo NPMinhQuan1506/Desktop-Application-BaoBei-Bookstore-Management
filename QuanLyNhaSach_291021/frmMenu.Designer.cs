@@ -81,7 +81,7 @@
             this.pnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContainer.Location = new System.Drawing.Point(289, 78);
             this.pnContainer.Name = "pnContainer";
-            this.pnContainer.Size = new System.Drawing.Size(568, 464);
+            this.pnContainer.Size = new System.Drawing.Size(884, 473);
             this.pnContainer.TabIndex = 0;
             // 
             // acMenu
@@ -116,7 +116,7 @@
             this.acMenu.Name = "acMenu";
             this.acMenu.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.acMenu.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.acMenu.Size = new System.Drawing.Size(289, 511);
+            this.acMenu.Size = new System.Drawing.Size(289, 520);
             this.acMenu.TabIndex = 1;
             this.acMenu.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -475,7 +475,7 @@
             this.pnHeader.FluentDesignForm = this;
             this.pnHeader.Location = new System.Drawing.Point(0, 0);
             this.pnHeader.Name = "pnHeader";
-            this.pnHeader.Size = new System.Drawing.Size(857, 31);
+            this.pnHeader.Size = new System.Drawing.Size(1173, 31);
             this.pnHeader.TabIndex = 2;
             this.pnHeader.TabStop = false;
             // 
@@ -487,7 +487,7 @@
             this.pnInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnInfo.Location = new System.Drawing.Point(289, 31);
             this.pnInfo.Name = "pnInfo";
-            this.pnInfo.Size = new System.Drawing.Size(568, 47);
+            this.pnInfo.Size = new System.Drawing.Size(884, 47);
             this.pnInfo.TabIndex = 3;
             // 
             // pnIcon
@@ -516,7 +516,7 @@
             this.pnInfoItem.Controls.Add(this.lbName);
             this.pnInfoItem.Controls.Add(this.pictureBox1);
             this.pnInfoItem.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnInfoItem.Location = new System.Drawing.Point(395, 0);
+            this.pnInfoItem.Location = new System.Drawing.Point(711, 0);
             this.pnInfoItem.Name = "pnInfoItem";
             this.pnInfoItem.Size = new System.Drawing.Size(173, 47);
             this.pnInfoItem.TabIndex = 0;
@@ -542,7 +542,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 542);
+            this.ClientSize = new System.Drawing.Size(1173, 551);
             this.ControlContainer = this.pnContainer;
             this.Controls.Add(this.pnContainer);
             this.Controls.Add(this.pnInfo);
