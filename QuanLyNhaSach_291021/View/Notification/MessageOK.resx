@@ -140,7 +140,13 @@
         xPA/6jbluEDF3PBi+/Oq5WvbV9tc/g0w9gsietjbNVNFlwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="labelControl2.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAABGdBTUEAALGPC/xhBQAAANVJREFUOE+t
+        lEEKgzAQRXOIXMKFHqDQ3smFKyt0U3pUqfQO6TRxTPJJZoQmPDB/8uc7IsQYYxvhH31/Hcd7Uj0FtVAj
+        S2O77rKub+fcsry4qjNND2rZts8w3HzFB1MprHl+HlYBsu0NzvGn+IMQH5Y6V8WsHCN1W9zpWaIhE5JV
+        ew3qcoM6bCGISH8K7UGCmUG9k45wrMosAdQRyBJTCNSRNkFtPg3+EUgwM6gxRSjm5Fpo0LISob5WNPDu
+        xPA/6jbluEDF3PBi+/Oq5WvbV9tc/g0w9gsietjbNVNFlwAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

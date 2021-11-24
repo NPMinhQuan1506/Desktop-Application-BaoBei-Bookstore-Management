@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using QuanLyNhaSach_291021.View.Notification;
 
 namespace QuanLyNhaSach_291021.View.Customer
 {
@@ -176,7 +177,7 @@ namespace QuanLyNhaSach_291021.View.Customer
             {
                 string ID = getID();
                 MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-                DialogResult Result = MessageBox.Show("Bạn Có Chắc Xóa Khách Hàng Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+                DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Khách Hàng Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
                 if (Result == DialogResult.Yes)
                 {
@@ -184,7 +185,7 @@ namespace QuanLyNhaSach_291021.View.Customer
                 }
                 else if (Result == DialogResult.No)
                 {
-                    MessageBox.Show("Dữ liệu vẫn tồn tại!");
+                    MyMessageBox.ShowMessage("Dữ liệu vẫn tồn tại!");
                 }
             }
         }
@@ -196,17 +197,17 @@ namespace QuanLyNhaSach_291021.View.Customer
                 string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = {0}", ID);
                 if (conn.executeDatabase(query) == 1)
                 {
-                    MessageBox.Show("Xóa Dữ Liệu Thành Công!");
+                    MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi! Dữ liệu chưa được xóa.");
+                    MyMessageBox.ShowMessage("Lỗi! Dữ liệu chưa được xóa.");
                 }
                 loadData();
             }
             else
             {
-                MessageBox.Show("Lỗi Ràng Buộc! Bạn Cần Xóa Hóa Đơn Của Khách Hàng Này.");
+                MyMessageBox.ShowMessage("Lỗi Ràng Buộc! Bạn Cần Xóa Hóa Đơn Của Khách Hàng Này.");
             }
         }
 
@@ -266,17 +267,18 @@ namespace QuanLyNhaSach_291021.View.Customer
                 if (index != 0)
                 {
                     string querySearch = String.Format(@"{0} and {1} like N'%{2}%'", query, field, searchInfo);
-                    loadData(query);
+                    loadData(querySearch);
                 }
                 else
                 {
-                    String querySearch = String.Format(@"{0} where CONCAT('',  
+                    String querySearch = String.Format(@"{0} and CONCAT('',  
                                                                     MaKH, 
+                                                                    TenKH,
                                                                     NgaySinh, 
                                                                     Email, 
                                                                     DienThoai, 
-                                                                    DiaChi,) like N'%{1}%'", query, searchInfo);
-                    loadData(query);
+                                                                    DiaChi) like N'%{1}%'", query, searchInfo);
+                    loadData(querySearch);
                 }
             }
             else

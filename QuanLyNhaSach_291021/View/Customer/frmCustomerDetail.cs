@@ -19,6 +19,8 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         //defind variable
         String id = "";
+
+        //Move Panel
         Boolean dragging = false;
         Point startPoint = new Point(0, 0);
         #endregion
@@ -95,13 +97,6 @@ namespace QuanLyNhaSach_291021.View.Customer
         }
         #endregion
 
-        #region //Close Button
-        private void lbClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        #endregion
-
         #region //Clear Value of Control
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -112,16 +107,26 @@ namespace QuanLyNhaSach_291021.View.Customer
         }
         #endregion
 
+        #region //Close Button
+        private void lbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+
         #region //Rounded Border Form 
         private void frmCustomerDetail_Resize(object sender, EventArgs e)
         {
-            base.OnResize(e);
             this.Region = DevExpress.Utils.Drawing.Helpers.NativeMethods.CreateRoundRegion(new Rectangle(Point.Empty, Size), 9);
         }
 
         private void frmCustomerDetail_Shown(object sender, EventArgs e)
         {
-            base.OnShown(e);
             this.Region = DevExpress.Utils.Drawing.Helpers.NativeMethods.CreateRoundRegion(new Rectangle(Point.Empty, Size), 9);
         }
         #endregion
