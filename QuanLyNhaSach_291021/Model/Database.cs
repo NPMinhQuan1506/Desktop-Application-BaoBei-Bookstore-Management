@@ -10,7 +10,7 @@ namespace QuanLyNhaSach_291021.Model
 {
     class Database
     {
-        string server = @"MOU-PC\SQLEXPRESS";
+        string server = @"MOU\SQLEXPRESS";
         string databasename = "QuanLyNhaSach";
         SqlConnection con;
 

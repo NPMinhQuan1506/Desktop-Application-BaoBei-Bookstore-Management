@@ -121,6 +121,19 @@
     <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Notification\frmMessageOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Notification\frmMessageOK.Designer.cs">
+      <DependentUpon>frmMessageOK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notification\frmMessageYesNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Notification\frmMessageYesNo.Designer.cs">
+      <DependentUpon>frmMessageYesNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notification\MyMessageBox.cs" />
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,12 +146,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\Customer\ctrCustomerList.resx">
       <DependentUpon>ctrCustomerList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Notification\frmMessageOK.resx">
+      <DependentUpon>frmMessageOK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Notification\frmMessageYesNo.resx">
+      <DependentUpon>frmMessageYesNo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -153,9 +173,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Information.png" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -139,6 +139,7 @@
             this.aceDashboard.Name = "aceDashboard";
             this.aceDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDashboard.Text = "Tổng Quan";
+            this.aceDashboard.Click += new System.EventHandler(this.aceDashboard_Click);
             // 
             // aceCustomer
             // 
@@ -155,6 +156,7 @@
             this.acePublisher,
             this.aceCategories,
             this.aceProduct});
+            this.acgProduct.Expanded = true;
             this.acgProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgProduct.ImageOptions.SvgImage")));
             this.acgProduct.Name = "acgProduct";
             this.acgProduct.Text = "Quản Lý Sản Phẩm";
@@ -177,6 +179,7 @@
             this.aceAuthor.Name = "aceAuthor";
             this.aceAuthor.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceAuthor.Text = "Danh Sách Tác Giả";
+            this.aceAuthor.Click += new System.EventHandler(this.aceAuthor_Click);
             // 
             // acePublisher
             // 
