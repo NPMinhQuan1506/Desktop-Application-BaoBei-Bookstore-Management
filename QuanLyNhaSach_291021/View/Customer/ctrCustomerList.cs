@@ -21,8 +21,6 @@ namespace QuanLyNhaSach_291021.View.Customer
         string emptyGridText = "Không có dữ liệu";
         
         //defind variable search and filter
-        //string searchingContent = "";
-        //string field = "";
 
         //defind generate instance 
 
@@ -130,7 +128,8 @@ namespace QuanLyNhaSach_291021.View.Customer
                             inner join LoaiKhach as lk on kh.MaLK = lk.MaLK
                             inner join NhomKhach as nk on kh.MaNK = nk.MaNK
                             left join TaiKhoan_KH as tk on kh.MaTK = tk.MaTK
-                            where kh.HienThi = 1";
+                            where kh.HienThi = 1
+                            order by kh.NgayTao ASC";
             DataTable dtContent = new DataTable();
             dtContent = conn.loadData(query);
             gcCustomer.DataSource = dtContent;
@@ -207,13 +206,33 @@ namespace QuanLyNhaSach_291021.View.Customer
             }
             else
             {
+                MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
+                DialogResult Result = MyMessageBox.ShowMessage(@"Lưu Ý! Tồn Tại Hóa Đơn Của Khách Hàng Này.\n Bạn Vẫn Muốn Tiếp Tục?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+
+                if (Result == DialogResult.Yes)
+                {
+                    string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = {0}", ID);
+                    if (conn.executeDatabase(query) == 1)
+                    {
+                        MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công! Thông Tin Khách Hàng Vẫn Sẽ Được Lưu Lại Trong Hóa Đơn");
+                    }
+                    else
+                    {
+                        MyMessageBox.ShowMessage("Lỗi! Dữ liệu chưa được xóa.");
+                    }
+                    loadData();
+                }
+                else if (Result == DialogResult.No)
+                {
+                    MyMessageBox.ShowMessage("Dữ liệu vẫn tồn tại!");
+                }
                 MyMessageBox.ShowMessage("Lỗi Ràng Buộc! Bạn Cần Xóa Hóa Đơn Của Khách Hàng Này.");
             }
         }
 
         private bool checkConstraints(string ID)
         {
-            string query = String.Format("select count(SupplierId)  as count from Book where SupplierId = {0}", ID);
+            string query = String.Format("select count(MaKH)  as count from HoaDon where MaKH = {0}", ID);
             DataTable dt = new DataTable();
             dt = conn.loadData(query);
             if ((int)(dt.Rows[0]["count"]) > 0)
@@ -233,9 +252,10 @@ namespace QuanLyNhaSach_291021.View.Customer
         private string getID()
         {
 
-            if (gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, gvCustomer.Columns["CustomerId"]) != null)
+            if (gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, CustomerId) != null)
             {
-                string ID = gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, gvCustomer.Columns["CustomerId"]).ToString();
+                //string ID = gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, "MaKH").ToString();
+                string ID = gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, CustomerId).ToString();
                 return ID;
             }
             return "";
@@ -259,9 +279,9 @@ namespace QuanLyNhaSach_291021.View.Customer
             //deleteLabelInfo();
             //Add datatable if searching value is null, datatable will return "Search data doesn't exist"
             string searchInfo = txtSearch.Text;
-            string field = (func.removeUnicode(cbbField.SelectedText)).Replace("Khách Hàng", "KH")
+            string field = func.removeUnicode((cbbField.Text).Replace("Khách Hàng", "KH"))
                                                                       .Replace(" ", "");
-            if (!string.IsNullOrWhiteSpace(searchInfo))
+            if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
             {
                 int index = cbbField.SelectedIndex;
                 if (index != 0)

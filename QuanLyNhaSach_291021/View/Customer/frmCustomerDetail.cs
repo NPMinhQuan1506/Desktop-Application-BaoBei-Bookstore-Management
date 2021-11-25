@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.IO;
 
 namespace QuanLyNhaSach_291021.View.Customer
 {
@@ -29,12 +30,15 @@ namespace QuanLyNhaSach_291021.View.Customer
         public frmCustomerDetail()
         {
             InitializeComponent();
+            loadAllLookups();
         }
 
         public frmCustomerDetail(string _id):this()
         {
             this.id = _id;
             loadData();
+            txtPassword.ReadOnly = true;
+            ckeDefaultPassword.Checked = false;
         }
         #endregion
 
@@ -43,22 +47,52 @@ namespace QuanLyNhaSach_291021.View.Customer
         {
             if (this.id != "")
             {
-                string query = String.Format(@"select * from Supplier where id = {0}", this.id);
+                string query = String.Format(@"Select kh.*,
+                                    ha.Anh as Anh,
+                                    tk.TenTK as TaiKhoan,
+                                    tk.MatKhau as MatKhau
+                            from KhachHang as kh
+                            left join HinhAnh as ha on kh.MaHA = ha.MaHA
+                            left join TaiKhoan_KH as tk on kh.MaTK = tk.MaTK
+                            where kh.HienThi = 1 and kh.MaKH = '{0}'", this.id);
                 DataTable dtContent = new DataTable();
                 dtContent = conn.loadData(query);
                 if (dtContent.Rows.Count > 0)
                 {
-                    //txtName.Text = (dtContent.Rows[0]["Name"]).ToString();
-                    //txtPhone.Text = (dtContent.Rows[0]["Phone"]).ToString();
-                    //txtEmail.Text = (dtContent.Rows[0]["Email"]).ToString();
-                    //txtAddress.Text = (dtContent.Rows[0]["Address"]).ToString();
+                    peAvatar.Image = Image.FromStream(new MemoryStream((byte[])dtContent.Rows[0]["Anh"]));
+                    txtCustomerID.Text = (dtContent.Rows[0]["MaKH"]).ToString();
+                    txtCustomerName.Text = (dtContent.Rows[0]["TenKH"]).ToString();
+                    txtPhone.Text = (dtContent.Rows[0]["DienThoai"]).ToString();
+                    txtEmail.Text = (dtContent.Rows[0]["Email"]).ToString();
+                    luGender.EditValue = (dtContent.Rows[0]["MaGT"]).ToString();
+                    string strDateOfBirth = (dtContent.Rows[0]["NgaySinh"]).ToString();
+                    dteDateOfBirth.EditValue = func.StringToDateTime(strDateOfBirth);
+                    luCustomerGroup.EditValue = (dtContent.Rows[0]["MaNK"]).ToString();
+                    luCustomerType.EditValue = (dtContent.Rows[0]["MaLK"]).ToString();
+                    txtAccount.Text = (dtContent.Rows[0]["TaiKhoan"]).ToString();
+                    txtPassword.Text = (dtContent.Rows[0]["MatKhau"]).ToString();
+                    mmeAddress.Text = (dtContent.Rows[0]["DiaChi"]).ToString();
+                    mmeNote.Text = (dtContent.Rows[0]["GhiChu"]).ToString();
                 }
             }
         }
         #endregion
 
         #region //Load ComboboxData
+        private void loadAllLookups()
+        {
+            loadLookupData(luGender, "MaGT", "TenGT", "GioiTinh");
+            loadLookupData(luCustomerGroup, "MaNK", "TenNK", "NhomKhach");
+            loadLookupData(luCustomerType, "MaLK", "TenLK", "LoaiKhach");
+        }
 
+        private void loadLookupData(LookUpEdit lu, string value, string display, string tableName)
+        {
+            string query = String.Format(@"select {0}, {1} from {2}", value, display, tableName);
+            lu.Properties.DataSource = conn.loadData(query);
+            lu.Properties.DisplayMember = display;
+            lu.Properties.ValueMember = value;
+        }
         #endregion
 
         #region //Save Data
@@ -97,13 +131,35 @@ namespace QuanLyNhaSach_291021.View.Customer
         }
         #endregion
 
-        #region //Clear Value of Control
-        private void btnClear_Click(object sender, EventArgs e)
+        #region //Read Image 
+        private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            //txtName.Text = "";
-            //txtPhone.Text = "";
-            //txtEmail.Text = "";
-            //txtAddress.Text = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string fileName;
+
+                fileName = openFileDialog1.FileName;
+                openFileDialog1.FileName = "NhanVien_999";
+                Bitmap original = (Bitmap)Image.FromFile(fileName);
+                peAvatar.Image = new Bitmap(original, new Size(120, 120));
+            }
+        }
+        #endregion
+
+        #region //Clear Value of Control
+        private void lbClear_Click(object sender, EventArgs e)
+        {
+            peAvatar.Image = null;
+            txtCustomerID.Text = "";
+            txtCustomerName.Text = "";
+            txtPhone.Text = "";
+            txtEmail.Text = "";
+            luGender.EditValue = null;
+            dteDateOfBirth.EditValue = null;
+            luCustomerGroup.EditValue = null;
+            luCustomerType.EditValue = null;
+            mmeAddress.Text = "";
+            mmeNote.Text = "";
         }
         #endregion
 
@@ -152,5 +208,6 @@ namespace QuanLyNhaSach_291021.View.Customer
             }
         }
         #endregion
+
     }
 }

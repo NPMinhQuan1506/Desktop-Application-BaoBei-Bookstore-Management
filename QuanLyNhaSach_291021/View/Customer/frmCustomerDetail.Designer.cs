@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerDetail));
             this.pnHeader = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lbClear = new DevExpress.XtraEditors.LabelControl();
             this.lbClose = new DevExpress.XtraEditors.LabelControl();
             this.pnFooter = new DevExpress.XtraEditors.PanelControl();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -38,7 +38,7 @@
             this.txtCustomerID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtCustomerName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -51,42 +51,42 @@
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtAccount = new DevExpress.XtraEditors.TextEdit();
-            this.dtDateOfBirth = new DevExpress.XtraEditors.DateEdit();
+            this.dteDateOfBirth = new DevExpress.XtraEditors.DateEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.cbbCustomerType = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cbbCustomerGroup = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cbGender = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.ckeDefaultPassword = new DevExpress.XtraEditors.CheckEdit();
             this.peAvatar = new DevExpress.XtraEditors.PictureEdit();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOpenFile = new DevExpress.XtraEditors.SimpleButton();
+            this.luCustomerGroup = new DevExpress.XtraEditors.LookUpEdit();
+            this.luCustomerType = new DevExpress.XtraEditors.LookUpEdit();
+            this.luGender = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnFooter)).BeginInit();
             this.pnFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerID.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmeAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmeNote.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtDateOfBirth.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtDateOfBirth.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbCustomerType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbCustomerGroup.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbGender.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dteDateOfBirth.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dteDateOfBirth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckeDefaultPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peAvatar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luCustomerGroup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luCustomerType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luGender.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnHeader
             // 
-            this.pnHeader.Controls.Add(this.labelControl1);
+            this.pnHeader.Controls.Add(this.lbClear);
             this.pnHeader.Controls.Add(this.lbClose);
             this.pnHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnHeader.Location = new System.Drawing.Point(0, 0);
@@ -99,24 +99,25 @@
             this.pnHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnHeader_MouseMove);
             this.pnHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnHeader_MouseUp);
             // 
-            // labelControl1
+            // lbClear
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Appearance.Options.UseTextOptions = true;
-            this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("labelControl1.ImageOptions.Image")));
-            this.labelControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelControl1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
-            this.labelControl1.Location = new System.Drawing.Point(780, 12);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(30, 30);
-            this.labelControl1.TabIndex = 1;
+            this.lbClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lbClear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
+            this.lbClear.Appearance.Options.UseFont = true;
+            this.lbClear.Appearance.Options.UseForeColor = true;
+            this.lbClear.Appearance.Options.UseTextOptions = true;
+            this.lbClear.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbClear.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.lbClear.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbClear.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.lbClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("lbClear.ImageOptions.Image")));
+            this.lbClear.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbClear.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
+            this.lbClear.Location = new System.Drawing.Point(780, 12);
+            this.lbClear.Name = "lbClear";
+            this.lbClear.Size = new System.Drawing.Size(30, 30);
+            this.lbClear.TabIndex = 1;
+            this.lbClear.Click += new System.EventHandler(this.lbClear_Click);
             // 
             // lbClose
             // 
@@ -208,17 +209,17 @@
             this.labelControl3.TabIndex = 5;
             this.labelControl3.Text = "Tên Khách Hàng";
             // 
-            // textEdit1
+            // txtCustomerName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(513, 121);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEdit1.Properties.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.textEdit1.Properties.AutoHeight = false;
-            this.textEdit1.Size = new System.Drawing.Size(333, 38);
-            this.textEdit1.TabIndex = 4;
+            this.txtCustomerName.Location = new System.Drawing.Point(513, 121);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCustomerName.Properties.Appearance.Options.UseFont = true;
+            this.txtCustomerName.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtCustomerName.Properties.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.txtCustomerName.Properties.AutoHeight = false;
+            this.txtCustomerName.Size = new System.Drawing.Size(333, 38);
+            this.txtCustomerName.TabIndex = 4;
             // 
             // labelControl4
             // 
@@ -261,6 +262,9 @@
             this.txtEmail.Properties.Appearance.Options.UseTextOptions = true;
             this.txtEmail.Properties.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.txtEmail.Properties.AutoHeight = false;
+            this.txtEmail.Properties.Mask.EditMask = "((((\\w+-*)|(-*\\w+))+\\.*((\\w+-*)|(-*\\w+))+)|(((\\w+-*)|(-*\\w+))+))+@((((\\w+-*)|(-*\\" +
+    "w+))+\\.*((\\w+-*)|(-*\\w+))+)|(((\\w+-*)|(-*\\w+))+))+\\.[A-Za-z]+";
+            this.txtEmail.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtEmail.Size = new System.Drawing.Size(333, 38);
             this.txtEmail.TabIndex = 8;
             // 
@@ -342,24 +346,23 @@
             this.txtAccount.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtAccount.Properties.Appearance.Options.UseFont = true;
             this.txtAccount.Properties.AutoHeight = false;
-            this.txtAccount.Properties.Mask.EditMask = "\\(\\d{3}\\)[0-9]{3}[0-9]{4}";
-            this.txtAccount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtAccount.Size = new System.Drawing.Size(253, 38);
             this.txtAccount.TabIndex = 14;
             // 
-            // dtDateOfBirth
+            // dteDateOfBirth
             // 
-            this.dtDateOfBirth.EditValue = null;
-            this.dtDateOfBirth.Location = new System.Drawing.Point(225, 304);
-            this.dtDateOfBirth.Name = "dtDateOfBirth";
-            this.dtDateOfBirth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dteDateOfBirth.EditValue = null;
+            this.dteDateOfBirth.Location = new System.Drawing.Point(225, 304);
+            this.dteDateOfBirth.Name = "dteDateOfBirth";
+            this.dteDateOfBirth.Properties.AutoHeight = false;
+            this.dteDateOfBirth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtDateOfBirth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dteDateOfBirth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtDateOfBirth.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dtDateOfBirth.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dtDateOfBirth.Size = new System.Drawing.Size(253, 32);
-            this.dtDateOfBirth.TabIndex = 18;
+            this.dteDateOfBirth.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.dteDateOfBirth.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dteDateOfBirth.Size = new System.Drawing.Size(253, 38);
+            this.dteDateOfBirth.TabIndex = 18;
             // 
             // labelControl10
             // 
@@ -370,36 +373,6 @@
             this.labelControl10.Size = new System.Drawing.Size(79, 21);
             this.labelControl10.TabIndex = 19;
             this.labelControl10.Text = "Ngày Sinh";
-            // 
-            // cbbCustomerType
-            // 
-            this.cbbCustomerType.Location = new System.Drawing.Point(16, 400);
-            this.cbbCustomerType.Name = "cbbCustomerType";
-            this.cbbCustomerType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbbCustomerType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbbCustomerType.Size = new System.Drawing.Size(187, 32);
-            this.cbbCustomerType.TabIndex = 20;
-            // 
-            // cbbCustomerGroup
-            // 
-            this.cbbCustomerGroup.Location = new System.Drawing.Point(513, 304);
-            this.cbbCustomerGroup.Name = "cbbCustomerGroup";
-            this.cbbCustomerGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbbCustomerGroup.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbbCustomerGroup.Size = new System.Drawing.Size(333, 32);
-            this.cbbCustomerGroup.TabIndex = 21;
-            // 
-            // cbGender
-            // 
-            this.cbGender.Location = new System.Drawing.Point(16, 304);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbGender.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbGender.Size = new System.Drawing.Size(187, 32);
-            this.cbGender.TabIndex = 22;
             // 
             // labelControl11
             // 
@@ -433,12 +406,13 @@
             // 
             // ckeDefaultPassword
             // 
+            this.ckeDefaultPassword.EditValue = true;
             this.ckeDefaultPassword.Location = new System.Drawing.Point(513, 439);
             this.ckeDefaultPassword.Name = "ckeDefaultPassword";
             this.ckeDefaultPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ckeDefaultPassword.Properties.Appearance.Options.UseFont = true;
-            this.ckeDefaultPassword.Properties.Caption = "Lấy mật khẩu mặc định";
-            this.ckeDefaultPassword.Size = new System.Drawing.Size(220, 25);
+            this.ckeDefaultPassword.Properties.Caption = "Lấy mật khẩu mặc định (user123)";
+            this.ckeDefaultPassword.Size = new System.Drawing.Size(333, 25);
             this.ckeDefaultPassword.TabIndex = 26;
             // 
             // peAvatar
@@ -452,37 +426,83 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.DefaultExt = "png";
+            this.openFileDialog1.FileName = "NhanVien_999";
+            this.openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif;" +
+    " *.png";
             // 
-            // simpleButton1
+            // btnOpenFile
             // 
-            this.simpleButton1.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.simpleButton1.Appearance.Options.UseBorderColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.simpleButton1.Location = new System.Drawing.Point(16, 234);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 30);
-            this.simpleButton1.TabIndex = 28;
-            this.simpleButton1.Text = "Chọn Tệp";
+            this.btnOpenFile.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.btnOpenFile.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnOpenFile.Appearance.Options.UseBorderColor = true;
+            this.btnOpenFile.Appearance.Options.UseFont = true;
+            this.btnOpenFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpenFile.Location = new System.Drawing.Point(16, 234);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(75, 30);
+            this.btnOpenFile.TabIndex = 28;
+            this.btnOpenFile.Text = "Chọn Tệp";
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // luCustomerGroup
+            // 
+            this.luCustomerGroup.Location = new System.Drawing.Point(513, 304);
+            this.luCustomerGroup.Name = "luCustomerGroup";
+            this.luCustomerGroup.Properties.AutoHeight = false;
+            this.luCustomerGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luCustomerGroup.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKH", "MaKH", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNK", "Nhóm Khách Hàng")});
+            this.luCustomerGroup.Properties.NullText = "";
+            this.luCustomerGroup.Size = new System.Drawing.Size(333, 38);
+            this.luCustomerGroup.TabIndex = 29;
+            // 
+            // luCustomerType
+            // 
+            this.luCustomerType.Location = new System.Drawing.Point(16, 398);
+            this.luCustomerType.Name = "luCustomerType";
+            this.luCustomerType.Properties.AutoHeight = false;
+            this.luCustomerType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luCustomerType.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaLK", "MaLK", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenLK", "Loại Khách")});
+            this.luCustomerType.Properties.NullText = "";
+            this.luCustomerType.Size = new System.Drawing.Size(187, 38);
+            this.luCustomerType.TabIndex = 31;
+            // 
+            // luGender
+            // 
+            this.luGender.Location = new System.Drawing.Point(16, 307);
+            this.luGender.Name = "luGender";
+            this.luGender.Properties.AutoHeight = false;
+            this.luGender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luGender.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaGT", "MaGT", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenGT", "Giới Tính")});
+            this.luGender.Properties.NullText = "";
+            this.luGender.Size = new System.Drawing.Size(187, 38);
+            this.luGender.TabIndex = 32;
             // 
             // frmCustomerDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 687);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.luGender);
+            this.Controls.Add(this.luCustomerType);
+            this.Controls.Add(this.luCustomerGroup);
+            this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.peAvatar);
             this.Controls.Add(this.ckeDefaultPassword);
             this.Controls.Add(this.labelControl13);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.labelControl11);
-            this.Controls.Add(this.cbGender);
-            this.Controls.Add(this.cbbCustomerGroup);
-            this.Controls.Add(this.cbbCustomerType);
             this.Controls.Add(this.labelControl10);
-            this.Controls.Add(this.dtDateOfBirth);
+            this.Controls.Add(this.dteDateOfBirth);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.labelControl9);
@@ -496,7 +516,7 @@
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.txtCustomerID);
             this.Controls.Add(this.pnFooter);
@@ -514,20 +534,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnFooter)).EndInit();
             this.pnFooter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomerID.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmeAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmeNote.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtDateOfBirth.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtDateOfBirth.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbCustomerType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbCustomerGroup.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbGender.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dteDateOfBirth.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dteDateOfBirth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckeDefaultPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peAvatar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luCustomerGroup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luCustomerType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luGender.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -540,11 +560,11 @@
         private DevExpress.XtraEditors.LabelControl lbClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lbClear;
         private DevExpress.XtraEditors.TextEdit txtCustomerID;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtCustomerName;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtPhone;
         private DevExpress.XtraEditors.LabelControl labelControl5;
@@ -557,17 +577,17 @@
         private DevExpress.XtraEditors.TextEdit txtPassword;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.TextEdit txtAccount;
-        private DevExpress.XtraEditors.DateEdit dtDateOfBirth;
+        private DevExpress.XtraEditors.DateEdit dteDateOfBirth;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.ComboBoxEdit cbbCustomerType;
-        private DevExpress.XtraEditors.ComboBoxEdit cbbCustomerGroup;
-        private DevExpress.XtraEditors.ComboBoxEdit cbGender;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.CheckEdit ckeDefaultPassword;
         private DevExpress.XtraEditors.PictureEdit peAvatar;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnOpenFile;
+        private DevExpress.XtraEditors.LookUpEdit luCustomerGroup;
+        private DevExpress.XtraEditors.LookUpEdit luCustomerType;
+        private DevExpress.XtraEditors.LookUpEdit luGender;
     }
 }

@@ -156,7 +156,6 @@
             this.acePublisher,
             this.aceCategories,
             this.aceProduct});
-            this.acgProduct.Expanded = true;
             this.acgProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgProduct.ImageOptions.SvgImage")));
             this.acgProduct.Name = "acgProduct";
             this.acgProduct.Text = "Quản Lý Sản Phẩm";
