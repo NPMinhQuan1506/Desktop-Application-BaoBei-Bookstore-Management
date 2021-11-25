@@ -193,7 +193,7 @@ namespace QuanLyNhaSach_291021.View.Customer
         {
             if (checkConstraints(ID))
             {
-                string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = {0}", ID);
+                string query = String.Format("Delete KhachHang Where MaKH = {0}", ID);
                 if (conn.executeDatabase(query) == 1)
                 {
                     MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");

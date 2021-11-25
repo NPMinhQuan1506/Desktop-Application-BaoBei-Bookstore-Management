@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
+using QuanLyNhaSach_291021.View.Notification;
 
 namespace QuanLyNhaSach_291021.View.Customer
 {
@@ -33,12 +34,13 @@ namespace QuanLyNhaSach_291021.View.Customer
             loadAllLookups();
         }
 
-        public frmCustomerDetail(string _id):this()
+        public frmCustomerDetail(string _id) : this()
         {
             this.id = _id;
             loadData();
-            txtPassword.ReadOnly = true;
+            txtAccount.ReadOnly = true;
             ckeDefaultPassword.Checked = false;
+            txtCustomerID.ReadOnly = true;
         }
         #endregion
 
@@ -98,36 +100,92 @@ namespace QuanLyNhaSach_291021.View.Customer
         #region //Save Data
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //if (txtName.Text != "" && txtPhone.Text != "" && txtEmail.Text != "" && txtAddress.Text != "")
-            //{
-            //    // Event Add Data
-            //    if (this.id == "")
-            //    {
-            //        String query = String.Format(@"INSERT INTO Supplier(Name, Phone, Email, Address) 
-            //                                    values (N'{0}', N'{1}', N'{2}', N'{3}')",
-            //                                    txtName.Text, txtPhone.Text, txtEmail.Text, txtAddress.Text);
-            //        conn.executeDatabase(query);
-            //        MessageBox.Show("Created Data Successfully");
-            //        this.Close();
-            //    }
-            //    // Event Update Data
-            //    else
-            //    {
-            //        String query = String.Format(@"UPDATE Supplier SET Name = N'{0}',
-            //                                                           Phone = N'{1}',
-            //                                                           Email = N'{2}', 
-            //                                                           Address = N'{3}' 
-            //                                       WHERE id = {4}",
-            //                                       txtName.Text, txtPhone.Text, txtEmail.Text, txtAddress.Text, this.id);
-            //        conn.executeDatabase(query);
-            //        MessageBox.Show("Updated Data Successfully");
-            //        this.Close();
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Please enter full information");
-            //}
+            string MaHA = SaveAvartar() != ""? SaveAvartar(): "null", 
+                   MaTK = SaveAccount() != "" ? SaveAccount() : "null";
+            // Event Add Data
+            if (this.id == "")
+            {
+                String dtNow = func.DateTimeToString(DateTime.Now);
+                String query = String.Format(@"INSERT INTO KhachHang(MaKH, TenKH, MaGT, MaHA, MaLK, MaNK, MaTK, NgaySinh, Email, DienThoai, DiaChi, GhiChu, NgayTao) 
+                                                values ('{0}', N'{1}', {2}, {3}, {4}, {5}, {6}, '{7}', N'{8}', '{9}', N'{10}', N'{11}', '{12}')",
+                                            txtCustomerID.Text,
+                                            txtCustomerName.Text,
+                                            luGender.EditValue,
+                                            MaHA,
+                                            luCustomerType.EditValue,
+                                            luCustomerGroup.EditValue,
+                                            MaTK,
+                                            dteDateOfBirth.EditValue,
+                                            txtEmail, Text,
+                                            txtPhone.Text,
+                                            mmeAddress.Text,
+                                            mmeNote.Text,
+                                            dtNow);
+                conn.executeDatabase(query);
+                MyMessageBox.ShowMessage("Created Data Successfully");
+                this.Close();
+            }
+            // Event Update Data
+            else
+            {
+                //String query = String.Format(@"UPDATE KhachHang SET TenKH = N'{0}',
+                //                                                    MaGT = {1}, 
+                //                                                    MaLK = {2},
+                //                                                    MaNK = {3},
+                //                                                    NgaySinh = '{4}',
+                //                                                    Email = N'{5}',
+                //                                                    DienThoai = '{6}', 
+                //                                                    DiaChi = N'{7}',
+                //                                                    GhiChu = N'{8}',
+                //                                                    NgaySua = N'{9}', 
+                //                               WHERE MaKH = {10}",
+                //                               this.id);
+                //conn.executeDatabase(query);
+                //MessageBox.Show("Updated Data Successfully");
+                //this.Close();
+            }
+        }
+
+        private string SaveAvartar()
+        {
+            Image img = peAvatar.Image;
+            ImageConverter converter = new ImageConverter();
+            byte[] bImg = (byte[])converter.ConvertTo(img, typeof(byte[]));
+            string ext = Path.GetExtension(openFileDialog1.FileName);
+            // Event Add Data
+            if (this.id == "")
+            {
+                String query = String.Format(@"INSERT INTO HinhAnh(Anh, DuoiTep, ChuSoHuu) 
+                                                values ('{0}', '{1}', 'KhachHang')", bImg, ext);
+                if (conn.executeDatabase(query) == 1)
+                {
+                    return conn.getLastInsertedValue();
+                }
+                else
+                {
+                    MyMessageBox.ShowMessage("Lỗi! Không Thể Thêm Hình Ảnh.");
+                }
+            }
+            // Event Update Data
+            else
+            {
+                String query = String.Format(@"Update HinhAnh Set Anh = '{0}', DuoiTep = '{1}' 
+                                                where MaHA = (Select MaHA from KhachHang Where MaHA = {2})", bImg, ext, this.id);
+                if (conn.executeDatabase(query) == 1)
+                {
+                    return conn.getLastInsertedValue();
+                }
+                else
+                {
+                    MyMessageBox.ShowMessage("Lỗi! Không Thể Sửa Hình Ảnh.");
+                }
+            }
+            return "";
+        }
+
+        private string SaveAccount()
+        {
+            return "";
         }
         #endregion
 
@@ -139,7 +197,6 @@ namespace QuanLyNhaSach_291021.View.Customer
                 string fileName;
 
                 fileName = openFileDialog1.FileName;
-                openFileDialog1.FileName = "NhanVien_999";
                 Bitmap original = (Bitmap)Image.FromFile(fileName);
                 peAvatar.Image = new Bitmap(original, new Size(120, 120));
             }

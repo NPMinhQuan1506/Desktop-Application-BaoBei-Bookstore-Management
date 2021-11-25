@@ -65,7 +65,7 @@ namespace QuanLyNhaSach_291021.Controller
                 {
                     case 1:
                         this.ErrorText = "Trường bắt buộc nhập";
-                        return false;
+                        return false; 
                     default: break;
                 }
                 return true;

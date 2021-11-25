@@ -31,6 +31,16 @@ namespace QuanLyNhaSach_291021.Model
             return tableSelect;
         }
 
+        public string getLastInsertedValue()
+        {
+            DataTable dt = loadData("SELECT SCOPE_IDENTITY() as ID");
+            if(dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["ID"].ToString();
+            }
+            return "";
+        }
+
         public int executeDatabase(string s)
         {
             SqlCommand command = con.CreateCommand();

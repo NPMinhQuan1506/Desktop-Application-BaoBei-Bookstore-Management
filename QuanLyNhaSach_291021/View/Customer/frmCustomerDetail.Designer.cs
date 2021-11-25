@@ -411,7 +411,7 @@
             this.ckeDefaultPassword.Name = "ckeDefaultPassword";
             this.ckeDefaultPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ckeDefaultPassword.Properties.Appearance.Options.UseFont = true;
-            this.ckeDefaultPassword.Properties.Caption = "Lấy mật khẩu mặc định (user123)";
+            this.ckeDefaultPassword.Properties.Caption = "Lấy mật khẩu mặc định (User@123)";
             this.ckeDefaultPassword.Size = new System.Drawing.Size(333, 25);
             this.ckeDefaultPassword.TabIndex = 26;
             // 
