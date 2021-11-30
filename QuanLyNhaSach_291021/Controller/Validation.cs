@@ -9,7 +9,7 @@ namespace QuanLyNhaSach_291021.Controller
 {
     class Validation
     {
-        // Emnty and valid char
+        // Empty and valid char
         public class ValueEmpty_Contain : ConditionValidationRule
         {
             public ValueEmpty_Contain()
@@ -45,6 +45,36 @@ namespace QuanLyNhaSach_291021.Controller
                 return true;
             }
         }
+
+        //Valid and don't have unicode
+        // Empty and valid char
+        public class Value_Contain : ConditionValidationRule
+        {
+            public Value_Contain()
+            {
+                this.ConditionOperator = ConditionOperator.Contains;
+                this.ErrorType = ErrorType.Critical;
+            }
+            public override bool Validate(System.Windows.Forms.Control control, object value)
+            {
+                int flag = 0;
+                var content = (control as DevExpress.XtraEditors.TextEdit).Text;
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(content, @"^[a-zA-Z0-9]+$", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                {
+                    flag = 1;
+                }
+
+                switch (flag)
+                {
+                    case 1:
+                        this.ErrorText = "Có ký tự không cho phép";
+                        return false;
+                    default: break;
+                }
+                return true;
+            }
+        }
         // Empty
         public class Empty_Contain : ConditionValidationRule
         {
@@ -65,16 +95,16 @@ namespace QuanLyNhaSach_291021.Controller
                 {
                     case 1:
                         this.ErrorText = "Trường bắt buộc nhập";
-                        return false; 
+                        return false;
                     default: break;
                 }
                 return true;
             }
         }
         // invalid char
-        public class Value_Contain : ConditionValidationRule
+        public class Valid_Contain : ConditionValidationRule
         {
-            public Value_Contain()
+            public Valid_Contain()
             {
                 this.ConditionOperator = ConditionOperator.Contains;
                 this.ErrorType = ErrorType.Critical;
@@ -83,7 +113,7 @@ namespace QuanLyNhaSach_291021.Controller
             {
                 int flag = 0;
                 var content = (control as DevExpress.XtraEditors.TextEdit).Text;
-                if (System.Text.RegularExpressions.Regex.IsMatch(content, @"^[\%\/\\\&\?\,\'\;\:\!\-\""\<\>]+$", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                if (System.Text.RegularExpressions.Regex.IsMatch(content, @"[\*\%\/\\\&\?\,\'\;\:\!\-\""\<\>]+", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                 {
                     flag = 1;
                 }
@@ -116,9 +146,9 @@ namespace QuanLyNhaSach_291021.Controller
                 }
                 else
                 {
-                    if (System.Text.RegularExpressions.Regex.IsMatch(content, @"^[\%\/\\\&\?\,\'\;\:\!\-\""\<\>]+$", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                    if (System.Text.RegularExpressions.Regex.IsMatch(content, @"[\%\/\\\&\?\,\'\;\:\!\-\""\<\>]+", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                     {
-                        flag = 1;
+                        flag = 2;
                     }
                 }
                 switch (flag)

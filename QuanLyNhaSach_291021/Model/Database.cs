@@ -43,18 +43,41 @@ namespace QuanLyNhaSach_291021.Model
 
         public int executeDatabase(string s)
         {
-            SqlCommand command = con.CreateCommand();
-            command.CommandText = s;
-            return command.ExecuteNonQuery();
-            //string ss = s.Replace("'", "");
-            //insertHitory(@"Insert into History values('" + @ss + "')");
+            try
+            {
+                SqlCommand command = con.CreateCommand();
+                command.CommandText = s;
+                return command.ExecuteNonQuery();
+                //string ss = s.Replace("'", "");
+                //insertHitory(@"Insert into History values('" + @ss + "')");
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("there was an sql issue when execute Database: " + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("there was another issue when execute Database: " + ex.ToString());
+            }
+            return -1;
         }
 
         public void insertHitory(string s)
         {
-            SqlCommand command = con.CreateCommand();
-            command.CommandText = s;
-            command.ExecuteNonQuery();
+            try
+            {
+                SqlCommand command = con.CreateCommand();
+                command.CommandText = s;
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("there was an sql issue when insert Hitory: " + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("there was another issue when insert Hitory: " + ex.ToString());
+            }
         }
     }
 }

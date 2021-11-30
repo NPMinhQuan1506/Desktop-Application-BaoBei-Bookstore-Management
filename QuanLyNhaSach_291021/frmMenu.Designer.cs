@@ -198,6 +198,7 @@
             this.acePublisher.Name = "acePublisher";
             this.acePublisher.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acePublisher.Text = "Danh Sách NXB";
+            this.acePublisher.Click += new System.EventHandler(this.acePublisher_Click);
             // 
             // aceCategories
             // 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using QuanLyNhaSach_291021.View.Notification;
+using System.IO;
 
 namespace QuanLyNhaSach_291021.View.Customer
 {
@@ -19,7 +20,7 @@ namespace QuanLyNhaSach_291021.View.Customer
         Controller.Common func = new Controller.Common();
         string query = "";
         string emptyGridText = "Không có dữ liệu";
-        
+
         //defind variable search and filter
 
         //defind generate instance 
@@ -48,7 +49,7 @@ namespace QuanLyNhaSach_291021.View.Customer
             string placehoder = txtSearch.Properties.NullText;
             func.createPlaceHolderControl(txtSearch, placehoder);
         }
-        
+
         #endregion
 
         #region //Setup GridView
@@ -193,15 +194,12 @@ namespace QuanLyNhaSach_291021.View.Customer
         {
             if (checkConstraints(ID))
             {
-                string query = String.Format("Delete KhachHang Where MaKH = {0}", ID);
-                if (conn.executeDatabase(query) == 1)
-                {
-                    MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
-                }
-                else
-                {
-                    MyMessageBox.ShowMessage("Lỗi! Dữ liệu chưa được xóa.");
-                }
+
+                string query = String.Format(@"Delete TaiKhoan_KH where MaTK = (Select MaTK from KhachHang Where MaKH = '{0}'); ", ID);
+                query += String.Format(@"Delete HinhAnh where MaHA = (Select MaHA from KhachHang Where MaKH = '{0}'); ", ID);
+                query += String.Format("Delete KhachHang Where MaKH = '{0}'; ", ID);
+                conn.executeDatabase(query);
+                MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
                 loadData();
             }
             else
@@ -211,7 +209,7 @@ namespace QuanLyNhaSach_291021.View.Customer
 
                 if (Result == DialogResult.Yes)
                 {
-                    string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = {0}", ID);
+                    string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = '{0}'", ID);
                     if (conn.executeDatabase(query) == 1)
                     {
                         MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công! Thông Tin Khách Hàng Vẫn Sẽ Được Lưu Lại Trong Hóa Đơn");
@@ -232,7 +230,7 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         private bool checkConstraints(string ID)
         {
-            string query = String.Format("select count(MaKH)  as count from HoaDon where MaKH = {0}", ID);
+            string query = String.Format("select count(MaKH)  as count from HoaDon where MaKH = '{0}'", ID);
             DataTable dt = new DataTable();
             dt = conn.loadData(query);
             if ((int)(dt.Rows[0]["count"]) > 0)
@@ -240,11 +238,6 @@ namespace QuanLyNhaSach_291021.View.Customer
                 return false;
             }
             return true;
-        }
-        
-        private void handleContraints(string ID)
-        {
-
         }
         #endregion
 
@@ -308,5 +301,64 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         }
         #endregion
+
+        #region //Import and Export Data File
+        #endregion
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.FileName = "Report_"+ func.DateTimeToString(DateTime.Now);
+            saveDialog.Filter = "Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+            if (saveDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                string exportFilePath = saveDialog.FileName;
+                string fileExtenstion = new FileInfo(exportFilePath).Extension;
+
+                switch (fileExtenstion)
+                {
+                    case ".xls":
+                        gvCustomer.ExportToXls(exportFilePath);
+                        break;
+                    case ".xlsx":
+                        gvCustomer.ExportToXlsx(exportFilePath);
+                        break;
+                    case ".rtf":
+                        gvCustomer.ExportToRtf(exportFilePath);
+                        break;
+                    case ".pdf":
+                        gvCustomer.ExportToPdf(exportFilePath);
+                        break;
+                    case ".html":
+                        gvCustomer.ExportToHtml(exportFilePath);
+                        break;
+                    case ".mht":
+                        gvCustomer.ExportToMht(exportFilePath);
+                        break;
+                    default:
+                        break;
+                }
+
+                if (File.Exists(exportFilePath))
+                {
+                    try
+                    {
+                        //Try to open the file and let windows decide how to open it.
+                        System.Diagnostics.Process.Start(exportFilePath);
+                    }
+                    catch
+                    {
+                        String msg = "The file could not be opened." + Environment.NewLine + Environment.NewLine + "Path: " + exportFilePath;
+                        MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    String msg = "The file could not be saved." + Environment.NewLine + Environment.NewLine + "Path: " + exportFilePath;
+                    MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
     }
 }

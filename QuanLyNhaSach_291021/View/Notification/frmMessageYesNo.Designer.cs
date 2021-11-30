@@ -36,9 +36,11 @@
             this.btnYes = new DevExpress.XtraEditors.SimpleButton();
             this.lbMessage = new DevExpress.XtraEditors.LabelControl();
             this.peNotifyIcon = new System.Windows.Forms.PictureBox();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peNotifyIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnHeader
@@ -129,6 +131,19 @@
             this.peNotifyIcon.TabIndex = 11;
             this.peNotifyIcon.TabStop = false;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.panelControl1.Appearance.Options.UseBorderColor = true;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.LookAndFeel.SkinMaskColor = System.Drawing.Color.Transparent;
+            this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(496, 231);
+            this.panelControl1.TabIndex = 16;
+            // 
             // frmMessageYesNo
             // 
             this.AcceptButton = this.btnYes;
@@ -140,6 +155,7 @@
             this.Controls.Add(this.btnYes);
             this.Controls.Add(this.peNotifyIcon);
             this.Controls.Add(this.lbMessage);
+            this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.MaximizeBox = false;
@@ -153,6 +169,7 @@
             this.pnHeader.ResumeLayout(false);
             this.pnHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peNotifyIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +184,6 @@
         private DevExpress.XtraEditors.SimpleButton btnYes;
         private System.Windows.Forms.PictureBox peNotifyIcon;
         private DevExpress.XtraEditors.LabelControl lbMessage;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
     }
 }

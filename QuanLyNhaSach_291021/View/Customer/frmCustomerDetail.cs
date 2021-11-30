@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
 using QuanLyNhaSach_291021.View.Notification;
+using System.Data.SqlClient;
 
 namespace QuanLyNhaSach_291021.View.Customer
 {
@@ -18,10 +19,15 @@ namespace QuanLyNhaSach_291021.View.Customer
         #region //Define Class and Variable
         Model.Database conn = new Model.Database();
         Controller.Common func = new Controller.Common();
-
+        //Validation Rule
+        Controller.Validation.ValueEmpty_Contain valueE_ContainRule = new Controller.Validation.ValueEmpty_Contain();
+        Controller.Validation.ValidEmpty_Contain validE_ContainRule = new Controller.Validation.ValidEmpty_Contain();
+        Controller.Validation.Empty_Contain empty_ContainRule = new Controller.Validation.Empty_Contain();
+        Controller.Validation.Value_Contain value_ContainRule = new Controller.Validation.Value_Contain();
+        Controller.Validation.Valid_Contain valid_ContainRule = new Controller.Validation.Valid_Contain();
         //defind variable
-        String id = "";
-
+        String id = "", dtNow = "";
+        bool flag = false;
         //Move Panel
         Boolean dragging = false;
         Point startPoint = new Point(0, 0);
@@ -32,14 +38,14 @@ namespace QuanLyNhaSach_291021.View.Customer
         {
             InitializeComponent();
             loadAllLookups();
+            dtNow = func.DateTimeToString(DateTime.Now);
         }
 
         public frmCustomerDetail(string _id) : this()
         {
             this.id = _id;
             loadData();
-            txtAccount.ReadOnly = true;
-            ckeDefaultPassword.Checked = false;
+            setUpAccountField();
             txtCustomerID.ReadOnly = true;
         }
         #endregion
@@ -72,10 +78,28 @@ namespace QuanLyNhaSach_291021.View.Customer
                     luCustomerGroup.EditValue = (dtContent.Rows[0]["MaNK"]).ToString();
                     luCustomerType.EditValue = (dtContent.Rows[0]["MaLK"]).ToString();
                     txtAccount.Text = (dtContent.Rows[0]["TaiKhoan"]).ToString();
-                    txtPassword.Text = (dtContent.Rows[0]["MatKhau"]).ToString();
+                    if ((dtContent.Rows[0]["TaiKhoan"]).ToString() != "")
+                    {
+                        txtPassword.Text = "User@123";
+                    }
                     mmeAddress.Text = (dtContent.Rows[0]["DiaChi"]).ToString();
                     mmeNote.Text = (dtContent.Rows[0]["GhiChu"]).ToString();
                 }
+            }
+        }
+
+        //Set up for account and password in updating case
+        private void setUpAccountField()
+        {
+            if (txtAccount.Text != "" && txtPassword.Text != "")
+            {
+                txtAccount.ReadOnly = true;
+                txtPassword.ReadOnly = true;
+                flag = false;
+            }
+            else
+            {
+                flag = true;
             }
         }
         #endregion
@@ -97,95 +121,210 @@ namespace QuanLyNhaSach_291021.View.Customer
         }
         #endregion
 
+        #region //Validation
+        private bool doValidate()
+        {
+            vali.SetValidationRule(txtCustomerID, valueE_ContainRule);
+            vali.SetValidationRule(txtCustomerName, validE_ContainRule);
+            vali.SetValidationRule(txtEmail, empty_ContainRule);
+            vali.SetValidationRule(txtPhone, empty_ContainRule);
+            if(txtAccount.Text != "")
+            {
+                vali.SetValidationRule(txtPassword, empty_ContainRule);
+            }
+            vali.SetValidationRule(txtAccount, valid_ContainRule);
+            vali.SetValidationRule(txtPassword, valid_ContainRule);
+            return (vali.Validate());
+        }
+        #endregion
+
         #region //Save Data
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string MaHA = SaveAvartar() != ""? SaveAvartar(): "null", 
-                   MaTK = SaveAccount() != "" ? SaveAccount() : "null";
-            // Event Add Data
-            if (this.id == "")
+            if (doValidate())
             {
-                String dtNow = func.DateTimeToString(DateTime.Now);
-                String query = String.Format(@"INSERT INTO KhachHang(MaKH, TenKH, MaGT, MaHA, MaLK, MaNK, MaTK, NgaySinh, Email, DienThoai, DiaChi, GhiChu, NgayTao) 
+                string MaHA = SaveAvartar(),
+                       MaTK = SaveAccount();
+                MaHA = MaHA != "" ? MaHA : "null";
+                MaTK = MaTK != "" ? MaTK : "null";
+                // Event Add Data
+                if (this.id == "")
+                {
+                    if (checkExistence())
+                    {
+                        String query = String.Format(@"INSERT INTO KhachHang(MaKH, TenKH, MaGT, MaHA, MaLK, MaNK, MaTK, NgaySinh, Email, DienThoai, DiaChi, GhiChu, NgayTao) 
                                                 values ('{0}', N'{1}', {2}, {3}, {4}, {5}, {6}, '{7}', N'{8}', '{9}', N'{10}', N'{11}', '{12}')",
-                                            txtCustomerID.Text,
-                                            txtCustomerName.Text,
-                                            luGender.EditValue,
-                                            MaHA,
-                                            luCustomerType.EditValue,
-                                            luCustomerGroup.EditValue,
-                                            MaTK,
-                                            dteDateOfBirth.EditValue,
-                                            txtEmail, Text,
-                                            txtPhone.Text,
-                                            mmeAddress.Text,
-                                            mmeNote.Text,
-                                            dtNow);
-                conn.executeDatabase(query);
-                MyMessageBox.ShowMessage("Created Data Successfully");
-                this.Close();
-            }
-            // Event Update Data
-            else
-            {
-                //String query = String.Format(@"UPDATE KhachHang SET TenKH = N'{0}',
-                //                                                    MaGT = {1}, 
-                //                                                    MaLK = {2},
-                //                                                    MaNK = {3},
-                //                                                    NgaySinh = '{4}',
-                //                                                    Email = N'{5}',
-                //                                                    DienThoai = '{6}', 
-                //                                                    DiaChi = N'{7}',
-                //                                                    GhiChu = N'{8}',
-                //                                                    NgaySua = N'{9}', 
-                //                               WHERE MaKH = {10}",
-                //                               this.id);
-                //conn.executeDatabase(query);
-                //MessageBox.Show("Updated Data Successfully");
-                //this.Close();
+                                txtCustomerID.Text,
+                                txtCustomerName.Text,
+                                luGender.EditValue,
+                                MaHA,
+                                luCustomerType.EditValue,
+                                luCustomerGroup.EditValue,
+                                MaTK,
+                                func.DateTimeToString((DateTime)dteDateOfBirth.EditValue),
+                                txtEmail.Text,
+                                txtPhone.Text,
+                                mmeAddress.Text,
+                                mmeNote.Text,
+                                dtNow);
+
+                        conn.executeDatabase(query);
+                        MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MyMessageBox.ShowMessage("Mã Khách Hàng Đã Tồn Tại!");
+                    }
+
+                }
+                // Event Update Data
+                else
+                {
+                    String query = String.Format(@"UPDATE KhachHang SET TenKH = N'{0}',
+                                                                    MaGT = {1}, 
+                                                                    MaLK = {2},
+                                                                    MaNK = {3},
+                                                                    NgaySinh = '{4}',
+                                                                    Email = N'{5}',
+                                                                    DienThoai = '{6}', 
+                                                                    DiaChi = N'{7}',
+                                                                    GhiChu = N'{8}',
+                                                                    NgayCapNhat = N'{9}' 
+                                               WHERE MaKH = '{10}'",
+                                                   txtCustomerName.Text,
+                                                   luGender.EditValue,
+                                                   luCustomerType.EditValue,
+                                                   luCustomerGroup.EditValue,
+                                                   func.DateTimeToString((DateTime)dteDateOfBirth.EditValue),
+                                                   txtEmail.Text,
+                                                   txtPhone.Text,
+                                                   mmeAddress.Text,
+                                                   mmeNote.Text,
+                                                   dtNow,
+                                                   this.id);
+                    conn.executeDatabase(query);
+                    MyMessageBox.ShowMessage("Sửa Dữ Liệu Thành Công!");
+                    this.Close();
+                }
             }
         }
 
         private string SaveAvartar()
         {
-            Image img = peAvatar.Image;
-            ImageConverter converter = new ImageConverter();
-            byte[] bImg = (byte[])converter.ConvertTo(img, typeof(byte[]));
-            string ext = Path.GetExtension(openFileDialog1.FileName);
-            // Event Add Data
-            if (this.id == "")
+            if (peAvatar.EditValue != null)
             {
-                String query = String.Format(@"INSERT INTO HinhAnh(Anh, DuoiTep, ChuSoHuu) 
-                                                values ('{0}', '{1}', 'KhachHang')", bImg, ext);
-                if (conn.executeDatabase(query) == 1)
+                string path = openFileDialog1.FileName;
+                if (path != "Anh_Khach_Hang")
                 {
-                    return conn.getLastInsertedValue();
+
+                    string ext = Path.GetExtension(openFileDialog1.FileName).Remove(0, 1);
+                    // Event Add Data
+                    if (this.id == "")
+                    {
+                        String query = String.Format(@"INSERT INTO HinhAnh(Anh, DuoiTep, ChuSoHuu) 
+                                                SELECT BulkColumn, '{1}' , 'KhachHang'
+                                                       FROM Openrowset( Bulk '{0}', Single_Blob) as img", path, ext);
+                        conn.executeDatabase(query);
+                        return conn.getLastInsertedValue();
+                    }
+                    // Event Update Data
+                    else
+                    {
+                        String query = String.Format(@"Update HinhAnh Set Anh = (SELECT BulkColumn
+                                                       FROM Openrowset( Bulk '{0}', Single_Blob) as img), DuoiTep = '{1}' 
+                                                where MaHA = (Select MaHA from KhachHang Where MaKH = '{2}')", path, ext, this.id);
+                        conn.executeDatabase(query);
+                        return conn.getLastInsertedValue();
+                    }
                 }
-                else
-                {
-                    MyMessageBox.ShowMessage("Lỗi! Không Thể Thêm Hình Ảnh.");
-                }
-            }
-            // Event Update Data
-            else
-            {
-                String query = String.Format(@"Update HinhAnh Set Anh = '{0}', DuoiTep = '{1}' 
-                                                where MaHA = (Select MaHA from KhachHang Where MaHA = {2})", bImg, ext, this.id);
-                if (conn.executeDatabase(query) == 1)
-                {
-                    return conn.getLastInsertedValue();
-                }
-                else
-                {
-                    MyMessageBox.ShowMessage("Lỗi! Không Thể Sửa Hình Ảnh.");
-                }
+
             }
             return "";
         }
 
         private string SaveAccount()
         {
+            // Event Add Data
+            if (this.id == "")
+            {
+                if (txtAccount.Text != "" && txtPassword.Text != "")
+                {
+                    String query = String.Format(@"INSERT INTO TaiKhoan_KH(TenTK, MatKhau, NgayTao) 
+                                                values ('{0}', '{1}', '{2}')",
+                                                    txtAccount.Text,
+                                                     Controller.EncryptDecrypt.Encrypt(txtPassword.Text),
+                                                    dtNow);
+                    conn.executeDatabase(query);
+                    return conn.getLastInsertedValue();
+                }
+            }
+            // Event Update Data
+            else
+            {
+                string query = "";
+                //flag = true when it's new account
+                if (flag)
+                {
+                    query = String.Format(@"INSERT INTO TaiKhoan_KH(TenTK, MatKhau, NgayTao) 
+                                                values ('{0}', '{1}', '{2}'); 
+                                            UPDATE KhachHang SET MaTK = (SELECT SCOPE_IDENTITY()) 
+                                            where MaTK = (Select MaTK from KhachHang Where MaKH = '{3}');",
+                                                     txtAccount.Text,
+                                                      Controller.EncryptDecrypt.Encrypt(txtPassword.Text),
+                                                     dtNow,
+                                                     this.id);
+                    
+                }
+                else
+                {
+                    if (ckeDefaultPassword.Checked)
+                    {
+                        query = String.Format(@"Update TaiKhoan_KH Set MatKhau = '{0}', NgayCapNhat = '{1}' 
+                                                where MaTK = (Select MaTK from KhachHang Where MaKH = '{2}')",
+                                                   Controller.EncryptDecrypt.Encrypt(txtPassword.Text),
+                                                   dtNow,
+                                                   this.id);
+                    }
+                }
+                if (query != "")
+                {
+                    conn.executeDatabase(query);
+                    return conn.getLastInsertedValue();
+                }
+            }
             return "";
+        }
+
+        private void ckeDefaultPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckeDefaultPassword.Checked)
+            {
+                txtPassword.Text = @"User@123";
+                txtPassword.ReadOnly = true;
+            }
+            else
+            {
+                if (this.id == "" || flag)
+                {
+                    txtPassword.Text = "";
+                    txtPassword.ReadOnly = false;
+                }
+            }
+        }
+        #endregion
+
+        #region //Check existence data
+        private bool checkExistence()
+        {
+            string query = String.Format("select count(MaKH)  as count from KhachHang where MaKH = '{0}'", txtCustomerID.Text);
+            DataTable dt = new DataTable();
+            dt = conn.loadData(query);
+            if ((int)(dt.Rows[0]["count"]) > 0)
+            {
+                return false;
+            }
+            return true;
         }
         #endregion
 

@@ -61,5 +61,13 @@ namespace QuanLyNhaSach_291021
                 MessageBox.Show("Dữ liệu vẫn tồn tại!");
             }
         }
+
+        private void acePublisher_Click(object sender, EventArgs e)
+        {
+            Controller.EncryptDecrypt ende = new Controller.EncryptDecrypt();
+            for(int i =0; i< 10; i++)
+            MyMessageBox.ShowMessage(Controller.EncryptDecrypt.Encrypt("User@123"));
+            MyMessageBox.ShowMessage(Controller.EncryptDecrypt.Decrypt(Controller.EncryptDecrypt.Encrypt("ABC")));
+        }
     }
 }

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +65,20 @@ namespace QuanLyNhaSach_291021.Controller
                 }
             }
             return true;
+        }
+
+        public byte[] imgToByteConverter(PictureBox pePic)
+        {
+            MemoryStream stream = new MemoryStream();
+            //through the instruction below, we save the
+            //image to byte in the object "stream".
+            pePic.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            //Below is the most important part, actually you are
+            //transferring the bytes of the array
+            //to the pic which is also of kind byte[]
+            byte[] pic = stream.ToArray();
+            return pic;
         }
 
         #region //Code create placeholder Control

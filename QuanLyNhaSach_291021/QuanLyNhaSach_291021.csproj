@@ -100,6 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Common.cs" />
+    <Compile Include="Controller\EncryptDecrypt.cs" />
+    <Compile Include="Controller\InjectionSQL.cs" />
+    <Compile Include="Controller\Validation.cs" />
     <Compile Include="frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerDetail));
             this.pnHeader = new DevExpress.XtraEditors.PanelControl();
             this.lbClear = new DevExpress.XtraEditors.LabelControl();
@@ -63,6 +64,7 @@
             this.luCustomerGroup = new DevExpress.XtraEditors.LookUpEdit();
             this.luCustomerType = new DevExpress.XtraEditors.LookUpEdit();
             this.luGender = new DevExpress.XtraEditors.LookUpEdit();
+            this.vali = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnFooter)).BeginInit();
@@ -82,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.luCustomerGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luCustomerType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luGender.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vali)).BeginInit();
             this.SuspendLayout();
             // 
             // pnHeader
@@ -225,7 +228,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(223, 179);
+            this.labelControl4.Location = new System.Drawing.Point(225, 191);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(83, 21);
             this.labelControl4.TabIndex = 7;
@@ -318,6 +321,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.EditValue = "";
             this.txtPassword.Location = new System.Drawing.Point(513, 395);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -406,7 +410,6 @@
             // 
             // ckeDefaultPassword
             // 
-            this.ckeDefaultPassword.EditValue = true;
             this.ckeDefaultPassword.Location = new System.Drawing.Point(513, 439);
             this.ckeDefaultPassword.Name = "ckeDefaultPassword";
             this.ckeDefaultPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -414,6 +417,7 @@
             this.ckeDefaultPassword.Properties.Caption = "Lấy mật khẩu mặc định (User@123)";
             this.ckeDefaultPassword.Size = new System.Drawing.Size(333, 25);
             this.ckeDefaultPassword.TabIndex = 26;
+            this.ckeDefaultPassword.CheckedChanged += new System.EventHandler(this.ckeDefaultPassword_CheckedChanged);
             // 
             // peAvatar
             // 
@@ -427,7 +431,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.DefaultExt = "png";
-            this.openFileDialog1.FileName = "NhanVien_999";
+            this.openFileDialog1.FileName = "Anh_Khach_Hang";
             this.openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif;" +
     " *.png";
             // 
@@ -548,6 +552,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.luCustomerGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luCustomerType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luGender.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vali)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,5 +594,6 @@
         private DevExpress.XtraEditors.LookUpEdit luCustomerGroup;
         private DevExpress.XtraEditors.LookUpEdit luCustomerType;
         private DevExpress.XtraEditors.LookUpEdit luGender;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider vali;
     }
 }
