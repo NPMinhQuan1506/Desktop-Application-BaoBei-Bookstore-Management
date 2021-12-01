@@ -65,11 +65,13 @@ namespace QuanLyNhaSach_291021.Model
         public void executeDataSet(string procName, DataTable datatable)
         {
             //sqlcon as SqlConnection  
-            SqlCommand cmd = new SqlCommand(procName, con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@insertDet", datatable);
-            cmd.ExecuteReader();
+            SqlCommand command = new SqlCommand(procName, con);
+            command.CommandType = CommandType.StoredProcedure;
+            //command.Parameters.Add("@DatatableType", SqlDbType.Structured).Value = datatable;
+            command.Parameters.AddWithValue("@DatatableType", datatable);
+            command.ExecuteNonQuery();
         }
+
         public void insertHitory(string s)
         {
             try

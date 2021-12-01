@@ -307,16 +307,52 @@ namespace QuanLyNhaSach_291021.View.Customer
         #region //Import and Export Data File
         private void btnInport_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog() {Filter = "Excel (2010) (.xlsx)|*.xlsx|Excel (1997-2003)(.xls)|*.xls|CSV file (.csv)|*.csv" })
+            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel (2010) (.xlsx)|*.xlsx|Excel (1997-2003)(.xls)|*.xls|CSV file (.csv)|*.csv" })
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string fileName = openFileDialog.FileName;
-                    Controller.MyExcel.GetDataTableFromExcel(fileName);
+                    DataTable dtMyExcel = Controller.MyExcel.GetDataTableFromExcel(fileName);
+                    ConvertColumnType(ref dtMyExcel, "NgaySinh", typeof(DateTime));
+                    conn.executeDataSet("uspInsertCustomers", dtMyExcel);
                 }
             }
-
+            loadData();
         }
+
+        public void ConvertColumnType(ref DataTable dt, string columnName, Type newType)
+        {
+            using (DataColumn dc = new DataColumn(columnName + "_new", newType))
+            {
+                // Add the new column which has the new type, and move it to the ordinal of the old column
+                int ordinal = dt.Columns[columnName].Ordinal;
+                dt.Columns.Add(dc);
+                dc.SetOrdinal(ordinal);
+
+                // Get and convert the values of the old column, and insert them into the new
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (newType == typeof(DateTime))
+                    {
+                        DateTime dtTemp = DateTime.ParseExact(dr[columnName].ToString(), "dd/MM/yyyy", null);
+                        dr[dc.ColumnName] = func.DateTimeToString(dtTemp);
+                        //Convert.ChangeType(dr[columnName], newType);
+                    }
+                    else
+                    {
+                        dr[dc.ColumnName] = Convert.ChangeType(dr[columnName], newType);
+                    }
+                }
+
+
+                // Remove the old column
+                dt.Columns.Remove(columnName);
+
+                // Give the new column the old column's name
+                dc.ColumnName = columnName;
+            }
+        }
+
 
         private void btnExport_Click(object sender, EventArgs e)
         {

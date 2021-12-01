@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
 using QuanLyNhaSach_291021.View.Notification;
-using System.Data.SqlClient;
 
 namespace QuanLyNhaSach_291021.View.Customer
 {
