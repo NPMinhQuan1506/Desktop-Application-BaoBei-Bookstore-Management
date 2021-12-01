@@ -28,6 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrCustomerList));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -43,19 +54,10 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrCustomerList));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.pnHeader = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnExport = new DevExpress.XtraEditors.ButtonEdit();
+            this.btnInport = new DevExpress.XtraEditors.ButtonEdit();
             this.btnAdd = new DevExpress.XtraEditors.ButtonEdit();
             this.cbbField = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtSearch = new DevExpress.XtraEditors.TextEdit();
@@ -81,12 +83,12 @@
             this.btnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Delete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.btnInport = new DevExpress.XtraEditors.ButtonEdit();
-            this.btnExport = new DevExpress.XtraEditors.ButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExport.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInport.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbField.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
@@ -98,8 +100,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dteDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInport.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExport.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnHeader
@@ -133,6 +133,60 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(272, 80);
             this.panelControl1.TabIndex = 3;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.EditValue = "";
+            this.btnExport.Location = new System.Drawing.Point(51, 21);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(202)))), ((int)(((byte)(203)))));
+            this.btnExport.Properties.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.btnExport.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExport.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.btnExport.Properties.Appearance.Options.UseBackColor = true;
+            this.btnExport.Properties.Appearance.Options.UseBorderColor = true;
+            this.btnExport.Properties.Appearance.Options.UseFont = true;
+            this.btnExport.Properties.Appearance.Options.UseForeColor = true;
+            this.btnExport.Properties.AutoHeight = false;
+            this.btnExport.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            this.btnExport.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnExport.Properties.ReadOnly = true;
+            this.btnExport.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.btnExport.Properties.UseReadOnlyAppearance = false;
+            this.btnExport.Size = new System.Drawing.Size(42, 35);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Cursor;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnInport
+            // 
+            this.btnInport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInport.EditValue = "";
+            this.btnInport.Location = new System.Drawing.Point(3, 21);
+            this.btnInport.Name = "btnInport";
+            this.btnInport.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(202)))), ((int)(((byte)(203)))));
+            this.btnInport.Properties.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.btnInport.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnInport.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.btnInport.Properties.Appearance.Options.UseBackColor = true;
+            this.btnInport.Properties.Appearance.Options.UseBorderColor = true;
+            this.btnInport.Properties.Appearance.Options.UseFont = true;
+            this.btnInport.Properties.Appearance.Options.UseForeColor = true;
+            this.btnInport.Properties.AutoHeight = false;
+            this.btnInport.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            this.btnInport.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnInport.Properties.ReadOnly = true;
+            this.btnInport.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.btnInport.Properties.UseReadOnlyAppearance = false;
+            this.btnInport.Size = new System.Drawing.Size(42, 35);
+            this.btnInport.TabIndex = 3;
+            this.btnInport.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Cursor;
+            this.btnInport.Click += new System.EventHandler(this.btnInport_Click);
             // 
             // btnAdd
             // 
@@ -735,59 +789,6 @@
             this.btnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnInport
-            // 
-            this.btnInport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInport.EditValue = "";
-            this.btnInport.Location = new System.Drawing.Point(3, 21);
-            this.btnInport.Name = "btnInport";
-            this.btnInport.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(202)))), ((int)(((byte)(203)))));
-            this.btnInport.Properties.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.btnInport.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnInport.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.btnInport.Properties.Appearance.Options.UseBackColor = true;
-            this.btnInport.Properties.Appearance.Options.UseBorderColor = true;
-            this.btnInport.Properties.Appearance.Options.UseFont = true;
-            this.btnInport.Properties.Appearance.Options.UseForeColor = true;
-            this.btnInport.Properties.AutoHeight = false;
-            this.btnInport.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
-            this.btnInport.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.btnInport.Properties.ReadOnly = true;
-            this.btnInport.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.btnInport.Properties.UseReadOnlyAppearance = false;
-            this.btnInport.Size = new System.Drawing.Size(42, 35);
-            this.btnInport.TabIndex = 3;
-            this.btnInport.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Cursor;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExport.EditValue = "";
-            this.btnExport.Location = new System.Drawing.Point(51, 21);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(202)))), ((int)(((byte)(203)))));
-            this.btnExport.Properties.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.btnExport.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnExport.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.btnExport.Properties.Appearance.Options.UseBackColor = true;
-            this.btnExport.Properties.Appearance.Options.UseBorderColor = true;
-            this.btnExport.Properties.Appearance.Options.UseFont = true;
-            this.btnExport.Properties.Appearance.Options.UseForeColor = true;
-            this.btnExport.Properties.AutoHeight = false;
-            this.btnExport.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
-            this.btnExport.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.btnExport.Properties.ReadOnly = true;
-            this.btnExport.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.btnExport.Properties.UseReadOnlyAppearance = false;
-            this.btnExport.Size = new System.Drawing.Size(42, 35);
-            this.btnExport.TabIndex = 4;
-            this.btnExport.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Cursor;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
             // ctrCustomerList
             // 
             this.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -805,6 +806,8 @@
             this.pnHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnExport.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInport.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbField.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
@@ -816,8 +819,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dteDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInport.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExport.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

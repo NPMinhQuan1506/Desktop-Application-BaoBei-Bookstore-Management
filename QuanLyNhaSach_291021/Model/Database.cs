@@ -34,7 +34,7 @@ namespace QuanLyNhaSach_291021.Model
         public string getLastInsertedValue()
         {
             DataTable dt = loadData("SELECT SCOPE_IDENTITY() as ID");
-            if(dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
                 return dt.Rows[0]["ID"].ToString();
             }
@@ -62,6 +62,14 @@ namespace QuanLyNhaSach_291021.Model
             return -1;
         }
 
+        public void executeDataSet(string procName, DataTable datatable)
+        {
+            //sqlcon as SqlConnection  
+            SqlCommand cmd = new SqlCommand(procName, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@insertDet", datatable);
+            cmd.ExecuteReader();
+        }
         public void insertHitory(string s)
         {
             try

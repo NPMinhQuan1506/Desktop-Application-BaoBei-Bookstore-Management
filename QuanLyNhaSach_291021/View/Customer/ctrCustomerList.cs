@@ -10,14 +10,18 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using QuanLyNhaSach_291021.View.Notification;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace QuanLyNhaSach_291021.View.Customer
 {
     public partial class ctrCustomerList : DevExpress.XtraEditors.XtraUserControl
     {
         #region //Define Class and Variable
+
+        //defind class
         Model.Database conn = new Model.Database();
         Controller.Common func = new Controller.Common();
+        //defind variable
         string query = "";
         string emptyGridText = "Không có dữ liệu";
 
@@ -129,10 +133,9 @@ namespace QuanLyNhaSach_291021.View.Customer
                             inner join LoaiKhach as lk on kh.MaLK = lk.MaLK
                             inner join NhomKhach as nk on kh.MaNK = nk.MaNK
                             left join TaiKhoan_KH as tk on kh.MaTK = tk.MaTK
-                            where kh.HienThi = 1
-                            order by kh.NgayTao ASC";
+                            where kh.HienThi = 1 ";
             DataTable dtContent = new DataTable();
-            dtContent = conn.loadData(query);
+            dtContent = conn.loadData(query + "order by kh.NgayTao ASC");
             gcCustomer.DataSource = dtContent;
         }
 
@@ -269,11 +272,10 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         private void search()
         {
-            //deleteLabelInfo();
             //Add datatable if searching value is null, datatable will return "Search data doesn't exist"
-            string searchInfo = txtSearch.Text;
+            string searchInfo = Regex.Replace(txtSearch.Text, @"[\s\']+", "");
             string field = func.removeUnicode((cbbField.Text).Replace("Khách Hàng", "KH"))
-                                                                      .Replace(" ", "");
+                                                             .Replace(" ", "");
             if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
             {
                 int index = cbbField.SelectedIndex;
@@ -303,13 +305,24 @@ namespace QuanLyNhaSach_291021.View.Customer
         #endregion
 
         #region //Import and Export Data File
-        #endregion
+        private void btnInport_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog() {Filter = "Excel (2010) (.xlsx)|*.xlsx|Excel (1997-2003)(.xls)|*.xls|CSV file (.csv)|*.csv" })
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = openFileDialog.FileName;
+                    Controller.MyExcel.GetDataTableFromExcel(fileName);
+                }
+            }
+
+        }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.FileName = "Report_"+ func.DateTimeToString(DateTime.Now);
-            saveDialog.Filter = "Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+            saveDialog.FileName = "Report_" + func.DateTimeToString(DateTime.Now);
+            saveDialog.Filter = "Excel (2010) (.xlsx)|*.xlsx |Excel (1997-2003)(.xls)|*.xls|RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
             if (saveDialog.ShowDialog() != DialogResult.Cancel)
             {
                 string exportFilePath = saveDialog.FileName;
@@ -360,5 +373,6 @@ namespace QuanLyNhaSach_291021.View.Customer
 
             }
         }
+        #endregion
     }
 }

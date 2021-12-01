@@ -128,7 +128,7 @@ namespace QuanLyNhaSach_291021.View.Customer
             vali.SetValidationRule(txtCustomerName, validE_ContainRule);
             vali.SetValidationRule(txtEmail, empty_ContainRule);
             vali.SetValidationRule(txtPhone, empty_ContainRule);
-            if(txtAccount.Text != "")
+            if (txtAccount.Text != "")
             {
                 vali.SetValidationRule(txtPassword, empty_ContainRule);
             }
@@ -274,7 +274,7 @@ namespace QuanLyNhaSach_291021.View.Customer
                                                       Controller.EncryptDecrypt.Encrypt(txtPassword.Text),
                                                      dtNow,
                                                      this.id);
-                    
+
                 }
                 else
                 {
@@ -333,9 +333,7 @@ namespace QuanLyNhaSach_291021.View.Customer
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string fileName;
-
-                fileName = openFileDialog1.FileName;
+                string fileName = openFileDialog1.FileName;
                 Bitmap original = (Bitmap)Image.FromFile(fileName);
                 peAvatar.Image = new Bitmap(original, new Size(120, 120));
             }
