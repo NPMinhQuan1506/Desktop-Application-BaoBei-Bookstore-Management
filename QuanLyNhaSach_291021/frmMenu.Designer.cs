@@ -270,6 +270,7 @@
             this.aceSupplier.Name = "aceSupplier";
             this.aceSupplier.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceSupplier.Text = "Danh Sách NCC";
+            this.aceSupplier.Click += new System.EventHandler(this.aceSupplier_Click);
             // 
             // aceImport
             // 
@@ -375,6 +376,7 @@
             this.aceDepartment.Name = "aceDepartment";
             this.aceDepartment.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDepartment.Text = "Danh Sách Chức Vụ";
+            this.aceDepartment.Click += new System.EventHandler(this.aceDepartment_Click);
             // 
             // aceEmployee
             // 

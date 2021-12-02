@@ -343,7 +343,12 @@ namespace QuanLyNhaSach_291021.View.Customer
         private void lbClear_Click(object sender, EventArgs e)
         {
             peAvatar.Image = null;
-            txtCustomerID.Text = "";
+            if(this.id == "")
+            {
+                txtCustomerID.Text = "";
+                txtAccount.Text = "";
+                txtPassword.Text = "";
+            }
             txtCustomerName.Text = "";
             txtPhone.Text = "";
             txtEmail.Text = "";

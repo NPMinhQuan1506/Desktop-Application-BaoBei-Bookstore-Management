@@ -90,5 +90,22 @@ namespace QuanLyNhaSach_291021
         {
 
         }
+
+        //CRM
+        private void aceDepartment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aceSupplier_Click(object sender, EventArgs e)
+        {
+            if (!pnContainer.Controls.Contains(View.Supplier.ctrSupplierList.instance))
+            {
+                pnContainer.Controls.Add(View.Supplier.ctrSupplierList.instance);
+                View.Supplier.ctrSupplierList.instance.Dock = DockStyle.Fill;
+                View.Supplier.ctrSupplierList.instance.BringToFront();
+            }
+            View.Supplier.ctrSupplierList.instance.BringToFront();
+        }
     }
 }

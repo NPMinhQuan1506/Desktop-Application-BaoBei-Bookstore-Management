@@ -187,7 +187,7 @@ namespace QuanLyNhaSach_291021.View.Categories
             else
             {
                 MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-                DialogResult Result = MyMessageBox.ShowMessage(@"Lưu Ý! Tồn Tại Sách Thuộc Thể Loại Này.\n Bạn Vẫn Muốn Tiếp Tục?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+                DialogResult Result = MyMessageBox.ShowMessage(@"Lưu Ý! Tồn Tại Sản Phẩm Thuộc Thể Loại Này.\n Bạn Vẫn Muốn Tiếp Tục?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
                 if (Result == DialogResult.Yes)
                 {

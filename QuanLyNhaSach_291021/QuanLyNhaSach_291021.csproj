@@ -187,6 +187,18 @@
     <Compile Include="View\Publisher\frmPublisherDetail.Designer.cs">
       <DependentUpon>frmPublisherDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Supplier\ctrSupplierList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Supplier\ctrSupplierList.Designer.cs">
+      <DependentUpon>ctrSupplierList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Supplier\frmSupplierDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Supplier\frmSupplierDetail.Designer.cs">
+      <DependentUpon>frmSupplierDetail.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +239,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Publisher\frmPublisherDetail.resx">
       <DependentUpon>frmPublisherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Supplier\ctrSupplierList.resx">
+      <DependentUpon>ctrSupplierList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Supplier\frmSupplierDetail.resx">
+      <DependentUpon>frmSupplierDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
