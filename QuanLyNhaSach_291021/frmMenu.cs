@@ -47,19 +47,16 @@ namespace QuanLyNhaSach_291021
             }
         }
 
+        // Product Management
         private void aceAuthor_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-            DialogResult Result = MessageBox.Show("Bạn Có Chắc Xóa Khách Hàng Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
-
-            if (Result == DialogResult.Yes)
+            if (!pnContainer.Controls.Contains(View.Author.ctrAuthorList.instance))
             {
-                MessageBox.Show("a!");
+                pnContainer.Controls.Add(View.Author.ctrAuthorList.instance);
+                View.Author.ctrAuthorList.instance.Dock = DockStyle.Fill;
+                View.Author.ctrAuthorList.instance.BringToFront();
             }
-            else if (Result == DialogResult.No)
-            {
-                MessageBox.Show("Dữ liệu vẫn tồn tại!");
-            }
+            View.Author.ctrAuthorList.instance.BringToFront();
         }
 
         private void acePublisher_Click(object sender, EventArgs e)

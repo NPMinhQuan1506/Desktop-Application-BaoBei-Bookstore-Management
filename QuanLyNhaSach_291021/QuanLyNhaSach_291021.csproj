@@ -131,6 +131,12 @@
     <Compile Include="Model\Database.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Author\ctrAuthorList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Author\ctrAuthorList.Designer.cs">
+      <DependentUpon>ctrAuthorList.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer\ctrCustomerList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +176,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Author\ctrAuthorList.resx">
+      <DependentUpon>ctrAuthorList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\ctrCustomerList.resx">
       <DependentUpon>ctrCustomerList.cs</DependentUpon>
     </EmbeddedResource>

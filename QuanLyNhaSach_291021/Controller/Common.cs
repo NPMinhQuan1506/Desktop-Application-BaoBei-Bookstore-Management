@@ -91,20 +91,15 @@ namespace QuanLyNhaSach_291021.Controller
         private void control_Enter(object sender, EventArgs e, string placeholder)
         {
             Control controlTemp = (Control)sender;
-
-            if (controlTemp.Text == placeholder)
-            {
-                controlTemp.ForeColor = Color.FromArgb(0, 0, 20);
-            }
+            controlTemp.ForeColor = Color.FromArgb(0, 0, 20);
         }
 
         private void control_Leave(object sender, EventArgs e, string placeholder)
         {
             Control controlTemp = (Control)sender;
 
-            if (controlTemp.Text == "")
+            if (controlTemp.Text == "" || controlTemp.Text == placeholder)
             {
-                controlTemp.Text = null;
                 controlTemp.ForeColor = Color.FromArgb(144, 142, 144);
             }
         }

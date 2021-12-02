@@ -213,21 +213,13 @@ namespace QuanLyNhaSach_291021.View.Customer
                 if (Result == DialogResult.Yes)
                 {
                     string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = '{0}'", ID);
-                    if (conn.executeDatabase(query) == 1)
-                    {
-                        MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công! Thông Tin Khách Hàng Vẫn Sẽ Được Lưu Lại Trong Hóa Đơn");
-                    }
-                    else
-                    {
-                        MyMessageBox.ShowMessage("Lỗi! Dữ liệu chưa được xóa.");
-                    }
+                    MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công! Thông Tin Khách Hàng Vẫn Sẽ Được Lưu Lại Trong Hóa Đơn");
                     loadData();
                 }
                 else if (Result == DialogResult.No)
                 {
                     MyMessageBox.ShowMessage("Dữ liệu vẫn tồn tại!");
                 }
-                MyMessageBox.ShowMessage("Lỗi Ràng Buộc! Bạn Cần Xóa Hóa Đơn Của Khách Hàng Này.");
             }
         }
 
@@ -262,6 +254,10 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         private void txtSearch_EditValueChanged(object sender, EventArgs e)
         {
+            if (txtSearch.Text == "")
+            {
+                txtSearch.EditValue = String.Empty;
+            }
             search();
         }
 
@@ -273,34 +269,43 @@ namespace QuanLyNhaSach_291021.View.Customer
         private void search()
         {
             //Add datatable if searching value is null, datatable will return "Search data doesn't exist"
-            string searchInfo = Regex.Replace(txtSearch.Text, @"[\s\']+", "");
-            string field = func.removeUnicode((cbbField.Text).Replace("Khách Hàng", "KH"))
-                                                             .Replace(" ", "");
-            if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
+            if(txtSearch.EditValue != null)
             {
-                int index = cbbField.SelectedIndex;
-                if (index != 0)
+                string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\s\']+", "");
+                string field = func.removeUnicode((cbbField.Text).Replace("Khách Hàng", "KH"))
+                                                                 .Replace(" ", "");
+                if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
                 {
-                    string querySearch = String.Format(@"{0} and {1} like N'%{2}%'", query, field, searchInfo);
-                    loadData(querySearch);
-                }
-                else
-                {
-                    String querySearch = String.Format(@"{0} and CONCAT('',  
+                    int index = cbbField.SelectedIndex;
+                    if (index != 0)
+                    {
+                        string querySearch = String.Format(@"{0} and {1} like N'%{2}%'", query, field, searchInfo);
+                        loadData(querySearch);
+                    }
+                    else
+                    {
+                        String querySearch = String.Format(@"{0} and CONCAT('',  
                                                                     MaKH, 
                                                                     TenKH,
                                                                     NgaySinh, 
                                                                     Email, 
                                                                     DienThoai, 
                                                                     DiaChi) like N'%{1}%'", query, searchInfo);
-                    loadData(querySearch);
+                        loadData(querySearch);
+                    }
+                }
+                else
+                {
+                    loadData();
                 }
             }
-            else
-            {
-                loadData();
-            }
 
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtSearch.EditValue = "";
         }
         #endregion
 
