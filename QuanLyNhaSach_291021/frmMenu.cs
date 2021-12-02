@@ -61,10 +61,28 @@ namespace QuanLyNhaSach_291021
 
         private void acePublisher_Click(object sender, EventArgs e)
         {
-            Controller.EncryptDecrypt ende = new Controller.EncryptDecrypt();
-            for(int i =0; i< 10; i++)
-            MyMessageBox.ShowMessage(Controller.EncryptDecrypt.Encrypt("User@123"));
-            MyMessageBox.ShowMessage(Controller.EncryptDecrypt.Decrypt(Controller.EncryptDecrypt.Encrypt("ABC")));
+            if (!pnContainer.Controls.Contains(View.Publisher.ctrPublisherList.instance))
+            {
+                pnContainer.Controls.Add(View.Publisher.ctrPublisherList.instance);
+                View.Publisher.ctrPublisherList.instance.Dock = DockStyle.Fill;
+                View.Publisher.ctrPublisherList.instance.BringToFront();
+            }
+            View.Author.ctrAuthorList.instance.BringToFront();
+        }
+
+        private void aceCategories_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aceProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void acgEmployee_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

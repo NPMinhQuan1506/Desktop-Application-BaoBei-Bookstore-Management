@@ -183,7 +183,7 @@
             this.gcAuthor.TabIndex = 1;
             this.gcAuthor.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAuthor});
-            this.gcAuthor.Load += new System.EventHandler(this.gcCustomer_Load);
+            this.gcAuthor.Load += new System.EventHandler(this.gcAuthor_Load);
             // 
             // gvAuthor
             // 
@@ -231,10 +231,10 @@
             this.gvAuthor.OptionsView.RowAutoHeight = true;
             this.gvAuthor.OptionsView.ShowGroupPanel = false;
             this.gvAuthor.OptionsView.ShowIndicator = false;
-            this.gvAuthor.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvCustomer_CustomDrawCell);
-            this.gvAuthor.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvCustomer_RowCellStyle);
-            this.gvAuthor.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gvCustomer_CustomDrawEmptyForeground);
-            this.gvAuthor.DoubleClick += new System.EventHandler(this.gvCustomer_DoubleClick);
+            this.gvAuthor.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvAuthor_CustomDrawCell);
+            this.gvAuthor.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvAuthor_RowCellStyle);
+            this.gvAuthor.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gvAuthor_CustomDrawEmptyForeground);
+            this.gvAuthor.DoubleClick += new System.EventHandler(this.gvAuthor_DoubleClick);
             // 
             // NO
             // 

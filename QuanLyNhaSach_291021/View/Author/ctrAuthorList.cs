@@ -58,42 +58,21 @@ namespace QuanLyNhaSach_291021.View.Author
 
         #region //Setup GridView
         //Create Serial No For GridView
-        private void gvCustomer_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        private void gvAuthor_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (e.Column == NO)
-            {
-                if (e.RowHandle > -1)
-                {
-                    e.DisplayText = Convert.ToString(e.RowHandle + 1);
-                }
-            }
+
         }
 
         //Setup Text Align For Grid Column
-        private void gvCustomer_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        private void gvAuthor_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
-            if (e.Column.Name == "NO")
-            {
-                e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            }
 
-            if (e.Column.Name == "CustomerName")
-            {
-                e.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            }
         }
 
 
-        private void gvCustomer_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        private void gvAuthor_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
         {
-            Rectangle emptyGridTextBounds;
-            int offsetFromTop = 10;
-            e.DefaultDraw();
-            Size size = e.Appearance.CalcTextSize(e.Cache, emptyGridText, e.Bounds.Width).ToSize();
-            int x = (e.Bounds.Width - size.Width) / 2;
-            int y = e.Bounds.Y + offsetFromTop;
-            emptyGridTextBounds = new Rectangle(new Point(x, y), size);
-            e.Appearance.DrawString(e.Cache, emptyGridText, emptyGridTextBounds, Brushes.Gray);
+
         }
         #endregion
 
@@ -171,7 +150,7 @@ namespace QuanLyNhaSach_291021.View.Author
 
         #region //Read
 
-        private void gcCustomer_Load(object sender, EventArgs e)
+        private void gcAuthor_Load(object sender, EventArgs e)
         {
             loadData();
         }
@@ -192,7 +171,7 @@ namespace QuanLyNhaSach_291021.View.Author
             loadDataUpdating();
         }
 
-        private void gvCustomer_DoubleClick(object sender, EventArgs e)
+        private void gvAuthor_DoubleClick(object sender, EventArgs e)
         {
             loadDataUpdating();
         }

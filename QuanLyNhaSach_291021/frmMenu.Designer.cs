@@ -219,6 +219,7 @@
             this.aceCategories.Name = "aceCategories";
             this.aceCategories.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceCategories.Text = "Danh Sách Thể Loại";
+            this.aceCategories.Click += new System.EventHandler(this.aceCategories_Click);
             // 
             // aceProduct
             // 
@@ -238,6 +239,7 @@
             this.aceProduct.Name = "aceProduct";
             this.aceProduct.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceProduct.Text = "Danh Sách Sản Phẩm";
+            this.aceProduct.Click += new System.EventHandler(this.aceProduct_Click);
             // 
             // acgInventory
             // 
@@ -245,6 +247,7 @@
             this.aceSupplier,
             this.aceImport,
             this.aceStock});
+            this.acgInventory.Expanded = true;
             this.acgInventory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgInventory.ImageOptions.SvgImage")));
             this.acgInventory.Name = "acgInventory";
             this.acgInventory.Text = "Quản Lý Kho";
@@ -311,6 +314,7 @@
             this.acgSale.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceOrder,
             this.aceDiscount});
+            this.acgSale.Expanded = true;
             this.acgSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgSale.ImageOptions.SvgImage")));
             this.acgSale.Name = "acgSale";
             this.acgSale.Text = "Quản Lý Bán Hàng";
@@ -363,6 +367,7 @@
             this.acgEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgEmployee.ImageOptions.SvgImage")));
             this.acgEmployee.Name = "acgEmployee";
             this.acgEmployee.Text = "Nhân Sự";
+            this.acgEmployee.Click += new System.EventHandler(this.acgEmployee_Click);
             // 
             // aceDepartment
             // 

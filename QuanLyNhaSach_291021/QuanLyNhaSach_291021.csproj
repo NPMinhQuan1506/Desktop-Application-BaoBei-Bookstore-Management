@@ -119,6 +119,7 @@
   <ItemGroup>
     <Compile Include="Controller\Common.cs" />
     <Compile Include="Controller\EncryptDecrypt.cs" />
+    <Compile Include="Controller\Global.cs" />
     <Compile Include="Controller\InjectionSQL.cs" />
     <Compile Include="Controller\MyExcel.cs" />
     <Compile Include="Controller\Validation.cs" />
@@ -162,6 +163,18 @@
       <DependentUpon>frmMessageYesNo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Notification\MyMessageBox.cs" />
+    <Compile Include="View\Publisher\ctrPublisherList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Publisher\ctrPublisherList.Designer.cs">
+      <DependentUpon>ctrPublisherList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Publisher\frmPublisherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Publisher\frmPublisherDetail.Designer.cs">
+      <DependentUpon>frmPublisherDetail.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +203,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Notification\frmMessageYesNo.resx">
       <DependentUpon>frmMessageYesNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Publisher\ctrPublisherList.resx">
+      <DependentUpon>ctrPublisherList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Publisher\frmPublisherDetail.resx">
+      <DependentUpon>frmPublisherDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
