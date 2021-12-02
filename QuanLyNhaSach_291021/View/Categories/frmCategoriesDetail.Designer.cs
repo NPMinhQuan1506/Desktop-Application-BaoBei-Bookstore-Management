@@ -1,6 +1,6 @@
-﻿namespace QuanLyNhaSach_291021.View.Publisher
+﻿namespace QuanLyNhaSach_291021.View.Categories
 {
-    partial class frmPublisherDetail
+    partial class frmCategoriesDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPublisherDetail));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategoriesDetail));
             this.pnHeader = new DevExpress.XtraEditors.PanelControl();
             this.lbClear = new DevExpress.XtraEditors.LabelControl();
             this.lbClose = new DevExpress.XtraEditors.LabelControl();
@@ -38,14 +38,14 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtPublisherName = new DevExpress.XtraEditors.TextEdit();
+            this.txtCategoriesName = new DevExpress.XtraEditors.TextEdit();
             this.mmeNote = new DevExpress.XtraEditors.MemoEdit();
             this.vali = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnFooter)).BeginInit();
             this.pnFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPublisherName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCategoriesName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmeNote.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vali)).BeginInit();
             this.SuspendLayout();
@@ -163,19 +163,19 @@
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(65, 21);
             this.labelControl3.TabIndex = 5;
-            this.labelControl3.Text = "Tên NXB";
+            this.labelControl3.Text = "Tên Thể Loại";
             // 
-            // txtPublisherName
+            // txtCategoriesName
             // 
-            this.txtPublisherName.Location = new System.Drawing.Point(27, 104);
-            this.txtPublisherName.Name = "txtPublisherName";
-            this.txtPublisherName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtPublisherName.Properties.Appearance.Options.UseFont = true;
-            this.txtPublisherName.Properties.Appearance.Options.UseTextOptions = true;
-            this.txtPublisherName.Properties.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.txtPublisherName.Properties.AutoHeight = false;
-            this.txtPublisherName.Size = new System.Drawing.Size(355, 38);
-            this.txtPublisherName.TabIndex = 4;
+            this.txtCategoriesName.Location = new System.Drawing.Point(27, 104);
+            this.txtCategoriesName.Name = "txtCategoriesName";
+            this.txtCategoriesName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCategoriesName.Properties.Appearance.Options.UseFont = true;
+            this.txtCategoriesName.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtCategoriesName.Properties.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.txtCategoriesName.Properties.AutoHeight = false;
+            this.txtCategoriesName.Size = new System.Drawing.Size(355, 38);
+            this.txtCategoriesName.TabIndex = 4;
             // 
             // mmeNote
             // 
@@ -186,30 +186,30 @@
             this.mmeNote.Size = new System.Drawing.Size(355, 104);
             this.mmeNote.TabIndex = 12;
             // 
-            // frmPublisherDetail
+            // frmCategoriesDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(407, 395);
             this.Controls.Add(this.mmeNote);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.txtPublisherName);
+            this.Controls.Add(this.txtCategoriesName);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.pnFooter);
             this.Controls.Add(this.pnHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.LookAndFeel.SkinMaskColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
             this.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.Name = "frmPublisherDetail";
+            this.Name = "frmCategoriesDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Chi Tiết Nhà Xuất Bản";
-            this.Shown += new System.EventHandler(this.frmPublisherDetail_Shown);
-            this.Resize += new System.EventHandler(this.frmPublisherDetail_Resize);
+            this.Text = "Chi Tiết Thể Loại";
+            this.Shown += new System.EventHandler(this.frmCategoriesDetail_Shown);
+            this.Resize += new System.EventHandler(this.frmCategoriesDetail_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).EndInit();
             this.pnHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnFooter)).EndInit();
             this.pnFooter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtPublisherName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCategoriesName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmeNote.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vali)).EndInit();
             this.ResumeLayout(false);
@@ -227,7 +227,7 @@
         private DevExpress.XtraEditors.LabelControl lbClear;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit txtPublisherName;
+        private DevExpress.XtraEditors.TextEdit txtCategoriesName;
         private DevExpress.XtraEditors.MemoEdit mmeNote;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider vali;
     }

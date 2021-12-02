@@ -138,6 +138,18 @@
     <Compile Include="View\Author\ctrAuthorList.Designer.cs">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Categories\ctrCategoriesList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Categories\ctrCategoriesList.Designer.cs">
+      <DependentUpon>ctrCategoriesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Categories\frmCategoriesDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Categories\frmCategoriesDetail.Designer.cs">
+      <DependentUpon>frmCategoriesDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer\ctrCustomerList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -191,6 +203,12 @@
     </Compile>
     <EmbeddedResource Include="View\Author\ctrAuthorList.resx">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Categories\ctrCategoriesList.resx">
+      <DependentUpon>ctrCategoriesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Categories\frmCategoriesDetail.resx">
+      <DependentUpon>frmCategoriesDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\ctrCustomerList.resx">
       <DependentUpon>ctrCustomerList.cs</DependentUpon>

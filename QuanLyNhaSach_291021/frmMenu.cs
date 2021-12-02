@@ -17,21 +17,6 @@ namespace QuanLyNhaSach_291021
             InitializeComponent();
         }
 
-        private void aceCustomer_Click(object sender, EventArgs e)
-        {
-            if (!pnContainer.Controls.Contains(View.Customer.ctrCustomerList.instance))
-            {
-                pnContainer.Controls.Add(View.Customer.ctrCustomerList.instance);
-                View.Customer.ctrCustomerList.instance.Dock = DockStyle.Fill;
-                View.Customer.ctrCustomerList.instance.BringToFront();
-            }
-            View.Customer.ctrCustomerList.instance.BringToFront();
-            //pnContainer.Controls.Clear();
-            //View.Customer.ctrCustomerList ctr = new View.Customer.ctrCustomerList();
-            //ctr.Dock = DockStyle.Fill;
-            //pnContainer.Controls.Add(ctr);
-        }
-
         private void aceDashboard_Click(object sender, EventArgs e)
         {
             MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
@@ -45,6 +30,21 @@ namespace QuanLyNhaSach_291021
             {
                 MyMessageBox.ShowMessage("No!");
             }
+        }
+
+        private void aceCustomer_Click(object sender, EventArgs e)
+        {
+            if (!pnContainer.Controls.Contains(View.Customer.ctrCustomerList.instance))
+            {
+                pnContainer.Controls.Add(View.Customer.ctrCustomerList.instance);
+                View.Customer.ctrCustomerList.instance.Dock = DockStyle.Fill;
+                View.Customer.ctrCustomerList.instance.BringToFront();
+            }
+            View.Customer.ctrCustomerList.instance.BringToFront();
+            //pnContainer.Controls.Clear();
+            //View.Customer.ctrCustomerList ctr = new View.Customer.ctrCustomerList();
+            //ctr.Dock = DockStyle.Fill;
+            //pnContainer.Controls.Add(ctr);
         }
 
         // Product Management
@@ -67,12 +67,18 @@ namespace QuanLyNhaSach_291021
                 View.Publisher.ctrPublisherList.instance.Dock = DockStyle.Fill;
                 View.Publisher.ctrPublisherList.instance.BringToFront();
             }
-            View.Author.ctrAuthorList.instance.BringToFront();
+            View.Publisher.ctrPublisherList.instance.BringToFront();
         }
 
         private void aceCategories_Click(object sender, EventArgs e)
         {
-
+            if (!pnContainer.Controls.Contains(View.Categories.ctrCategoriesList.instance))
+            {
+                pnContainer.Controls.Add(View.Categories.ctrCategoriesList.instance);
+                View.Categories.ctrCategoriesList.instance.Dock = DockStyle.Fill;
+                View.Categories.ctrCategoriesList.instance.BringToFront();
+            }
+            View.Categories.ctrCategoriesList.instance.BringToFront();
         }
 
         private void aceProduct_Click(object sender, EventArgs e)

@@ -60,19 +60,40 @@ namespace QuanLyNhaSach_291021.View.Author
         //Create Serial No For GridView
         private void gvAuthor_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-
+            if (e.Column == NO)
+            {
+                if (e.RowHandle > -1)
+                {
+                    e.DisplayText = Convert.ToString(e.RowHandle + 1);
+                }
+            }
         }
 
         //Setup Text Align For Grid Column
         private void gvAuthor_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
+            if (e.Column.Name == "NO")
+            {
+                e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            }
 
+            if (e.Column.Name == "AuthorName")
+            {
+                e.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            }
         }
 
 
         private void gvAuthor_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
         {
-
+            Rectangle emptyGridTextBounds;
+            int offsetFromTop = 10;
+            e.DefaultDraw();
+            Size size = e.Appearance.CalcTextSize(e.Cache, emptyGridText, e.Bounds.Width).ToSize();
+            int x = (e.Bounds.Width - size.Width) / 2;
+            int y = e.Bounds.Y + offsetFromTop;
+            emptyGridTextBounds = new Rectangle(new Point(x, y), size);
+            e.Appearance.DrawString(e.Cache, emptyGridText, emptyGridTextBounds, Brushes.Gray);
         }
         #endregion
 
@@ -221,7 +242,7 @@ namespace QuanLyNhaSach_291021.View.Author
             if (checkConstraints(IdDeleting))
             {
 
-                string query = String.Format("Delete TacGia Where MaTG = '{0}'; ", IdDeleting);
+                string query = String.Format("Delete TacGia Where MaTG = {0}; ", IdDeleting);
                 conn.executeDatabase(query);
                 MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
                 loadData();
@@ -233,7 +254,7 @@ namespace QuanLyNhaSach_291021.View.Author
 
                 if (Result == DialogResult.Yes)
                 {
-                    string query = String.Format("Update TacGia Set HienThi = 0 Where MaTG = '{0}'", IdDeleting);
+                    string query = String.Format("Update TacGia Set HienThi = 0 Where MaTG = {0}", IdDeleting);
                     MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
                     loadData();
                 }
