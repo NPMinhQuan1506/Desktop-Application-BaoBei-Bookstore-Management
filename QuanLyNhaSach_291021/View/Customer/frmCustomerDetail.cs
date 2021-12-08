@@ -66,7 +66,11 @@ namespace QuanLyNhaSach_291021.View.Customer
                 dtContent = conn.loadData(query);
                 if (dtContent.Rows.Count > 0)
                 {
-                    peAvatar.Image = Image.FromStream(new MemoryStream((byte[])dtContent.Rows[0]["Anh"]));
+                    if (dtContent.Rows[0]["Anh"] != DBNull.Value)
+                    {
+                        peAvatar.Image = Image.FromStream(new MemoryStream((byte[])dtContent.Rows[0]["Anh"]));
+                    }
+
                     txtCustomerID.Text = (dtContent.Rows[0]["MaKH"]).ToString();
                     txtCustomerName.Text = (dtContent.Rows[0]["TenKH"]).ToString();
                     txtPhone.Text = (dtContent.Rows[0]["DienThoai"]).ToString();
@@ -343,7 +347,7 @@ namespace QuanLyNhaSach_291021.View.Customer
         private void lbClear_Click(object sender, EventArgs e)
         {
             peAvatar.Image = null;
-            if(this.id == "")
+            if (this.id == "")
             {
                 txtCustomerID.Text = "";
                 txtAccount.Text = "";

@@ -728,6 +728,7 @@
             this.Address.AppearanceCell.Options.UseFont = true;
             this.Address.AppearanceCell.Options.UseForeColor = true;
             this.Address.AppearanceCell.Options.UseTextOptions = true;
+            this.Address.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.Address.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.Address.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Address.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
@@ -755,6 +756,7 @@
             this.Note.AppearanceCell.Options.UseFont = true;
             this.Note.AppearanceCell.Options.UseForeColor = true;
             this.Note.AppearanceCell.Options.UseTextOptions = true;
+            this.Note.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.Note.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.Note.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Note.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;

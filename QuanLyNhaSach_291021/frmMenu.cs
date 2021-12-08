@@ -83,7 +83,13 @@ namespace QuanLyNhaSach_291021
 
         private void aceProduct_Click(object sender, EventArgs e)
         {
-
+            if (!pnContainer.Controls.Contains(View.Product.ctrProductList.instance))
+            {
+                pnContainer.Controls.Add(View.Product.ctrProductList.instance);
+                View.Product.ctrProductList.instance.Dock = DockStyle.Fill;
+                View.Product.ctrProductList.instance.BringToFront();
+            }
+            View.Product.ctrProductList.instance.BringToFront();
         }
 
         private void acgEmployee_Click(object sender, EventArgs e)

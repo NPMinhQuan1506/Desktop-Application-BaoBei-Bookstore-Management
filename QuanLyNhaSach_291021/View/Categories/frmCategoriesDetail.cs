@@ -22,7 +22,6 @@ namespace QuanLyNhaSach_291021.View.Categories
         Controller.Validation.ValidEmpty_Contain validE_ContainRule = new Controller.Validation.ValidEmpty_Contain();
         //defind variable
         String id = "", dtNow = "";
-        bool flag = false;
         //Move Panel
         Boolean dragging = false;
         Point startPoint = new Point(0, 0);

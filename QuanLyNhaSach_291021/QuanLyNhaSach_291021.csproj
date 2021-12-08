@@ -175,6 +175,18 @@
       <DependentUpon>frmMessageYesNo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Notification\MyMessageBox.cs" />
+    <Compile Include="View\Product\ctrProductList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Product\ctrProductList.Designer.cs">
+      <DependentUpon>ctrProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\frmProductDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Product\frmProductDetail.Designer.cs">
+      <DependentUpon>frmProductDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Publisher\ctrPublisherList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -233,6 +245,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Notification\frmMessageYesNo.resx">
       <DependentUpon>frmMessageYesNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Product\ctrProductList.resx">
+      <DependentUpon>ctrProductList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Product\frmProductDetail.resx">
+      <DependentUpon>frmProductDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Publisher\ctrPublisherList.resx">
       <DependentUpon>ctrPublisherList.cs</DependentUpon>

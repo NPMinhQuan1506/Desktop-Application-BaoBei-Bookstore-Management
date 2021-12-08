@@ -11,12 +11,14 @@ using DevExpress.XtraEditors;
 using QuanLyNhaSach_291021.View.Notification;
 using System.IO;
 using System.Text.RegularExpressions;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.Office.Utils;
 using DevExpress.XtraPrinting;
 using System.Diagnostics;
 
-namespace QuanLyNhaSach_291021.View.Customer
+namespace QuanLyNhaSach_291021.View.Product
 {
-    public partial class ctrCustomerList : DevExpress.XtraEditors.XtraUserControl
+    public partial class ctrProductList : DevExpress.XtraEditors.XtraUserControl
     {
         #region //Define Class and Variable
 
@@ -27,19 +29,20 @@ namespace QuanLyNhaSach_291021.View.Customer
         string query = "";
         string emptyGridText = "Không có dữ liệu";
 
-        //defind variable search and filter
-
+        //defind datatable
+        DataTable dtMaster = new DataTable();
+        DataTable dtDetail = new DataTable();
         //defind generate instance 
 
-        private static ctrCustomerList _instance;
+        private static ctrProductList _instance;
 
-        public static ctrCustomerList instance
+        public static ctrProductList instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ctrCustomerList();
+                    _instance = new ctrProductList();
                 }
                 return _instance;
             }
@@ -48,7 +51,7 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         #region //Contructor
 
-        public ctrCustomerList()
+        public ctrProductList()
         {
             InitializeComponent();
 
@@ -60,7 +63,7 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         #region //Setup GridView
         //Create Serial No For GridView
-        private void gvCustomer_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        private void gvProduct_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             if (e.Column == NO)
             {
@@ -72,21 +75,21 @@ namespace QuanLyNhaSach_291021.View.Customer
         }
 
         //Setup Text Align For Grid Column
-        private void gvCustomer_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        private void gvProduct_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             if (e.Column.Name == "NO")
             {
                 e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             }
 
-            if (e.Column.Name == "CustomerName")
+            if (e.Column.Name == "ProductName")
             {
                 e.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             }
         }
 
 
-        private void gvCustomer_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        private void gvProduct_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
         {
             Rectangle emptyGridTextBounds;
             int offsetFromTop = 10;
@@ -102,7 +105,7 @@ namespace QuanLyNhaSach_291021.View.Customer
         #region //Create
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmCustomerDetail frm = new frmCustomerDetail();
+            frmProductDetail frm = new frmProductDetail();
             frm.ShowDialog();
             loadData();
         }
@@ -110,44 +113,80 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         #region //Read
 
-        private void gcCustomer_Load(object sender, EventArgs e)
+        private void gcProduct_Load(object sender, EventArgs e)
         {
             loadData();
+            gvProduct.DataController.AllowIEnumerableDetails = true;
         }
 
         private void loadData()
         {
-            query = @"Select MaKH,
-                                    TenKH, 
-                                    gt.TenGT as GioiTinh, 
-                                    ha.Anh as Anh,
-                                    lk.TenLK as LoaiKhach, 
-                                    nk.TenNK as NhomKhach, 
-                                    tk.TenTK as TaiKhoan,
-	                                NgaySinh, 
-                                    Email, 
-                                    DienThoai, 
-                                    DiaChi, 
-                                    kh.GhiChu
-                            from KhachHang as kh
-                            left join GioiTinh as gt on kh.MaGT = gt.MaGT
-                            left join HinhAnh as ha on kh.MaHA = ha.MaHA
-                            inner join LoaiKhach as lk on kh.MaLK = lk.MaLK
-                            inner join NhomKhach as nk on kh.MaNK = nk.MaNK
-                            left join TaiKhoan_KH as tk on kh.MaTK = tk.MaTK
-                            where kh.HienThi = 1 ";
-            DataTable dtContent = new DataTable();
-            dtContent = conn.loadData(query + "order by kh.NgayTao ASC");
-            gcCustomer.DataSource = dtContent;
+            //loadData Master
+            query = @"Select SKU, ISBN, TenSP,ha.Anh, ncc.TenNCC as NhaCungCap, ht.TenHT as HinhThuc, tl.TenTL as TheLoai, NgonNgu,
+		                     PhienBan, SoLuongTon, TonToiThieu, DonViTinh, GiaBan, DanhGia, MoTa
+                            from SanPham as sp
+							left join HinhAnh as ha on sp.MaHA = ha.MaHA
+                            left join NhaCungCap as ncc on sp.MaNCC = ncc.MaNCC
+                            left join HinhThuc as ht on sp.MaHT = ht.MaHT
+                            inner join TheLoai as tl on sp.MaTL = tl.MaTL
+                            where sp.HienThi = 1 ";
+
+            dtMaster = conn.loadData(query + "order by sp.NgayTao ASC");
+            //loadDataDetail
+            string query1 = @"select ISBN, nxb.TenNXB as NhaXuatBan, tg.TenTG as TacGia, 
+											  NamXuatBanDauTien, NamXuatBanMoiNhat, SoTrang 
+									   from ChiTietSach as ct 
+									   inner join NhaXuatBan as nxb on ct.MaNXB = nxb.MaNXB
+									   inner join TacGia as tg on ct.MaTG = tg.MaTG";
+            dtDetail = conn.loadData(query1);
+            gcProduct.DataSource = dtMaster;
         }
 
         private void loadData(string _query)
         {
             DataTable dtContent = new DataTable();
             dtContent = conn.loadData(_query);
-            gcCustomer.DataSource = dtContent;
+            gcProduct.DataSource = dtContent;
         }
 
+        // If Master don't have Detail, a plus is enable
+        private void gvProduct_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
+        {
+            if (gvProduct.GetRowCellValue(e.RowHandle, ISBN) != null)
+            {
+                string ID = gvProduct.GetRowCellValue(e.RowHandle, ISBN).ToString();
+                e.IsEmpty = !dtDetail.AsEnumerable().Any(x => x.Field<string>("ISBN") == ID);
+            }
+        }
+
+        //LoadData Detail
+        private void gvProduct_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        {
+            if (gvProduct.GetRowCellValue(e.RowHandle, ISBN) != null)
+            {
+                string ID = gvProduct.GetRowCellValue(e.RowHandle, ISBN).ToString();
+                e.ChildList = GetBatchFromItem(ID);
+            }
+        }
+
+        DataView GetBatchFromItem(string ID)
+        {
+            DataView dv = new DataView(dtDetail);
+            dv.RowFilter = "[ISBN] = " + ID;
+            return dv;
+        }
+
+        //Set 1: Detail
+        private void gvProduct_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
+        {
+            e.RelationCount = 1;
+        }
+
+        //Set Relationship
+        private void gvProduct_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
+        {
+            e.RelationName = "Detail";
+        }
         #endregion
 
         #region //Update
@@ -156,9 +195,12 @@ namespace QuanLyNhaSach_291021.View.Customer
             update();
         }
 
-        private void gvCustomer_DoubleClick(object sender, EventArgs e)
+        private void gvProduct_DoubleClick(object sender, EventArgs e)
         {
-            update();
+            if (gvProduct.FocusedColumn.Name != "NO")
+            {
+                update();
+            }
         }
 
         private void update()
@@ -166,7 +208,7 @@ namespace QuanLyNhaSach_291021.View.Customer
             if (getID() != "")
             {
                 string ID = getID();
-                frmCustomerDetail frm = new frmCustomerDetail(ID);
+                frmProductDetail frm = new frmProductDetail(ID);
                 frm.ShowDialog();
                 loadData();
             }
@@ -182,7 +224,7 @@ namespace QuanLyNhaSach_291021.View.Customer
             {
                 string ID = getID();
                 MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-                DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Khách Hàng Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+                DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Sản Phẩm Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
                 if (Result == DialogResult.Yes)
                 {
@@ -200,9 +242,9 @@ namespace QuanLyNhaSach_291021.View.Customer
             if (checkConstraints(ID))
             {
 
-                string query = String.Format(@"Delete TaiKhoan_KH where MaTK = (Select MaTK from KhachHang Where MaKH = '{0}'); ", ID);
-                query += String.Format(@"Delete HinhAnh where MaHA = (Select MaHA from KhachHang Where MaKH = '{0}'); ", ID);
-                query += String.Format("Delete KhachHang Where MaKH = '{0}'; ", ID);
+                string query = String.Format(@"Delete HinhAnh where MaHA = (Select MaHA from SanPham Where SKU = '{0}'); ", ID);
+                query += String.Format("Delete ChiTietSach Where ISBN = '{0}'; ", ID);
+                query += String.Format("Delete SanPham Where SKU = '{0}'; ", ID);
                 conn.executeDatabase(query);
                 MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
                 loadData();
@@ -210,12 +252,12 @@ namespace QuanLyNhaSach_291021.View.Customer
             else
             {
                 MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-                DialogResult Result = MyMessageBox.ShowMessage(@"Lưu Ý! Tồn Tại Hóa Đơn Của Khách Hàng Này.\n Bạn Vẫn Muốn Tiếp Tục?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+                DialogResult Result = MyMessageBox.ShowMessage(@"Lưu Ý! Tồn Tại Ràng Buộc Dữ Liệu Của Sản Phẩm Này.\n Bạn Vẫn Muốn Tiếp Tục?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
                 if (Result == DialogResult.Yes)
                 {
-                    string query = String.Format("Update KhachHang Set HienThi = 0 Where MaKH = '{0}'", ID);
-                    MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công! Thông Tin Khách Hàng Vẫn Sẽ Được Lưu Lại Trong Hóa Đơn");
+                    string query = String.Format("Update SanPham Set HienThi = 0 Where SKU = '{0}'", ID);
+                    MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
                     loadData();
                 }
                 else if (Result == DialogResult.No)
@@ -227,10 +269,14 @@ namespace QuanLyNhaSach_291021.View.Customer
 
         private bool checkConstraints(string ID)
         {
-            string query = String.Format("select count(MaKH)  as count from HoaDon where MaKH = '{0}'", ID);
+            string query = String.Format(@"select count(hd.SKU) as count1, count(pn.SKU) as count2, count(km.SKU) as count3 
+                                                    from ChiTietHoaDon as hd, 
+                                                         ChiTietPhieuNhap as pn, 
+                                                         ChiTietKhuyenMai as km
+                                            where hd.SKU = '{0}' or pn.SKU = '{0}' or km.SKU = '{0}'", ID);
             DataTable dt = new DataTable();
             dt = conn.loadData(query);
-            if ((int)(dt.Rows[0]["count"]) > 0)
+            if ((int)(dt.Rows[0]["count1"]) > 0 || (int)(dt.Rows[0]["count2"]) > 0 || (int)(dt.Rows[0]["count3"]) > 0)
             {
                 return false;
             }
@@ -242,10 +288,9 @@ namespace QuanLyNhaSach_291021.View.Customer
         private string getID()
         {
 
-            if (gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, CustomerId) != null)
+            if (gvProduct.GetRowCellValue(gvProduct.FocusedRowHandle, SKU) != null)
             {
-                //string ID = gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, "MaKH").ToString();
-                string ID = gvCustomer.GetRowCellValue(gvCustomer.FocusedRowHandle, CustomerId).ToString();
+                string ID = gvProduct.GetRowCellValue(gvProduct.FocusedRowHandle, SKU).ToString();
                 return ID;
             }
             return "";
@@ -271,11 +316,23 @@ namespace QuanLyNhaSach_291021.View.Customer
         private void search()
         {
             //Add datatable if searching value is null, datatable will return "Search data doesn't exist"
-            if(txtSearch.EditValue != null)
+            if (txtSearch.EditValue != null)
             {
                 string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\s\']+", "");
-                string field = func.removeUnicode((cbbField.Text).Replace("Khách Hàng", "KH"))
+                string field = "";
+                switch (cbbField.Text)
+                {
+                    case "Thể Loại":
+                        field = "TenTL";
+                        break;
+                    case "Mã Sản Phẩm":
+                        field = "SKU";
+                        break;
+                    default:
+                        field = func.removeUnicode((cbbField.Text).Replace("Sản Phẩm", "SP"))
                                                                  .Replace(" ", "");
+                        break;
+                }
                 if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
                 {
                     int index = cbbField.SelectedIndex;
@@ -287,12 +344,9 @@ namespace QuanLyNhaSach_291021.View.Customer
                     else
                     {
                         String querySearch = String.Format(@"{0} and CONCAT('',  
-                                                                    MaKH, 
-                                                                    TenKH,
-                                                                    NgaySinh, 
-                                                                    Email, 
-                                                                    DienThoai, 
-                                                                    DiaChi) like N'%{1}%'", query, searchInfo);
+                                                                    SKU, 
+                                                                    TenSP,
+                                                                    TenTL) like N'%{1}%'", query, searchInfo);
                         loadData(querySearch);
                     }
                 }
@@ -320,8 +374,17 @@ namespace QuanLyNhaSach_291021.View.Customer
                 {
                     string fileName = openFileDialog.FileName;
                     DataTable dtMyExcel = Controller.MyExcel.GetDataTableFromExcel(fileName);
-                    ConvertColumnType(ref dtMyExcel, "NgaySinh", typeof(DateTime));
-                    conn.executeDataSet("uspInsertCustomers", dtMyExcel);
+                    System.Data.DataView view = new System.Data.DataView(dtMyExcel);
+                    System.Data.DataTable master = view.ToTable("MyTableMaster", false, "SKU", "ISBN", "TenSP", "MaNCC", "MaHT", "MaTL", "NgonNgu", "PhienBan",
+                        "SoLuongTon", "TonToiThieu", "DonViTinh", "GiaBan", "DanhGia", "MoTa");
+                    ConvertColumnType(ref master, "DanhGia", typeof(float));
+                    conn.executeDataSet("uspInsertProducts", master);
+                    System.Data.DataTable detail = view.ToTable("MyTableDetail", false, "ISBN", "MaNXB", "MaTG", "NamXuatBanDauTien", "NamXuatBanMoiNhat", "SoTrang");
+
+
+                    ConvertColumnType(ref detail, "NamXuatBanDauTien", typeof(DateTime));
+                    ConvertColumnType(ref detail, "NamXuatBanMoiNhat", typeof(DateTime));
+                    conn.executeDataSet("uspInsertProductDetails", detail);
                 }
             }
             loadData();
@@ -341,13 +404,19 @@ namespace QuanLyNhaSach_291021.View.Customer
                 {
                     if (newType == typeof(DateTime))
                     {
+                        var x = dr[columnName].ToString();
                         DateTime dtTemp = DateTime.ParseExact(dr[columnName].ToString(), "dd/MM/yyyy", null);
                         dr[dc.ColumnName] = func.DateTimeToString(dtTemp);
                         //Convert.ChangeType(dr[columnName], newType);
                     }
                     else
                     {
-                        dr[dc.ColumnName] = Convert.ChangeType(dr[columnName], newType);
+
+                        if (dr[columnName] != DBNull.Value)
+                        {
+                            dr[dc.ColumnName] = Convert.ChangeType(dr[columnName], newType);
+                        }
+
                     }
                 }
 
@@ -360,12 +429,11 @@ namespace QuanLyNhaSach_291021.View.Customer
             }
         }
 
-
         private void btnExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
             DateTime dtNow = DateTime.Now;
-            saveDialog.FileName = "Report_Customers_" + dtNow.Day.ToString() + "_" + dtNow.Month.ToString() + "_" + dtNow.Year.ToString()
+            saveDialog.FileName = "Report_Products_" + dtNow.Day.ToString() + "_" + dtNow.Month.ToString() + "_" + dtNow.Year.ToString()
                                                      + "_" + dtNow.Hour.ToString() + "_" + dtNow.Minute.ToString() + "_" + dtNow.Second.ToString();
             saveDialog.Filter = "Excel (2010) (.xlsx)|*.xlsx |Excel (1997-2003)(.xls)|*.xls|RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
             if (saveDialog.ShowDialog() != DialogResult.Cancel)
@@ -376,30 +444,32 @@ namespace QuanLyNhaSach_291021.View.Customer
                 switch (fileExtenstion)
                 {
                     case ".xls":
-                        gvCustomer.OptionsPrint.PrintDetails = true;
+                        gvProduct.OptionsPrint.PrintDetails = true;
+                        gvProduct.OptionsPrint.ExpandAllDetails = true;
                         XlsxExportOptionsEx opt = new XlsxExportOptionsEx();
                         opt.ExportType = DevExpress.Export.ExportType.WYSIWYG;
-                        gvCustomer.ExportToXlsx(exportFilePath, opt);
+                        gvProduct.ExportToXlsx(exportFilePath, opt);
                         Process.Start(exportFilePath);
                         break;
                     case ".xlsx":
-                        gvCustomer.OptionsPrint.PrintDetails = true;
+                        gvProduct.OptionsPrint.PrintDetails = true;
+                        gvProduct.OptionsPrint.ExpandAllDetails = true;
                         XlsxExportOptionsEx opt1 = new XlsxExportOptionsEx();
                         opt1.ExportType = DevExpress.Export.ExportType.WYSIWYG;
-                        gvCustomer.ExportToXlsx(exportFilePath, opt1);
+                        gvProduct.ExportToXlsx(exportFilePath, opt1);
                         Process.Start(exportFilePath);
                         break;
                     case ".rtf":
-                        gvCustomer.ExportToRtf(exportFilePath);
+                        gvProduct.ExportToRtf(exportFilePath);
                         break;
                     case ".pdf":
-                        gvCustomer.ExportToPdf(exportFilePath);
+                        gvProduct.ExportToPdf(exportFilePath);
                         break;
                     case ".html":
-                        gvCustomer.ExportToHtml(exportFilePath);
+                        gvProduct.ExportToHtml(exportFilePath);
                         break;
                     case ".mht":
-                        gvCustomer.ExportToMht(exportFilePath);
+                        gvProduct.ExportToMht(exportFilePath);
                         break;
                     default:
                         break;
@@ -425,6 +495,7 @@ namespace QuanLyNhaSach_291021.View.Customer
                 }
 
             }
+
         }
         #endregion
     }

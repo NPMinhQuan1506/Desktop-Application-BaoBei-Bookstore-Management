@@ -11,6 +11,8 @@ using DevExpress.XtraEditors;
 using QuanLyNhaSach_291021.View.Notification;
 using System.IO;
 using System.Text.RegularExpressions;
+using DevExpress.XtraPrinting;
+using System.Diagnostics;
 
 namespace QuanLyNhaSach_291021.View.Supplier
 {
@@ -307,7 +309,8 @@ namespace QuanLyNhaSach_291021.View.Supplier
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
             DateTime dtNow = DateTime.Now;
-            saveDialog.FileName = "Report_Suppliers_" + dtNow.Day.ToString()+"_"+ dtNow.Month.ToString() + "_" + dtNow.Year.ToString();
+            saveDialog.FileName = "Report_Suppliers_" + dtNow.Day.ToString() + "_" + dtNow.Month.ToString() + "_" + dtNow.Year.ToString()
+                                                     + "_" + dtNow.Hour.ToString() + "_" + dtNow.Minute.ToString() + "_" + dtNow.Second.ToString();
             saveDialog.Filter = "Excel (2010) (.xlsx)|*.xlsx |Excel (1997-2003)(.xls)|*.xls|RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
             if (saveDialog.ShowDialog() != DialogResult.Cancel)
             {
@@ -317,10 +320,18 @@ namespace QuanLyNhaSach_291021.View.Supplier
                 switch (fileExtenstion)
                 {
                     case ".xls":
-                        gvSupplier.ExportToXls(exportFilePath);
+                        gvSupplier.OptionsPrint.PrintDetails = true;
+                        XlsxExportOptionsEx opt = new XlsxExportOptionsEx();
+                        opt.ExportType = DevExpress.Export.ExportType.WYSIWYG;
+                        gvSupplier.ExportToXlsx(exportFilePath, opt);
+                        Process.Start(exportFilePath);
                         break;
                     case ".xlsx":
-                        gvSupplier.ExportToXlsx(exportFilePath);
+                        gvSupplier.OptionsPrint.PrintDetails = true;
+                        XlsxExportOptionsEx opt1 = new XlsxExportOptionsEx();
+                        opt1.ExportType = DevExpress.Export.ExportType.WYSIWYG;
+                        gvSupplier.ExportToXlsx(exportFilePath, opt1);
+                        Process.Start(exportFilePath);
                         break;
                     case ".rtf":
                         gvSupplier.ExportToRtf(exportFilePath);
