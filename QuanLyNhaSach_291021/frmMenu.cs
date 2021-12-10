@@ -113,5 +113,21 @@ namespace QuanLyNhaSach_291021
             }
             View.Supplier.ctrSupplierList.instance.BringToFront();
         }
+
+        private void aceImport_Click(object sender, EventArgs e)
+        {
+            if (!pnContainer.Controls.Contains(View.Imports.ctrImportsList.instance))
+            {
+                pnContainer.Controls.Add(View.Imports.ctrImportsList.instance);
+                View.Imports.ctrImportsList.instance.Dock = DockStyle.Fill;
+                View.Imports.ctrImportsList.instance.BringToFront();
+            }
+            View.Imports.ctrImportsList.instance.BringToFront();
+        }
+
+        private void aceStock_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

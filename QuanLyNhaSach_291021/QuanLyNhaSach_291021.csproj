@@ -162,6 +162,18 @@
     <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Imports\ctrImportsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Imports\ctrImportsList.Designer.cs">
+      <DependentUpon>ctrImportsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Imports\frmImportsDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Imports\frmImportsDetail.Designer.cs">
+      <DependentUpon>frmImportsDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Notification\frmMessageOK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +251,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Imports\ctrImportsList.resx">
+      <DependentUpon>ctrImportsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Imports\frmImportsDetail.resx">
+      <DependentUpon>frmImportsDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Notification\frmMessageOK.resx">
       <DependentUpon>frmMessageOK.cs</DependentUpon>

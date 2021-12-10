@@ -65,6 +65,12 @@
             this.pnInfoItem = new DevExpress.XtraEditors.PanelControl();
             this.lbName = new DevExpress.XtraEditors.LabelControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
+            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
+            this.aceStatistical = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.acMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnInfo)).BeginInit();
@@ -126,7 +132,9 @@
             this.aceDashboard,
             this.aceCustomer,
             this.acgProduct,
+            this.accordionControlSeparator2,
             this.acgInventory,
+            this.accordionControlSeparator1,
             this.acgSale});
             this.acgBusiness.Expanded = true;
             this.acgBusiness.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgBusiness.ImageOptions.SvgImage")));
@@ -288,6 +296,7 @@
             this.aceImport.Name = "aceImport";
             this.aceImport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceImport.Text = "Danh Sách Phiếu Nhập";
+            this.aceImport.Click += new System.EventHandler(this.aceImport_Click);
             // 
             // aceStock
             // 
@@ -307,12 +316,14 @@
             this.aceStock.Name = "aceStock";
             this.aceStock.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceStock.Text = "Thống Kê Hàng Tồn";
+            this.aceStock.Click += new System.EventHandler(this.aceStock_Click);
             // 
             // acgSale
             // 
             this.acgSale.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceOrder,
-            this.aceDiscount});
+            this.aceDiscount,
+            this.aceStatistical});
             this.acgSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgSale.ImageOptions.SvgImage")));
             this.acgSale.Name = "acgSale";
             this.acgSale.Text = "Quản Lý Bán Hàng";
@@ -546,6 +557,90 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement1.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement1.Appearance.Hovered.Options.UseFont = true;
+            this.accordionControlElement1.Appearance.Hovered.Options.UseForeColor = true;
+            this.accordionControlElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
+            this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement1.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement1.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement1.Appearance.Pressed.Options.UseFont = true;
+            this.accordionControlElement1.Appearance.Pressed.Options.UseForeColor = true;
+            this.accordionControlElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement1.ImageOptions.SvgImage")));
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement1.Text = "Thống Kê Hàng Tồn";
+            // 
+            // accordionControlElement2
+            // 
+            this.accordionControlElement2.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement2.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement2.Appearance.Hovered.Options.UseFont = true;
+            this.accordionControlElement2.Appearance.Hovered.Options.UseForeColor = true;
+            this.accordionControlElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement2.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement2.Appearance.Normal.Options.UseFont = true;
+            this.accordionControlElement2.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement2.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement2.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement2.Appearance.Pressed.Options.UseFont = true;
+            this.accordionControlElement2.Appearance.Pressed.Options.UseForeColor = true;
+            this.accordionControlElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement2.ImageOptions.SvgImage")));
+            this.accordionControlElement2.Name = "accordionControlElement2";
+            this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement2.Text = "Thống Kê Hàng Tồn";
+            // 
+            // accordionControlElement3
+            // 
+            this.accordionControlElement3.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement3.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement3.Appearance.Hovered.Options.UseFont = true;
+            this.accordionControlElement3.Appearance.Hovered.Options.UseForeColor = true;
+            this.accordionControlElement3.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement3.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement3.Appearance.Normal.Options.UseFont = true;
+            this.accordionControlElement3.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement3.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accordionControlElement3.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.accordionControlElement3.Appearance.Pressed.Options.UseFont = true;
+            this.accordionControlElement3.Appearance.Pressed.Options.UseForeColor = true;
+            this.accordionControlElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement3.ImageOptions.SvgImage")));
+            this.accordionControlElement3.Name = "accordionControlElement3";
+            this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement3.Text = "Thống Kê Hàng Tồn";
+            // 
+            // accordionControlSeparator1
+            // 
+            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
+            // 
+            // accordionControlSeparator2
+            // 
+            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
+            // 
+            // aceStatistical
+            // 
+            this.aceStatistical.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.aceStatistical.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.aceStatistical.Appearance.Hovered.Options.UseFont = true;
+            this.aceStatistical.Appearance.Hovered.Options.UseForeColor = true;
+            this.aceStatistical.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.aceStatistical.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.aceStatistical.Appearance.Normal.Options.UseFont = true;
+            this.aceStatistical.Appearance.Normal.Options.UseForeColor = true;
+            this.aceStatistical.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.aceStatistical.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.aceStatistical.Appearance.Pressed.Options.UseFont = true;
+            this.aceStatistical.Appearance.Pressed.Options.UseForeColor = true;
+            this.aceStatistical.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceStatistical.ImageOptions.SvgImage")));
+            this.aceStatistical.Name = "aceStatistical";
+            this.aceStatistical.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceStatistical.Text = "Thống Kê Doanh Thu";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -610,5 +705,11 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceCrash;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceLog;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceLogout;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator2;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceStatistical;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
     }
 }
