@@ -13,6 +13,8 @@ using QuanLyNhaSach_291021.View.Notification;
 using DevExpress.XtraGrid.Views.Card;
 using DevExpress.XtraLayout;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Text.RegularExpressions;
+using QuanLyNhaSach_291021.Controller;
 
 namespace QuanLyNhaSach_291021.View.Imports
 {
@@ -24,8 +26,8 @@ namespace QuanLyNhaSach_291021.View.Imports
         //Validation Rule
         Controller.Validation.Empty_Contain empty_ContainRule = new Controller.Validation.Empty_Contain();
         //defind variable
-        String id = "", dtNow = "";
-        bool flag = false;
+        String ImpID = "", dtNow = "";
+        string emptyGridText = "Không có dữ liệu";
         DataTable dtCart;
         //Move Panel
         Boolean dragging = false;
@@ -39,34 +41,36 @@ namespace QuanLyNhaSach_291021.View.Imports
             loadAllLookups();
             loadDataProduct();
             initDatatable();
+            ImpID = InitImportID();
             dtNow = func.DateTimeToString(DateTime.Now);
         }
 
-        public frmImportsDetail(string _id) : this()
-        {
-            this.id = _id;
-            loadData();
+        //public frmImportsDetail(string _id) : this()
+        //{
+        //    this.id = _id;
+        //    loadData();
 
-        }
+        //}
         #endregion
 
         #region //Load Data For Updating Event
         private void loadData()
         {
-            if (this.id != "")
-            {
-                string query = String.Format(@"Select ct.*, sp.TenSP as SanPham,pn.MaNCC, pn.TongTien, pn.GhiChu from PhieuNhap as pn 
-                                               inner join ChiTietPhieuNhap as ct on pn.MaPN = ct.MaPN
-                                               inner join SanPham as sp on ct.SKU = sp.SKU Where pn.MaPN = '{0}'", this.id);
-                DataTable dtContent = new DataTable();
-                dtContent = conn.loadData(query);
-                if (dtContent.Rows.Count > 0)
-                {
-                    gcImport.DataSource = dtContent;
-                    luSupplier.EditValue = (dtContent.Rows[0]["MaNCC"]).ToString();
-                    mmeNote.Text = (dtContent.Rows[0]["GhiChu"]).ToString();
-                }
-            }
+            //if (this.id != "")
+            //{
+            //    string query = String.Format(@"Select ct.*, sp.TenSP as SanPham,pn.MaNCC, pn.TongTien, pn.GhiChu from PhieuNhap as pn 
+            //                                   inner join ChiTietPhieuNhap as ct on pn.MaPN = ct.MaPN
+            //                                   inner join SanPham as sp on ct.SKU = sp.SKU Where pn.MaPN = '{0}'", this.id);
+            //    DataTable dtContent = new DataTable();
+            //    dtContent = conn.loadData(query);
+            //    if (dtContent.Rows.Count > 0)
+            //    {
+            //        gcImport.DataSource = dtContent;
+            //        dtCart = (DataTable)gcImport.DataSource;
+            //        luSupplier.EditValue = (dtContent.Rows[0]["MaNCC"]).ToString();
+            //        mmeNote.Text = (dtContent.Rows[0]["GhiChu"]).ToString();
+            //    }
+            //}
         }
         #endregion
 
@@ -95,7 +99,7 @@ namespace QuanLyNhaSach_291021.View.Imports
                                                 left join (select ISBN as dISBN, tg.TenTG as TacGia
 									                       from ChiTietSach as ct join TacGia as tg on ct.MaTG = tg.MaTG 
 									                    ) as cts on sp.ISBN = cts.dISBN
-                                                where sp.HienThi = 1", this.id);
+                                                where sp.HienThi = 1");
             DataTable dtContent = new DataTable();
             dtContent = conn.loadData(query);
             if (dtContent.Rows.Count > 0)
@@ -105,11 +109,15 @@ namespace QuanLyNhaSach_291021.View.Imports
         }
         #endregion
 
-        #region // Init Datatable Cart
+        #region //Init Datatable Cart
         private void initDatatable()
         {
             dtCart = new DataTable();
-            DataColumn dc = new DataColumn("SKU", typeof(String));
+
+            DataColumn dc = new DataColumn("MaPN", typeof(String));
+            dtCart.Columns.Add(dc);
+
+            dc = new DataColumn("SKU", typeof(String));
             dtCart.Columns.Add(dc);
 
             dc = new DataColumn("SanPham", typeof(String));
@@ -126,25 +134,110 @@ namespace QuanLyNhaSach_291021.View.Imports
         }
         #endregion
 
+        #region //Setup Import Grid
+
+        //Create Serial No For GridView
+        private void gvImport_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column == NO)
+            {
+                if (e.RowHandle > -1)
+                {
+                    e.DisplayText = Convert.ToString(e.RowHandle + 1);
+                }
+            }
+        }
+
+        //Setup Text Align For Grid Column
+        private void gvImport_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if (e.Column.Name == "NO")
+            {
+                e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            }
+
+            if (e.Column.Name == "ImportsName")
+            {
+                e.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            }
+        }
+
+        //Setup notify text when grid is nullable data
+        private void gvImport_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            Rectangle emptyGridTextBounds;
+            int offsetFromTop = 10;
+            e.DefaultDraw();
+            Size size = e.Appearance.CalcTextSize(e.Cache, emptyGridText, e.Bounds.Width).ToSize();
+            int x = (e.Bounds.Width - size.Width) / 2;
+            int y = e.Bounds.Y + offsetFromTop;
+            emptyGridTextBounds = new Rectangle(new Point(x, y), size);
+            e.Appearance.DrawString(e.Cache, emptyGridText, emptyGridTextBounds, Brushes.Gray);
+        }
+        #endregion
+
         #region //Validation
         private bool doValidate()
         {
-            return (vali.Validate());
+            //return (vali.Validate());
+            if(luSupplier.Text == String.Empty || dtCart.Rows.Count <= 0 )
+            {
+                return false;
+            }
+            return true;
         }
         #endregion
 
         #region //Save Data
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             if (doValidate())
             {
+                var total = gvImport.Columns["TongTien"].SummaryItem.SummaryValue;
+                String query = String.Format(@"INSERT INTO PhieuNhap(MaPN, MaNCC, MaNV, TongTien, GhiChu, NgayTao) 
+                                                            values ('{0}', '{1}', '{2}', {3}, N'{4}', '{5}')",
+                                                            ImpID,
+                                                            luSupplier.EditValue,
+                                                            Global.EmpId,
+                                                            total,
+                                                            mmeNote.Text,
+                                                            dtNow);
 
+                conn.executeDatabase(query);
+                //Insert Detail
+                dtCart.Columns.Remove("SanPham");
+                dtCart.Columns.Remove("TongTien");
+                conn.executeDataSet("uspInsertImportDetails", dtCart);
+                MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
+                this.Close();
+            }
+            else
+            {
+                MyMessageBox.ShowMessage("Vui Lòng Điền Thông Tin Đủ Và Hợp Lệ!");
             }
         }
 
+        private string InitImportID()
+        {
+            string query = @"select top 1 MaPN from PhieuNhap order by MaPN desc";
+            DataTable dtContent = new DataTable();
+            dtContent = conn.loadData(query);
+            if (dtContent.Rows.Count > 0)
+            {
+                string OldID = (dtContent.Rows[0]["MaPN"]).ToString();
+                if (OldID.Length > 2)
+                {
+                    return Regex.Replace(OldID, "\\d+", m => (int.Parse(m.Value) + 1).ToString(new string('0', m.Value.Length)));
+                }
 
+            }
+            return "";
+        }
         #endregion
 
+        #region //Handle Cart
+        //Add Product into cart
         private void btnAddCart_Click(object sender, EventArgs e)
         {
             String product_id = getID();
@@ -171,11 +264,13 @@ namespace QuanLyNhaSach_291021.View.Imports
             string strSKU = dataRow["SKU"].ToString();
             if (checkExistenceCart(strSKU))
             {
-                dr[0] = strSKU;
-                dr[1] = dataRow["SanPham"].ToString();
-                dr[2] = 1;
-                dr[3] = 0;
-                dr[4] = Convert.ToDecimal(((int)dr[2] * (Decimal)dr[3]));
+                dr[0] = ImpID;
+                dr[1] = strSKU;
+                dr[2] = dataRow["SanPham"].ToString();
+                dr[3] = 1;
+                dr[4] = 100;
+                dr[5] = Convert.ToDecimal(((int)dr[3] * (Decimal)dr[4]));
+                
                 dtCart.Rows.Add(dr);
             }
             else
@@ -213,28 +308,7 @@ namespace QuanLyNhaSach_291021.View.Imports
             return null;
         }
 
-
-        #region //Get Id
-        private string getID()
-        {
-            string ID = "";
-            if (lvProduct.GetRowCellValue(lvProduct.FocusedRowHandle, "SKU") != null)
-            {
-                ID = lvProduct.GetRowCellValue(lvProduct.FocusedRowHandle, "SKU").ToString();
-            }
-            return ID;
-        }
-        #endregion
-
-        #region //Check existence data
-        private bool checkExistenceCart(string strSKU)
-        {
-            //return false if it exists record
-            bool check = !dtCart.AsEnumerable().Any(x => x.Field<string>("SKU") == strSKU);
-            return check;
-        }
-        #endregion
-
+        //Update data of cart
         private void spAmount_EditValueChanged(object sender, EventArgs e)
         {
             string strSKU = "";
@@ -278,6 +352,49 @@ namespace QuanLyNhaSach_291021.View.Imports
             }
             gcImport.DataSource = dtCart;
         }
+
+        //Delete product in cart
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string strSKU = "";
+            if (gvImport.GetRowCellValue(gvImport.FocusedRowHandle, ImpSKU) != null)
+            {
+                strSKU = gvImport.GetRowCellValue(gvImport.FocusedRowHandle, ImpSKU).ToString();
+            }
+            foreach (DataRow dr_update in dtCart.Rows) // search whole table
+            {
+                if (dr_update["SKU"].ToString() == strSKU)
+                {
+                    dr_update.Delete();
+                    break;
+                }
+            }
+            dtCart.AcceptChanges();
+            gcImport.DataSource = dtCart;
+        }
+
+        #endregion
+
+        #region //Get Id
+        private string getID()
+        {
+            string ID = "";
+            if (lvProduct.GetRowCellValue(lvProduct.FocusedRowHandle, "SKU") != null)
+            {
+                ID = lvProduct.GetRowCellValue(lvProduct.FocusedRowHandle, "SKU").ToString();
+            }
+            return ID;
+        }
+        #endregion
+
+        #region //Check existence data
+        private bool checkExistenceCart(string strSKU)
+        {
+            //return false if it exists record
+            bool check = !dtCart.AsEnumerable().Any(x => x.Field<string>("SKU") == strSKU);
+            return check;
+        }
+        #endregion
 
         #region //Clear Value of Control
         private void lbClear_Click(object sender, EventArgs e)

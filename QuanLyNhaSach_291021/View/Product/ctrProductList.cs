@@ -318,7 +318,7 @@ namespace QuanLyNhaSach_291021.View.Product
             //Add datatable if searching value is null, datatable will return "Search data doesn't exist"
             if (txtSearch.EditValue != null)
             {
-                string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\s\']+", "");
+                string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\']+", "").Trim();
                 string field = "";
                 switch (cbbField.Text)
                 {

@@ -14,7 +14,7 @@ namespace QuanLyNhaSach_291021.Controller
         private static Controller.Common func = new Controller.Common();
         //static variable
         public static string EmpName;
-        public static string EmpId;
+        public static string EmpId = "NV000001";
 
         public static bool AuthorityLogin(string account, string password)
         {

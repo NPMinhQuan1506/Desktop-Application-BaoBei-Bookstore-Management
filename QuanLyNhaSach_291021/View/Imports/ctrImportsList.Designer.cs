@@ -93,6 +93,7 @@
             this.btnAdd = new DevExpress.XtraEditors.ButtonEdit();
             this.cbbField = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtSearch = new DevExpress.XtraEditors.TextEdit();
+            this.colProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
@@ -123,6 +124,7 @@
             this.Amount,
             this.BasePrice,
             this.colImportID,
+            this.colProductID,
             this.DetailDelete});
             this.gvDetail.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gvDetail.GridControl = this.gcImports;
@@ -261,7 +263,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnDelete_ButtonClick);
             // 
             // gcImports
             // 
@@ -614,8 +616,6 @@
             this.Edit.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.Edit.OptionsFilter.AllowAutoFilter = false;
             this.Edit.OptionsFilter.AllowFilter = false;
-            this.Edit.Visible = true;
-            this.Edit.VisibleIndex = 8;
             this.Edit.Width = 70;
             // 
             // btnEdit
@@ -640,7 +640,7 @@
             this.Delete.OptionsFilter.AllowAutoFilter = false;
             this.Delete.OptionsFilter.AllowFilter = false;
             this.Delete.Visible = true;
-            this.Delete.VisibleIndex = 9;
+            this.Delete.VisibleIndex = 8;
             this.Delete.Width = 70;
             // 
             // peAvartar
@@ -831,7 +831,8 @@
             "Tất Cả",
             "Mã Phiếu Nhập",
             "Nhân Viên",
-            "Nhà Cung Cấp"});
+            "Nhà Cung Cấp",
+            "Sản Phẩm"});
             this.cbbField.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbbField.Size = new System.Drawing.Size(145, 35);
             this.cbbField.TabIndex = 1;
@@ -859,6 +860,12 @@
             this.txtSearch.Size = new System.Drawing.Size(345, 35);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.EditValueChanged += new System.EventHandler(this.txtSearch_EditValueChanged);
+            // 
+            // colProductID
+            // 
+            this.colProductID.Caption = "SKU";
+            this.colProductID.FieldName = "SKU";
+            this.colProductID.Name = "colProductID";
             // 
             // ctrImportsList
             // 
@@ -933,5 +940,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Amount;
         private DevExpress.XtraGrid.Columns.GridColumn colImportID;
         private DevExpress.XtraGrid.Columns.GridColumn DetailDelete;
+        private DevExpress.XtraGrid.Columns.GridColumn colProductID;
     }
 }

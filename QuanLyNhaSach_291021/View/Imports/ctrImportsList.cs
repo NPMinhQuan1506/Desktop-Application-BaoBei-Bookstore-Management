@@ -15,6 +15,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Office.Utils;
 using DevExpress.XtraPrinting;
 using System.Diagnostics;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace QuanLyNhaSach_291021.View.Imports
 {
@@ -88,7 +89,7 @@ namespace QuanLyNhaSach_291021.View.Imports
             }
         }
 
-
+        //Setup notify text when grid is nullable data
         private void gvImports_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
         {
             Rectangle emptyGridTextBounds;
@@ -201,26 +202,26 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         private void update()
         {
-            if (getID(gvImports, "MaPN") != "")
-            {
-                string ID = getID(gvImports, "MaPN");
-                frmImportsDetail frm = new frmImportsDetail(ID);
-                frm.ShowDialog();
-                loadData();
-            }
+            //if (getID(gvImports, "MaPN") != "")
+            //{
+            //    string ID = getID(gvImports, "MaPN");
+            //    frmImportsDetail frm = new frmImportsDetail(ID);
+            //    frm.ShowDialog();
+            //    loadData();
+            //}
         }
 
         #endregion
 
         #region //Delete
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (gvImports.FocusedColumn.Name != "Delete")
+            if (gvImports.FocusedColumn.Name == "Delete")
             {
-                if (getID(gvImports, "MaPN") != "")
+                if (getID("MaPN") != "")
                 {
-                    string ID = getID(gvImports, "MaPN");
+                    string ID = getID("MaPN");
                     MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
                     DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Phiếu Nhập Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
@@ -234,10 +235,11 @@ namespace QuanLyNhaSach_291021.View.Imports
                     }
                 }
             }
-            else if (gvDetail.FocusedColumn.Name != "DetailDelete")
+            else if (gvDetail.FocusedColumn.Name == "DetailDelete")
             {
-                string ImportsID = getID(gvDetail, "MaPN");
-                string SKU = getID(gvDetail, "SKU");
+                string ImportsID = getID("MaPN");
+                string SKU = getID("SKU");
+
                 MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
                 DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Chi Tiết Phiếu Nhập Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
@@ -250,21 +252,20 @@ namespace QuanLyNhaSach_291021.View.Imports
                     MyMessageBox.ShowMessage("Dữ liệu vẫn tồn tại!");
                 }
             }
-          
         }
 
         private void delete(string ID)
         {
-                string query = String.Format("Update ChiTietPhieuNhap Set HienThi = 0 Where MaPN = '{0}';", ID);
-                query += String.Format("Update PhieuNhap Set HienThi = 0 Where MaPN = '{0}'; ", ID);
-                conn.executeDatabase(query);
-                MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
-                loadData();
+            string query_del = String.Format("Update ChiTietPhieuNhap Set HienThi = 0 Where MaPN = '{0}';", ID);
+            query_del += String.Format("Update PhieuNhap Set HienThi = 0 Where MaPN = '{0}'; ", ID);
+            conn.executeDatabase(query_del);
+            MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
+            loadData();
         }
         private void delete(string ImportsID, string SKU)
         {
-            string query = String.Format("Update ChiTietPhieuNhap Set HienThi = 0 Where MaPN = '{0}' and SKU = '{1}';", ImportsID, SKU);
-            conn.executeDatabase(query);
+            string query_del = String.Format("Update ChiTietPhieuNhap Set HienThi = 0 Where MaPN = '{0}' and SKU = '{1}';", ImportsID, SKU);
+            conn.executeDatabase(query_del);
             MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
             loadData();
         }
@@ -288,12 +289,13 @@ namespace QuanLyNhaSach_291021.View.Imports
         #endregion
 
         #region //Get Id
-        private string getID(GridView gvTemp, string fieldName)
+        private string getID(string fieldName)
         {
             string ID = "";
-            if(gvTemp.GetRowCellValue(gvTemp.FocusedRowHandle, fieldName) != null)
+            var view = gcImports.FocusedView as GridView;
+            if (view.GetFocusedRowCellValue(fieldName) != null)
             {
-                ID = gvTemp.GetRowCellValue(gvTemp.FocusedRowHandle, fieldName).ToString();
+                ID = view.GetFocusedRowCellValue(fieldName).ToString();
             }
             return ID;
         }
@@ -320,7 +322,7 @@ namespace QuanLyNhaSach_291021.View.Imports
             //Add datatable if searching value is null, datatable will return "Search data doesn't exist"
             if (txtSearch.EditValue != null)
             {
-                string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\s\']+", "");
+                string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\']+", "").Trim();
                 string field = func.removeUnicode((cbbField.Text).Replace("Phiếu Nhập", "PN"))
                                                                   .Replace(" ", "");
                 if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
@@ -328,15 +330,31 @@ namespace QuanLyNhaSach_291021.View.Imports
                     int index = cbbField.SelectedIndex;
                     if (index != 0)
                     {
-                        string querySearch = String.Format(@"Select * from ({0}) as t where t.{1} like N'%{2}%'", query, field, searchInfo);
+                        string querySearch = "";
+                        if (field == "SanPham")
+                        {
+                            querySearch = String.Format(@"Select * from ({0}) as t where t.MaPN In  (select MaPN from ChiTietPhieuNhap as ct
+																			                                inner join SanPham as sp on ct.SKU = sp.SKU
+																			                                where ct.HienThi = 1 and TenSP like N'%{1}%')",
+                                                                                                             query, searchInfo);
+                        }
+                        else
+                        {
+                            querySearch = String.Format(@"Select * from ({0}) as t where t.{1} like N'%{2}%'", query, field, searchInfo);
+                        }
+
                         loadData(querySearch);
                     }
                     else
                     {
                         String querySearch = String.Format(@"Select * from ({0}) as t where CONCAT('',  
-                                                                    MaPN, 
-                                                                    t.NhaCungCap,
-                                                                    t.NhanVien) like N'%{1}%'", query, searchInfo);
+                                                                                                    MaPN, 
+                                                                                                    t.NhaCungCap,
+                                                                                                    t.NhanVien) like N'%{1}%' 
+                                                                                             or t.MaPN In  (select MaPN from ChiTietPhieuNhap as ct
+																			                                inner join SanPham as sp on ct.SKU = sp.SKU
+																			                                where ct.HienThi = 1 and TenSP like N'%{1}%')",
+                                                                                                             query, searchInfo);
                         loadData(querySearch);
                     }
                 }

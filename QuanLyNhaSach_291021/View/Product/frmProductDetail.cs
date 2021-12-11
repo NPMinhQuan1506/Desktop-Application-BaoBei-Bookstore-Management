@@ -121,6 +121,7 @@ namespace QuanLyNhaSach_291021.View.Product
         private bool doValidate()
         {
             vali.SetValidationRule(txtSKU, empty_ContainRule);
+            vali.SetValidationRule(txtProductName, validE_ContainRule);
             return (vali.Validate());
         }
         #endregion
@@ -159,7 +160,7 @@ namespace QuanLyNhaSach_291021.View.Product
 
                         conn.executeDatabase(query);
                         //Insert Detail
-                        query = String.Format(@"INSERT INTO ChiTietSach(ISBN, MaNXB, MaTG, NamXuatBanDauTien, NamXuatBanMoiNhat, SoTrang) 
+                        String query1 = String.Format(@"INSERT INTO ChiTietSach(ISBN, MaNXB, MaTG, NamXuatBanDauTien, NamXuatBanMoiNhat, SoTrang) 
                                                 values ('{0}', {1}, {2}, '{3}', '{4}', {5})",
                                 txtSKU.Text,
                                 luPublisher.EditValue,
@@ -167,7 +168,7 @@ namespace QuanLyNhaSach_291021.View.Product
                                 func.DateTimeToString((DateTime)dteFirstYearPublication.EditValue),
                                 func.DateTimeToString((DateTime)dteLastestYearPublication.EditValue),
                                 spPrice.EditValue);
-
+                        conn.executeDatabase(query1);
                         MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
                         this.Close();
                     }
@@ -210,7 +211,7 @@ namespace QuanLyNhaSach_291021.View.Product
                                                 this.id);
                     conn.executeDatabase(query);
                     //Update Detail
-                    query = String.Format(@"UPDATE ChiTietSach Set MaNXB = {0}, 
+                    String query1 = String.Format(@"UPDATE ChiTietSach Set MaNXB = {0}, 
                                                                    MaTG = {1}, 
                                                                    NamXuatBanDauTien = '{2}', 
                                                                    NamXuatBanMoiNhat = '{3}', 
@@ -222,6 +223,8 @@ namespace QuanLyNhaSach_291021.View.Product
                                func.DateTimeToString((DateTime)dteLastestYearPublication.EditValue),
                                spPrice.EditValue,
                                this.id);
+
+                    conn.executeDatabase(query1);
                     MyMessageBox.ShowMessage("Sửa Dữ Liệu Thành Công!");
                     this.Close();
                 }

@@ -260,8 +260,8 @@
             this.luSupplier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.luSupplier.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaNXB", "MaNXB", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNXB", "Nhà Xuất Bản")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaNCC", "MaNCC", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNCC", "Nhà Cung Cấp")});
             this.luSupplier.Properties.NullText = "";
             this.luSupplier.Size = new System.Drawing.Size(303, 54);
             this.luSupplier.TabIndex = 32;
@@ -354,6 +354,9 @@
             this.gvImport.OptionsView.ShowFooter = true;
             this.gvImport.OptionsView.ShowGroupPanel = false;
             this.gvImport.OptionsView.ShowIndicator = false;
+            this.gvImport.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvImport_CustomDrawCell);
+            this.gvImport.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvImport_RowCellStyle);
+            this.gvImport.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gvImport_CustomDrawEmptyForeground);
             // 
             // NO
             // 
@@ -467,6 +470,11 @@
             0,
             0,
             0});
+            this.spAmount.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.spAmount.Name = "spAmount";
             this.spAmount.EditValueChanged += new System.EventHandler(this.spAmount_EditValueChanged);
             // 
@@ -516,6 +524,11 @@
             this.spPrice.MaxValue = new decimal(new int[] {
             -1530494977,
             232830,
+            0,
+            0});
+            this.spPrice.MinValue = new decimal(new int[] {
+            100,
+            0,
             0,
             0});
             this.spPrice.Name = "spPrice";
@@ -579,6 +592,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // ImpSKU
             // 
@@ -1007,7 +1021,7 @@
             this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "frmImportsDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Chi Tiết Sản Phẩm";
+            this.Text = "Chi Tiết Phiếu Nhập";
             this.Shown += new System.EventHandler(this.frmImportsDetail_Shown);
             this.Resize += new System.EventHandler(this.frmImportsDetail_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).EndInit();
