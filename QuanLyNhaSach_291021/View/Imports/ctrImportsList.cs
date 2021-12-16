@@ -35,19 +35,19 @@ namespace QuanLyNhaSach_291021.View.Imports
         DataTable dtDetail = new DataTable();
         //defind generate instance 
 
-        private static ctrImportsList _instance;
+        //private static ctrImportsList _instance;
 
-        public static ctrImportsList instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new ctrImportsList();
-                }
-                return _instance;
-            }
-        }
+        //public static ctrImportsList instance
+        //{
+        //    get
+        //    {
+        //        if (_instance == null)
+        //        {
+        //            _instance = new ctrImportsList();
+        //        }
+        //        return _instance;
+        //    }
+        //}
         #endregion
 
         #region //Contructor

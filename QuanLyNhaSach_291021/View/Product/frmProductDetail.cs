@@ -26,7 +26,6 @@ namespace QuanLyNhaSach_291021.View.Product
         Controller.Validation.Valid_Contain valid_ContainRule = new Controller.Validation.Valid_Contain();
         //defind variable
         String id = "", dtNow = "";
-        bool flag = false;
         //Move Panel
         Boolean dragging = false;
         Point startPoint = new Point(0, 0);

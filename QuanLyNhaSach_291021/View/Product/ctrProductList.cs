@@ -34,19 +34,19 @@ namespace QuanLyNhaSach_291021.View.Product
         DataTable dtDetail = new DataTable();
         //defind generate instance 
 
-        private static ctrProductList _instance;
+        //private static ctrProductList _instance;
 
-        public static ctrProductList instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new ctrProductList();
-                }
-                return _instance;
-            }
-        }
+        //public static ctrProductList instance
+        //{
+        //    get
+        //    {
+        //        if (_instance == null)
+        //        {
+        //            _instance = new ctrProductList();
+        //        }
+        //        return _instance;
+        //    }
+        //}
         #endregion
 
         #region //Contructor

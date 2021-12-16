@@ -106,6 +106,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -211,6 +212,12 @@
     <Compile Include="View\Publisher\frmPublisherDetail.Designer.cs">
       <DependentUpon>frmPublisherDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Stock\ctrStockStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Stock\ctrStockStatistics.Designer.cs">
+      <DependentUpon>ctrStockStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Supplier\ctrSupplierList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -275,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Publisher\frmPublisherDetail.resx">
       <DependentUpon>frmPublisherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Stock\ctrStockStatistics.resx">
+      <DependentUpon>ctrStockStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Supplier\ctrSupplierList.resx">
       <DependentUpon>ctrSupplierList.cs</DependentUpon>

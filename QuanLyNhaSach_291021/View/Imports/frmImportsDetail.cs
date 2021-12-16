@@ -180,7 +180,7 @@ namespace QuanLyNhaSach_291021.View.Imports
         private bool doValidate()
         {
             //return (vali.Validate());
-            if(luSupplier.Text == String.Empty || dtCart.Rows.Count <= 0 )
+            if (luSupplier.Text == String.Empty || dtCart.Rows.Count <= 0)
             {
                 return false;
             }
@@ -209,6 +209,15 @@ namespace QuanLyNhaSach_291021.View.Imports
                 dtCart.Columns.Remove("SanPham");
                 dtCart.Columns.Remove("TongTien");
                 conn.executeDataSet("uspInsertImportDetails", dtCart);
+
+                //update stocknumber
+                foreach (DataRow dr_update in dtCart.Rows) // search whole table
+                {
+                    String query1 = String.Format(@"UPDATE SanPham SET SoLuongTon = SoLuongTon - {0} WHERE SKU = '{1}'",
+                                                                (int)dr_update["SoLuong"], dr_update["SKU"].ToString());
+                    conn.executeDatabase(query1);
+
+                }
                 MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
                 this.Close();
             }
@@ -270,7 +279,7 @@ namespace QuanLyNhaSach_291021.View.Imports
                 dr[3] = 1;
                 dr[4] = 100;
                 dr[5] = Convert.ToDecimal(((int)dr[3] * (Decimal)dr[4]));
-                
+
                 dtCart.Rows.Add(dr);
             }
             else

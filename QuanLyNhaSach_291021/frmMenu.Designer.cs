@@ -39,13 +39,16 @@
             this.acePublisher = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceCategories = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceProduct = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.acgInventory = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceSupplier = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceStock = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.acgSale = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceOrder = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceDiscount = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceStatistical = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acgEmployee = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceDepartment = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceEmployee = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -68,9 +71,6 @@
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
-            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
-            this.aceStatistical = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.acMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnInfo)).BeginInit();
@@ -248,12 +248,17 @@
             this.aceProduct.Text = "Danh Sách Sản Phẩm";
             this.aceProduct.Click += new System.EventHandler(this.aceProduct_Click);
             // 
+            // accordionControlSeparator2
+            // 
+            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
+            // 
             // acgInventory
             // 
             this.acgInventory.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceSupplier,
             this.aceImport,
             this.aceStock});
+            this.acgInventory.Expanded = true;
             this.acgInventory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgInventory.ImageOptions.SvgImage")));
             this.acgInventory.Name = "acgInventory";
             this.acgInventory.Text = "Quản Lý Kho";
@@ -318,12 +323,17 @@
             this.aceStock.Text = "Thống Kê Hàng Tồn";
             this.aceStock.Click += new System.EventHandler(this.aceStock_Click);
             // 
+            // accordionControlSeparator1
+            // 
+            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
+            // 
             // acgSale
             // 
             this.acgSale.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceOrder,
             this.aceDiscount,
             this.aceStatistical});
+            this.acgSale.Expanded = true;
             this.acgSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgSale.ImageOptions.SvgImage")));
             this.acgSale.Name = "acgSale";
             this.acgSale.Text = "Quản Lý Bán Hàng";
@@ -366,6 +376,25 @@
             this.aceDiscount.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDiscount.Text = "Danh Sách Khuyến Mãi";
             // 
+            // aceStatistical
+            // 
+            this.aceStatistical.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.aceStatistical.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.aceStatistical.Appearance.Hovered.Options.UseFont = true;
+            this.aceStatistical.Appearance.Hovered.Options.UseForeColor = true;
+            this.aceStatistical.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.aceStatistical.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.aceStatistical.Appearance.Normal.Options.UseFont = true;
+            this.aceStatistical.Appearance.Normal.Options.UseForeColor = true;
+            this.aceStatistical.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.aceStatistical.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
+            this.aceStatistical.Appearance.Pressed.Options.UseFont = true;
+            this.aceStatistical.Appearance.Pressed.Options.UseForeColor = true;
+            this.aceStatistical.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceStatistical.ImageOptions.SvgImage")));
+            this.aceStatistical.Name = "aceStatistical";
+            this.aceStatistical.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceStatistical.Text = "Thống Kê Doanh Thu";
+            // 
             // acgEmployee
             // 
             this.acgEmployee.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
@@ -398,6 +427,7 @@
             this.acgPermission.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.acePermission,
             this.aceDentralization});
+            this.acgPermission.Expanded = true;
             this.acgPermission.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgPermission.ImageOptions.SvgImage")));
             this.acgPermission.Name = "acgPermission";
             this.acgPermission.Text = "Quản Lý Phân Quyền";
@@ -613,33 +643,6 @@
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement3.Text = "Thống Kê Hàng Tồn";
-            // 
-            // accordionControlSeparator1
-            // 
-            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
-            // 
-            // accordionControlSeparator2
-            // 
-            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
-            // 
-            // aceStatistical
-            // 
-            this.aceStatistical.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceStatistical.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceStatistical.Appearance.Hovered.Options.UseFont = true;
-            this.aceStatistical.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceStatistical.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceStatistical.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceStatistical.Appearance.Normal.Options.UseFont = true;
-            this.aceStatistical.Appearance.Normal.Options.UseForeColor = true;
-            this.aceStatistical.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceStatistical.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceStatistical.Appearance.Pressed.Options.UseFont = true;
-            this.aceStatistical.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceStatistical.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceStatistical.ImageOptions.SvgImage")));
-            this.aceStatistical.Name = "aceStatistical";
-            this.aceStatistical.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceStatistical.Text = "Thống Kê Doanh Thu";
             // 
             // frmMenu
             // 
