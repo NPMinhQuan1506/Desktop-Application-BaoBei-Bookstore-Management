@@ -123,6 +123,12 @@ namespace QuanLyNhaSach_291021.View.Product
             vali.SetValidationRule(txtProductName, validE_ContainRule);
             return (vali.Validate());
         }
+
+
+        private void dteFirstYearPublication_EditValueChanged(object sender, EventArgs e)
+        {
+            dteLastestYearPublication.Properties.MinValue = (DateTime)dteFirstYearPublication.EditValue;
+        }
         #endregion
 
         #region //Save Data

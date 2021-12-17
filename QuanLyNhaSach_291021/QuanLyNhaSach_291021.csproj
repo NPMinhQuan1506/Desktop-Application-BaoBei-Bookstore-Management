@@ -163,6 +163,18 @@
     <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Discount\ctrDiscountList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Discount\ctrDiscountList.Designer.cs">
+      <DependentUpon>ctrDiscountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Discount\frmDiscountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Discount\frmDiscountDetail.Designer.cs">
+      <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Imports\ctrImportsList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -259,6 +271,12 @@
     <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Discount\ctrDiscountList.resx">
+      <DependentUpon>ctrDiscountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Discount\frmDiscountDetail.resx">
+      <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Imports\ctrImportsList.resx">
       <DependentUpon>ctrImportsList.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,5 +333,6 @@
   <ItemGroup>
     <None Include="Resources\Question.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

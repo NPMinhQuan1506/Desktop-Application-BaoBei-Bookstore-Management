@@ -775,6 +775,7 @@
             this.dteFirstYearPublication.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dteFirstYearPublication.Size = new System.Drawing.Size(299, 38);
             this.dteFirstYearPublication.TabIndex = 51;
+            this.dteFirstYearPublication.EditValueChanged += new System.EventHandler(this.dteFirstYearPublication_EditValueChanged);
             // 
             // dteLastestYearPublication
             // 

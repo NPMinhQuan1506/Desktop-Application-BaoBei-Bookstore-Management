@@ -157,11 +157,6 @@ namespace QuanLyNhaSach_291021.View.Stock
         }
         #endregion
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            filterStatistic();
-        }
-
         #region //Filter
         private void filterStatistic()
         {
@@ -195,12 +190,19 @@ namespace QuanLyNhaSach_291021.View.Stock
         {
             filterStatistic();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            filterStatistic();
+        }
         #endregion
 
+        #region //Load Data
         private void ctrStockStatistics_Load(object sender, EventArgs e)
         {
             loadChart();
         }
+
         private void loadChart()
         {
             DateTime dtNow = DateTime.Now;
@@ -288,5 +290,13 @@ namespace QuanLyNhaSach_291021.View.Stock
             }
             return null;
         }
+        #endregion
+
+        #region //Setup min value date edit
+        private void dteFrom_EditValueChanged(object sender, EventArgs e)
+        {
+            dteTo.Properties.MinValue = (DateTime)dteFrom.EditValue;
+        }
+        #endregion
     }
 }

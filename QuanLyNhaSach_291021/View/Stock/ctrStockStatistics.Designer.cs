@@ -643,6 +643,7 @@
             this.dteFrom.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dteFrom.Size = new System.Drawing.Size(149, 33);
             this.dteFrom.TabIndex = 61;
+            this.dteFrom.EditValueChanged += new System.EventHandler(this.dteFrom_EditValueChanged);
             // 
             // ctrStockStatistics
             // 

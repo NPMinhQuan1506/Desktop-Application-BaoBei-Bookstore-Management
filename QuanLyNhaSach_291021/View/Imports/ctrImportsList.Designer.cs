@@ -66,6 +66,7 @@
             this.BasePrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.colImportID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DetailDelete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gcImports = new DevExpress.XtraGrid.GridControl();
@@ -93,7 +94,6 @@
             this.btnAdd = new DevExpress.XtraEditors.ButtonEdit();
             this.cbbField = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtSearch = new DevExpress.XtraEditors.TextEdit();
-            this.colProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
@@ -238,6 +238,12 @@
             this.colImportID.Caption = "MaPN";
             this.colImportID.FieldName = "MaPN";
             this.colImportID.Name = "colImportID";
+            // 
+            // colProductID
+            // 
+            this.colProductID.Caption = "SKU";
+            this.colProductID.FieldName = "SKU";
+            this.colProductID.Name = "colProductID";
             // 
             // DetailDelete
             // 
@@ -860,12 +866,6 @@
             this.txtSearch.Size = new System.Drawing.Size(345, 35);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.EditValueChanged += new System.EventHandler(this.txtSearch_EditValueChanged);
-            // 
-            // colProductID
-            // 
-            this.colProductID.Caption = "SKU";
-            this.colProductID.FieldName = "SKU";
-            this.colProductID.Name = "colProductID";
             // 
             // ctrImportsList
             // 

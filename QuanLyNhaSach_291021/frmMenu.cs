@@ -164,5 +164,21 @@ namespace QuanLyNhaSach_291021
         {
             this.lbCurrentListIcon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject(namePage+".ImageOptions.SvgImage")));
         }
+
+        private void aceDiscount_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceDiscount");
+            pnContainer.Controls.Clear();
+            View.Discount.ctrDiscountList ctr = new View.Discount.ctrDiscountList();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
+            //if (!pnContainer.Controls.Contains(View.Discount.ctrDiscountList.instance))
+            //{
+            //    pnContainer.Controls.Add(View.Discount.ctrDiscountList.instance);
+            //    View.Discount.ctrDiscountList.instance.Dock = DockStyle.Fill;
+            //    View.Discount.ctrDiscountList.instance.BringToFront();
+            //}
+            //View.Discount.ctrDiscountList.instance.BringToFront();
+        }
     }
 }

@@ -375,6 +375,7 @@
             this.aceDiscount.Name = "aceDiscount";
             this.aceDiscount.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDiscount.Text = "Danh Sách Khuyến Mãi";
+            this.aceDiscount.Click += new System.EventHandler(this.aceDiscount_Click);
             // 
             // aceStatistical
             // 
