@@ -200,6 +200,18 @@
       <DependentUpon>frmMessageYesNo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Notification\MyMessageBox.cs" />
+    <Compile Include="View\Order\ctrOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Order\ctrOrderList.Designer.cs">
+      <DependentUpon>ctrOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Order\frmOrderDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Order\frmOrderDetail.Designer.cs">
+      <DependentUpon>frmOrderDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Product\ctrProductList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -289,6 +301,12 @@
     <EmbeddedResource Include="View\Notification\frmMessageYesNo.resx">
       <DependentUpon>frmMessageYesNo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\ctrOrderList.resx">
+      <DependentUpon>ctrOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\frmOrderDetail.resx">
+      <DependentUpon>frmOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Product\ctrProductList.resx">
       <DependentUpon>ctrProductList.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +351,9 @@
   <ItemGroup>
     <None Include="Resources\Question.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\default_customer.png" />
+    <Content Include="Resources\default_product.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

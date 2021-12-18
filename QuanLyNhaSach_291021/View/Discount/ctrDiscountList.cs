@@ -265,6 +265,7 @@ namespace QuanLyNhaSach_291021.View.Discount
             MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
             loadData();
         }
+
         private void delete(string DiscountID, string SKU)
         {
             string query_del = String.Format("Update ChiTietKhuyenMai Set HienThi = 0 Where MaKM = '{0}' and SKU = '{1}';", DiscountID, SKU);
@@ -280,21 +281,6 @@ namespace QuanLyNhaSach_291021.View.Discount
             dt = conn.loadData(query);
             return (int)(dt.Rows[0]["count"]);
         }
-        //private bool checkConstraints(string ID)
-        //{
-        //    string query = String.Format(@"select count(hd.MaKM) as count1, count(pn.MaKM) as count2, count(km.MaKM) as count3 
-        //                                            from ChiTietHoaDon as hd, 
-        //                                                 ChiTietKhuyenMai as pn, 
-        //                                                 ChiTietKhuyenMai as km
-        //                                    where hd.MaKM = '{0}' or pn.MaKM = '{0}' or km.MaKM = '{0}'", ID);
-        //    DataTable dt = new DataTable();
-        //    dt = conn.loadData(query);
-        //    if ((int)(dt.Rows[0]["count1"]) > 0 || (int)(dt.Rows[0]["count2"]) > 0 || (int)(dt.Rows[0]["count3"]) > 0)
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
         #endregion
 
         #region //Get Id

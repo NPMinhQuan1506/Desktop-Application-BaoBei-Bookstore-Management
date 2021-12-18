@@ -81,6 +81,20 @@ namespace QuanLyNhaSach_291021.Controller
             return pic;
         }
 
+        public static bool Operator (string logic, decimal x, decimal y)
+        {
+            switch (logic)
+            {
+                case ">": return x > y;
+                case "<": return x < y;
+                case "==": return x == y;
+                case ">=": return x >= y;
+                case "<=": return x >= y;
+                case "!=": return x >= y;
+                default: throw new Exception("invalid logic");
+            }
+        }
+
         #region //Code create placeholder Control
         public void createPlaceHolderControl(Control control, string placeholder)
         {

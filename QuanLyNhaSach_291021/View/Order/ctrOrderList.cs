@@ -17,9 +17,9 @@ using DevExpress.XtraPrinting;
 using System.Diagnostics;
 using DevExpress.XtraGrid.Views.Base;
 
-namespace QuanLyNhaSach_291021.View.Imports
+namespace QuanLyNhaSach_291021.View.Order
 {
-    public partial class ctrImportsList : DevExpress.XtraEditors.XtraUserControl
+    public partial class ctrOrderList : DevExpress.XtraEditors.XtraUserControl
     {
         #region //Define Class and Variable
 
@@ -35,15 +35,15 @@ namespace QuanLyNhaSach_291021.View.Imports
         DataTable dtDetail = new DataTable();
         //defind generate instance 
 
-        //private static ctrImportsList _instance;
+        //private static ctrOrderList _instance;
 
-        //public static ctrImportsList instance
+        //public static ctrOrderList instance
         //{
         //    get
         //    {
         //        if (_instance == null)
         //        {
-        //            _instance = new ctrImportsList();
+        //            _instance = new ctrOrderList();
         //        }
         //        return _instance;
         //    }
@@ -52,7 +52,7 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         #region //Contructor
 
-        public ctrImportsList()
+        public ctrOrderList()
         {
             InitializeComponent();
 
@@ -64,7 +64,7 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         #region //Setup GridView
         //Create Serial No For GridView
-        private void gvImports_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        private void gvOrder_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             if (e.Column == NO)
             {
@@ -76,21 +76,21 @@ namespace QuanLyNhaSach_291021.View.Imports
         }
 
         //Setup Text Align For Grid Column
-        private void gvImports_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        private void gvOrder_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             if (e.Column.Name == "NO")
             {
                 e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             }
 
-            if (e.Column.Name == "ImportsName")
+            if (e.Column.Name == "OrderName")
             {
                 e.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             }
         }
 
         //Setup notify text when grid is nullable data
-        private void gvImports_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        private void gvOrder_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
         {
             Rectangle emptyGridTextBounds;
             int offsetFromTop = 10;
@@ -106,7 +106,7 @@ namespace QuanLyNhaSach_291021.View.Imports
         #region //Create
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmImportsDetail frm = new frmImportsDetail();
+            frmOrderDetail frm = new frmOrderDetail();
             frm.ShowDialog();
             loadData();
         }
@@ -114,73 +114,73 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         #region //Read
 
-        private void gcImports_Load(object sender, EventArgs e)
+        private void gcOrder_Load(object sender, EventArgs e)
         {
             loadData();
-            gvImports.DataController.AllowIEnumerableDetails = true;
+            gvOrder.DataController.AllowIEnumerableDetails = true;
         }
 
         private void loadData()
         {
             //loadData Master
-            query = @"Select pn.MaPN, ncc.TenNCC as NhaCungCap, nv.TenNV as NhanVien, pn.TongTien, pn.GhiChu, pn.NgayTao, pn.NgayCapNhat
-                            from PhieuNhap as pn
-                            inner join NhaCungCap as ncc on pn.MaNCC = ncc.MaNCC
+            query = @"Select pn.MaHD, KH.TenKH as KhachHang, nv.TenNV as NhanVien, pn.TongTien, GiamGia, pn.GhiChu, pn.NgayTao, pn.NgayCapNhat
+                            from HoaDon as pn
+                            inner join KhachHang as KH on pn.MaKH = KH.MaKH
                             inner join NhanVien as nv on pn.MaNV = nv.MaNV
                             where pn.HienThi = 1";
 
             dtMaster = conn.loadData(query + "order by pn.NgayTao ASC");
             //loadDataDetail
-            string query1 = @"select ct.MaPN, sp.TenSP as SanPham, ct.SoLuong, ct.GiaNhap, ct.SKU from ChiTietPhieuNhap as ct
+            string query1 = @"select ct.MaHD, sp.TenSP as SanPham, ct.SoLuong, ct.GiaBan, GiamGia, ct.SKU from ChiTietHoaDon as ct
                                     inner join SanPham as sp on ct.SKU = sp.SKU
                                     where ct.HienThi = 1";
             dtDetail = conn.loadData(query1);
-            gcImports.DataSource = dtMaster;
+            gcOrder.DataSource = dtMaster;
         }
 
         private void loadData(string _query)
         {
             DataTable dtContent = new DataTable();
             dtContent = conn.loadData(_query);
-            gcImports.DataSource = dtContent;
+            gcOrder.DataSource = dtContent;
         }
 
         // If Master don't have Detail, a plus is enable
-        private void gvImports_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
+        private void gvOrder_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
         {
-            if (gvImports.GetRowCellValue(e.RowHandle, ImportID) != null)
+            if (gvOrder.GetRowCellValue(e.RowHandle, OrderID) != null)
             {
-                string ID = gvImports.GetRowCellValue(e.RowHandle, ImportID).ToString();
-                e.IsEmpty = !dtDetail.AsEnumerable().Any(x => x.Field<string>("MaPN") == ID);
+                string ID = gvOrder.GetRowCellValue(e.RowHandle, OrderID).ToString();
+                e.IsEmpty = !dtDetail.AsEnumerable().Any(x => x.Field<string>("MaHD") == ID);
             }
         }
 
         //LoadData Detail
-        private void gvImports_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        private void gvOrder_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
-            if (gvImports.GetRowCellValue(e.RowHandle, ImportID) != null)
+            if (gvOrder.GetRowCellValue(e.RowHandle, OrderID) != null)
             {
-                string ID = gvImports.GetRowCellValue(e.RowHandle, ImportID).ToString();
+                string ID = gvOrder.GetRowCellValue(e.RowHandle, OrderID).ToString();
                 e.ChildList = GetBatchFromItem(ID);
-                gvDetail.ViewCaption = "Chi Tiết Phiếu Nhập " + ID;
+                gvDetail.ViewCaption = "Chi Tiết Hóa Đơn " + ID;
             }
         }
 
         DataView GetBatchFromItem(string ID)
         {
             DataView dv = new DataView(dtDetail);
-            dv.RowFilter = String.Format(@"[MaPN] = '{0}'", ID);
+            dv.RowFilter = String.Format(@"[MaHD] = '{0}'", ID);
             return dv;
         }
 
         //Set 1: Detail
-        private void gvImports_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
+        private void gvOrder_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
         {
             e.RelationCount = 1;
         }
 
         //Set Relationship
-        private void gvImports_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
+        private void gvOrder_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
         {
             e.RelationName = "Detail";
         }
@@ -192,9 +192,9 @@ namespace QuanLyNhaSach_291021.View.Imports
             update();
         }
 
-        private void gvImports_DoubleClick(object sender, EventArgs e)
+        private void gvOrder_DoubleClick(object sender, EventArgs e)
         {
-            if (gvImports.FocusedColumn.Name != "NO")
+            if (gvOrder.FocusedColumn.Name != "NO")
             {
                 update();
             }
@@ -202,10 +202,10 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         private void update()
         {
-            //if (getID(gvImports, "MaPN") != "")
+            //if (getID(gvOrder, "MaHD") != "")
             //{
-            //    string ID = getID(gvImports, "MaPN");
-            //    frmImportsDetail frm = new frmImportsDetail(ID);
+            //    string ID = getID(gvOrder, "MaHD");
+            //    frmOrderDetail frm = new frmOrderDetail(ID);
             //    frm.ShowDialog();
             //    loadData();
             //}
@@ -217,13 +217,13 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         private void btnDelete_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (gvImports.FocusedColumn.Name == "Delete")
+            if (gvOrder.FocusedColumn.Name == "Delete")
             {
-                if (getID("MaPN") != "")
+                if (getID("MaHD") != "")
                 {
-                    string ID = getID("MaPN");
+                    string ID = getID("MaHD");
                     MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-                    DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Phiếu Nhập Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+                    DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Hóa Đơn Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
                     if (Result == DialogResult.Yes)
                     {
@@ -237,21 +237,21 @@ namespace QuanLyNhaSach_291021.View.Imports
             }
             else if (gvDetail.FocusedColumn.Name == "DetailDelete")
             {
-                string ImportsID = getID("MaPN");
+                string OrderID = getID("MaHD");
                 string SKU = getID("SKU");
 
                 MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-                DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Chi Tiết Phiếu Nhập Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+                DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Chắc Xóa Chi Tiết Hóa Đơn Này Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
 
                 if (Result == DialogResult.Yes)
                 {
-                    if (checkConstraints(ImportsID) > 1)
+                    if (checkConstraints(OrderID) > 1)
                     {
-                        delete(ImportsID, SKU);
+                        delete(OrderID, SKU);
                     }
-                    else if (checkConstraints(ImportsID) == 1)
+                    else if (checkConstraints(OrderID) == 1)
                     {
-                        delete(ImportsID);
+                        delete(OrderID);
                     }
                 }
                 else if (Result == DialogResult.No)
@@ -263,16 +263,15 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         private void delete(string ID)
         {
-            string query_del = String.Format("Update ChiTietPhieuNhap Set HienThi = 0 Where MaPN = '{0}';", ID);
-            query_del += String.Format("Update PhieuNhap Set HienThi = 0 Where MaPN = '{0}'; ", ID);
+            string query_del = String.Format("Update ChiTietHoaDon Set HienThi = 0 Where MaHD = '{0}';", ID);
+            query_del += String.Format("Update HoaDon Set HienThi = 0 Where MaHD = '{0}'; ", ID);
             conn.executeDatabase(query_del);
             MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
             loadData();
         }
-
-        private void delete(string ImportsID, string SKU)
+        private void delete(string OrderID, string SKU)
         {
-            string query_del = String.Format("Update ChiTietPhieuNhap Set HienThi = 0 Where MaPN = '{0}' and SKU = '{1}';", ImportsID, SKU);
+            string query_del = String.Format("Update ChiTietHoaDon Set HienThi = 0 Where MaHD = '{0}' and SKU = '{1}';", OrderID, SKU);
             conn.executeDatabase(query_del);
             MyMessageBox.ShowMessage("Xóa Dữ Liệu Thành Công!");
             loadData();
@@ -280,7 +279,7 @@ namespace QuanLyNhaSach_291021.View.Imports
 
         private int checkConstraints(string ID)
         {
-            string query = String.Format("select count(MaPN)  as count from ChiTietPhieuNhap where MaPN = '{0}'", ID);
+            string query = String.Format("select count(MaHD)  as count from ChiTietHoaDon where MaHD = '{0}'", ID);
             DataTable dt = new DataTable();
             dt = conn.loadData(query);
             return (int)(dt.Rows[0]["count"]);
@@ -291,7 +290,7 @@ namespace QuanLyNhaSach_291021.View.Imports
         private string getID(string fieldName)
         {
             string ID = "";
-            var view = gcImports.FocusedView as GridView;
+            var view = gcOrder.FocusedView as GridView;
             if (view.GetFocusedRowCellValue(fieldName) != null)
             {
                 ID = view.GetFocusedRowCellValue(fieldName).ToString();
@@ -322,7 +321,7 @@ namespace QuanLyNhaSach_291021.View.Imports
             if (txtSearch.EditValue != null)
             {
                 string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\']+", "").Trim();
-                string field = func.removeUnicode((cbbField.Text).Replace("Phiếu Nhập", "PN"))
+                string field = func.removeUnicode((cbbField.Text).Replace("Hóa Đơn", "PN"))
                                                                   .Replace(" ", "");
                 if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
                 {
@@ -332,7 +331,7 @@ namespace QuanLyNhaSach_291021.View.Imports
                         string querySearch = "";
                         if (field == "SanPham")
                         {
-                            querySearch = String.Format(@"Select * from ({0}) as t where t.MaPN In  (select MaPN from ChiTietPhieuNhap as ct
+                            querySearch = String.Format(@"Select * from ({0}) as t where t.MaHD In  (select MaHD from ChiTietHoaDon as ct
 																			                                inner join SanPham as sp on ct.SKU = sp.SKU
 																			                                where ct.HienThi = 1 and TenSP like N'%{1}%')",
                                                                                                              query, searchInfo);
@@ -347,10 +346,10 @@ namespace QuanLyNhaSach_291021.View.Imports
                     else
                     {
                         String querySearch = String.Format(@"Select * from ({0}) as t where CONCAT('',  
-                                                                                                    MaPN, 
-                                                                                                    t.NhaCungCap,
+                                                                                                    MaHD, 
+                                                                                                    t.KhachHang,
                                                                                                     t.NhanVien) like N'%{1}%' 
-                                                                                             or t.MaPN In  (select MaPN from ChiTietPhieuNhap as ct
+                                                                                             or t.MaHD In  (select MaHD from ChiTietHoaDon as ct
 																			                                inner join SanPham as sp on ct.SKU = sp.SKU
 																			                                where ct.HienThi = 1 and TenSP like N'%{1}%')",
                                                                                                              query, searchInfo);
@@ -372,7 +371,7 @@ namespace QuanLyNhaSach_291021.View.Imports
         }
         #endregion
 
-        #region //Import and Export Data File
+        #region //Order and Export Data File
         private void btnInport_Click(object sender, EventArgs e)
         {
             //using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel (2010) (.xlsx)|*.xlsx|Excel (1997-2003)(.xls)|*.xls|CSV file (.csv)|*.csv" })
@@ -382,16 +381,16 @@ namespace QuanLyNhaSach_291021.View.Imports
             //        string fileName = openFileDialog.FileName;
             //        DataTable dtMyExcel = Controller.MyExcel.GetDataTableFromExcel(fileName);
             //        System.Data.DataView view = new System.Data.DataView(dtMyExcel);
-            //        System.Data.DataTable master = view.ToTable("MyTableMaster", false, "MaPN", "ISBN", "TenPN", "MaNCC", "MaHT", "MaTL", "NgonNgu", "PhienBan",
+            //        System.Data.DataTable master = view.ToTable("MyTableMaster", false, "MaHD", "ISBN", "TenPN", "MaKH", "MaHT", "MaTL", "NgonNgu", "PhienBan",
             //            "SoLuongTon", "TonToiThieu", "DonViTinh", "GiaBan", "DanhGia", "MoTa");
             //        ConvertColumnType(ref master, "DanhGia", typeof(float));
-            //        conn.executeDataSet("uspInsertImportss", master);
+            //        conn.executeDataSet("uspInsertOrders", master);
             //        System.Data.DataTable detail = view.ToTable("MyTableDetail", false, "ISBN", "MaNXB", "MaTG", "NamXuatBanDauTien", "NamXuatBanMoiNhat", "SoTrang");
 
 
             //        ConvertColumnType(ref detail, "NamXuatBanDauTien", typeof(DateTime));
             //        ConvertColumnType(ref detail, "NamXuatBanMoiNhat", typeof(DateTime));
-            //        conn.executeDataSet("uspInsertImportsDetails", detail);
+            //        conn.executeDataSet("uspInsertOrderDetails", detail);
             //    }
             //}
             //loadData();
@@ -440,7 +439,7 @@ namespace QuanLyNhaSach_291021.View.Imports
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
             DateTime dtNow = DateTime.Now;
-            saveDialog.FileName = "Report_Imports_" + dtNow.Day.ToString() + "_" + dtNow.Month.ToString() + "_" + dtNow.Year.ToString()
+            saveDialog.FileName = "Report_Order_" + dtNow.Day.ToString() + "_" + dtNow.Month.ToString() + "_" + dtNow.Year.ToString()
                                                      + "_" + dtNow.Hour.ToString() + "_" + dtNow.Minute.ToString() + "_" + dtNow.Second.ToString();
             saveDialog.Filter = "Excel (2010) (.xlsx)|*.xlsx |Excel (1997-2003)(.xls)|*.xls|RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
             if (saveDialog.ShowDialog() != DialogResult.Cancel)
@@ -451,32 +450,32 @@ namespace QuanLyNhaSach_291021.View.Imports
                 switch (fileExtenstion)
                 {
                     case ".xls":
-                        gvImports.OptionsPrint.PrintDetails = true;
-                        gvImports.OptionsPrint.ExpandAllDetails = true;
+                        gvOrder.OptionsPrint.PrintDetails = true;
+                        gvOrder.OptionsPrint.ExpandAllDetails = true;
                         XlsxExportOptionsEx opt = new XlsxExportOptionsEx();
                         opt.ExportType = DevExpress.Export.ExportType.WYSIWYG;
-                        gvImports.ExportToXlsx(exportFilePath, opt);
+                        gvOrder.ExportToXlsx(exportFilePath, opt);
                         Process.Start(exportFilePath);
                         break;
                     case ".xlsx":
-                        gvImports.OptionsPrint.PrintDetails = true;
-                        gvImports.OptionsPrint.ExpandAllDetails = true;
+                        gvOrder.OptionsPrint.PrintDetails = true;
+                        gvOrder.OptionsPrint.ExpandAllDetails = true;
                         XlsxExportOptionsEx opt1 = new XlsxExportOptionsEx();
                         opt1.ExportType = DevExpress.Export.ExportType.WYSIWYG;
-                        gvImports.ExportToXlsx(exportFilePath, opt1);
+                        gvOrder.ExportToXlsx(exportFilePath, opt1);
                         Process.Start(exportFilePath);
                         break;
                     case ".rtf":
-                        gvImports.ExportToRtf(exportFilePath);
+                        gvOrder.ExportToRtf(exportFilePath);
                         break;
                     case ".pdf":
-                        gvImports.ExportToPdf(exportFilePath);
+                        gvOrder.ExportToPdf(exportFilePath);
                         break;
                     case ".html":
-                        gvImports.ExportToHtml(exportFilePath);
+                        gvOrder.ExportToHtml(exportFilePath);
                         break;
                     case ".mht":
-                        gvImports.ExportToMht(exportFilePath);
+                        gvOrder.ExportToMht(exportFilePath);
                         break;
                     default:
                         break;

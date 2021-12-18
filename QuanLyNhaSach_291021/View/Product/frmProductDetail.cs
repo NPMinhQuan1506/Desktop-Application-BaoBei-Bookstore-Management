@@ -24,6 +24,10 @@ namespace QuanLyNhaSach_291021.View.Product
         Controller.Validation.Empty_Contain empty_ContainRule = new Controller.Validation.Empty_Contain();
         Controller.Validation.Value_Contain value_ContainRule = new Controller.Validation.Value_Contain();
         Controller.Validation.Valid_Contain valid_ContainRule = new Controller.Validation.Valid_Contain();
+        //Delegate Add Order
+        public delegate void CallImportForm();
+        public CallImportForm cif;
+        bool isAddImport = false;
         //defind variable
         String id = "", dtNow = "";
         //Move Panel
@@ -44,6 +48,11 @@ namespace QuanLyNhaSach_291021.View.Product
             this.id = _id;
             loadData();
             txtSKU.ReadOnly = true;
+        }
+
+        public frmProductDetail(bool isAddImport = true) : this()
+        {
+            this.isAddImport = isAddImport;
         }
         #endregion
 
@@ -136,8 +145,23 @@ namespace QuanLyNhaSach_291021.View.Product
         {
             if (doValidate())
             {
-                string MaHA = SaveAvartar();
-                MaHA = MaHA != "" ? MaHA : "null";
+                string MaHA = "";
+                if (isAddImport)
+                {
+                    string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\"), "Resources");
+                    filePath = filePath + @"\default_product.png";
+                    String query = String.Format(@"INSERT INTO HinhAnh(Anh, DuoiTep, ChuSoHuu) 
+                                                SELECT BulkColumn, 'png' , 'SanPham'
+                                                       FROM Openrowset( Bulk '{0}', Single_Blob) as img", filePath);
+                    conn.executeDatabase(query);
+                    MaHA = conn.getLastInsertedValue();
+                }
+                else
+                {
+                    MaHA = SaveAvartar();
+                    MaHA = MaHA != "" ? MaHA : "null";
+                }
+                
                 // Event Add Data
                 if (this.id == "")
                 {
@@ -175,7 +199,12 @@ namespace QuanLyNhaSach_291021.View.Product
                                 spPrice.EditValue);
                         conn.executeDatabase(query1);
                         MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
+                        if (isAddImport && cif != null)
+                        {
+                            cif();
+                        }
                         this.Close();
+                        return;
                     }
                     else
                     {

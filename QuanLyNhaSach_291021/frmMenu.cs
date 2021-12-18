@@ -160,11 +160,6 @@ namespace QuanLyNhaSach_291021
         }
 
 
-        private void setImageCurrentPage(string namePage)
-        {
-            this.lbCurrentListIcon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject(namePage+".ImageOptions.SvgImage")));
-        }
-
         private void aceDiscount_Click(object sender, EventArgs e)
         {
             setImageCurrentPage("aceDiscount");
@@ -179,6 +174,27 @@ namespace QuanLyNhaSach_291021
             //    View.Discount.ctrDiscountList.instance.BringToFront();
             //}
             //View.Discount.ctrDiscountList.instance.BringToFront();
+        }
+
+        private void aceOrder_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceOrder");
+            pnContainer.Controls.Clear();
+            View.Order.ctrOrderList ctr = new View.Order.ctrOrderList();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
+            //if (!pnContainer.Controls.Contains(View.Order.ctrOrderList.instance))
+            //{
+            //    pnContainer.Controls.Add(View.Order.ctrOrderList.instance);
+            //    View.Order.ctrOrderList.instance.Dock = DockStyle.Fill;
+            //    View.Order.ctrOrderList.instance.BringToFront();
+            //}
+            //View.Order.ctrOrderList.instance.BringToFront();
+        }
+
+        private void setImageCurrentPage(string namePage)
+        {
+            this.lbCurrentListIcon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject(namePage+".ImageOptions.SvgImage")));
         }
     }
 }

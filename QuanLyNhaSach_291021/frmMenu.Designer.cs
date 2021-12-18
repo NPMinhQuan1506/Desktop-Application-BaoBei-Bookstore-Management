@@ -356,6 +356,7 @@
             this.aceOrder.Name = "aceOrder";
             this.aceOrder.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceOrder.Text = "Danh Sách Hóa Đơn";
+            this.aceOrder.Click += new System.EventHandler(this.aceOrder_Click);
             // 
             // aceDiscount
             // 

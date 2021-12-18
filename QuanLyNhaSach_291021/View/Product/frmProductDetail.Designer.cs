@@ -434,11 +434,6 @@
             0,
             0,
             0});
-            this.spNumberStock.Properties.MinValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.spNumberStock.Size = new System.Drawing.Size(145, 38);
             this.spNumberStock.TabIndex = 36;
             // 

@@ -131,7 +131,7 @@ namespace QuanLyNhaSach_291021.View.Stock
 						                                    WHEN sum(ctb.SoLuong) IS NULL THEN 0
 						                                    ELSE sum(ctb.SoLuong)
 					                                    END AS SoLuongBan, 
-				                                        sp.TenSP,sum(sp.SoLuongTon) as SoLuongTon,
+				                                        sp.TenSP,sp.SoLuongTon,
 	                                                    sp.SoLuongTon - sp.TonToiThieu as HieuSoTon , 
 	                                                    ROW_NUMBER() OVER (order by sp.SoLuongTon - sp.TonToiThieu ) AS RowNum 
                                                     from SanPham as sp

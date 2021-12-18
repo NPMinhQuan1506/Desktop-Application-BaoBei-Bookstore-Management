@@ -24,9 +24,13 @@ namespace QuanLyNhaSach_291021.View.Customer
         Controller.Validation.Empty_Contain empty_ContainRule = new Controller.Validation.Empty_Contain();
         Controller.Validation.Value_Contain value_ContainRule = new Controller.Validation.Value_Contain();
         Controller.Validation.Valid_Contain valid_ContainRule = new Controller.Validation.Valid_Contain();
+        //Delegate Add Order
+        public delegate void CallOrderForm();
+        public CallOrderForm cof;
         //defind variable
         String id = "", dtNow = "";
         bool flag = false;
+        bool isAddOrder = false;
         //Move Panel
         Boolean dragging = false;
         Point startPoint = new Point(0, 0);
@@ -46,6 +50,11 @@ namespace QuanLyNhaSach_291021.View.Customer
             loadData();
             setUpAccountField();
             txtCustomerID.ReadOnly = true;
+        }
+
+        public frmCustomerDetail(bool isAddOrder = true) : this()
+        {
+            this.isAddOrder = isAddOrder;
         }
         #endregion
 
@@ -127,6 +136,13 @@ namespace QuanLyNhaSach_291021.View.Customer
         #region //Validation
         private bool doValidate()
         {
+            if (isAddOrder)
+            {
+                vali.SetValidationRule(txtCustomerID, valueE_ContainRule);
+                vali.SetValidationRule(txtCustomerName, validE_ContainRule);
+                vali.SetValidationRule(txtPhone, empty_ContainRule);
+                return (vali.Validate());
+            }
             vali.SetValidationRule(txtCustomerID, valueE_ContainRule);
             vali.SetValidationRule(txtCustomerName, validE_ContainRule);
             vali.SetValidationRule(txtEmail, empty_ContainRule);
@@ -146,6 +162,48 @@ namespace QuanLyNhaSach_291021.View.Customer
         {
             if (doValidate())
             {
+                if (isAddOrder)
+                {
+                    if (checkExistence())
+                    {
+                        string filePath = Path.Combine(System.IO.Path.GetFullPath(@"..\..\"), "Resources");
+                        filePath = filePath + @"\default_customer.png";
+                        String query = String.Format(@"INSERT INTO HinhAnh(Anh, DuoiTep, ChuSoHuu) 
+                                                SELECT BulkColumn, 'png' , 'KhachHang'
+                                                       FROM Openrowset( Bulk '{0}', Single_Blob) as img", filePath);
+                        conn.executeDatabase(query);
+                        string imgID = conn.getLastInsertedValue();
+                        query = String.Format(@"INSERT INTO TaiKhoan_KH(TenTK, MatKhau, NgayTao) 
+                                                values ('{0}', '{1}', '{2}')",
+                                                    txtPhone.Text,
+                                                     Controller.EncryptDecrypt.Encrypt(@"User@123"),
+                                                    dtNow);
+                        conn.executeDatabase(query);
+                        string accID = conn.getLastInsertedValue();
+                        query = String.Format(@"INSERT INTO KhachHang(MaKH, TenKH, DienThoai, GhiChu, MaTK, MaHA, NgayTao ) 
+                                                values ('{0}', N'{1}', '{2}', N'{3}',{4},{5},'{6}')",
+                           txtCustomerID.Text,
+                           txtCustomerName.Text,
+                           txtPhone.Text,
+                           mmeNote.Text,
+                           accID,
+                           imgID,
+                           dtNow);
+
+                        conn.executeDatabase(query);
+                        MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
+                        if (cof != null)
+                        {
+                            cof();
+                        }
+                        this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        MyMessageBox.ShowMessage("Mã Khách Hàng Đã Tồn Tại!");
+                    }
+                }
                 string MaHA = SaveAvartar(),
                        MaTK = SaveAccount();
                 MaHA = MaHA != "" ? MaHA : "null";
