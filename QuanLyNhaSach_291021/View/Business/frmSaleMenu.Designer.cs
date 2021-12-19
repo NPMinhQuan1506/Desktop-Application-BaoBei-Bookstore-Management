@@ -1,6 +1,6 @@
-﻿namespace QuanLyNhaSach_291021
+﻿namespace QuanLyNhaSach_291021.View.Business
 {
-    partial class frmMenu
+    partial class frmSaleMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,37 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSaleMenu));
             this.pnContainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.acMenu = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.acgBusiness = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceCustomer = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acgProduct = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceAuthor = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acePublisher = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceCategories = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceProduct = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
-            this.acgInventory = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceSupplier = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceImport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceStock = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.acgSale = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceOrder = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceDiscount = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceStatistical = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acgEmployee = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceDepartment = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceEmployee = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acgPermission = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acePermission = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceDentralization = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acgSettings = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceTheme = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceSync = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceCrash = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceLog = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceLogout = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.pnHeader = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -116,7 +98,6 @@
             this.acMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.acMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.acgBusiness,
-            this.acgEmployee,
             this.acgSettings});
             this.acMenu.Location = new System.Drawing.Point(0, 31);
             this.acMenu.Name = "acMenu";
@@ -129,25 +110,13 @@
             // acgBusiness
             // 
             this.acgBusiness.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceDashboard,
-            this.aceCustomer,
-            this.acgProduct,
             this.accordionControlSeparator2,
-            this.acgInventory,
             this.accordionControlSeparator1,
             this.acgSale});
             this.acgBusiness.Expanded = true;
             this.acgBusiness.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgBusiness.ImageOptions.SvgImage")));
             this.acgBusiness.Name = "acgBusiness";
             this.acgBusiness.Text = "Kinh Doanh";
-            // 
-            // aceDashboard
-            // 
-            this.aceDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceDashboard.ImageOptions.SvgImage")));
-            this.aceDashboard.Name = "aceDashboard";
-            this.aceDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDashboard.Text = "Tổng Quan";
-            this.aceDashboard.Click += new System.EventHandler(this.aceDashboard_Click);
             // 
             // aceCustomer
             // 
@@ -157,171 +126,9 @@
             this.aceCustomer.Text = "Danh Sách Khách Hàng";
             this.aceCustomer.Click += new System.EventHandler(this.aceCustomer_Click);
             // 
-            // acgProduct
-            // 
-            this.acgProduct.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceAuthor,
-            this.acePublisher,
-            this.aceCategories,
-            this.aceProduct});
-            this.acgProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgProduct.ImageOptions.SvgImage")));
-            this.acgProduct.Name = "acgProduct";
-            this.acgProduct.Text = "Quản Lý Sản Phẩm";
-            // 
-            // aceAuthor
-            // 
-            this.aceAuthor.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.aceAuthor.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceAuthor.Appearance.Hovered.Options.UseFont = true;
-            this.aceAuthor.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceAuthor.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceAuthor.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceAuthor.Appearance.Normal.Options.UseFont = true;
-            this.aceAuthor.Appearance.Normal.Options.UseForeColor = true;
-            this.aceAuthor.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceAuthor.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceAuthor.Appearance.Pressed.Options.UseFont = true;
-            this.aceAuthor.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceAuthor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceAuthor.ImageOptions.SvgImage")));
-            this.aceAuthor.Name = "aceAuthor";
-            this.aceAuthor.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceAuthor.Text = "Danh Sách Tác Giả";
-            this.aceAuthor.Click += new System.EventHandler(this.aceAuthor_Click);
-            // 
-            // acePublisher
-            // 
-            this.acePublisher.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.acePublisher.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.acePublisher.Appearance.Hovered.Options.UseFont = true;
-            this.acePublisher.Appearance.Hovered.Options.UseForeColor = true;
-            this.acePublisher.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.acePublisher.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.acePublisher.Appearance.Normal.Options.UseFont = true;
-            this.acePublisher.Appearance.Normal.Options.UseForeColor = true;
-            this.acePublisher.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.acePublisher.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.acePublisher.Appearance.Pressed.Options.UseFont = true;
-            this.acePublisher.Appearance.Pressed.Options.UseForeColor = true;
-            this.acePublisher.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acePublisher.ImageOptions.SvgImage")));
-            this.acePublisher.Name = "acePublisher";
-            this.acePublisher.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acePublisher.Text = "Danh Sách NXB";
-            this.acePublisher.Click += new System.EventHandler(this.acePublisher_Click);
-            // 
-            // aceCategories
-            // 
-            this.aceCategories.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.aceCategories.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceCategories.Appearance.Hovered.Options.UseFont = true;
-            this.aceCategories.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceCategories.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceCategories.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceCategories.Appearance.Normal.Options.UseFont = true;
-            this.aceCategories.Appearance.Normal.Options.UseForeColor = true;
-            this.aceCategories.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceCategories.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceCategories.Appearance.Pressed.Options.UseFont = true;
-            this.aceCategories.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceCategories.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceCategories.ImageOptions.SvgImage")));
-            this.aceCategories.Name = "aceCategories";
-            this.aceCategories.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceCategories.Text = "Danh Sách Thể Loại";
-            this.aceCategories.Click += new System.EventHandler(this.aceCategories_Click);
-            // 
-            // aceProduct
-            // 
-            this.aceProduct.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.aceProduct.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceProduct.Appearance.Hovered.Options.UseFont = true;
-            this.aceProduct.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceProduct.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceProduct.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceProduct.Appearance.Normal.Options.UseFont = true;
-            this.aceProduct.Appearance.Normal.Options.UseForeColor = true;
-            this.aceProduct.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceProduct.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceProduct.Appearance.Pressed.Options.UseFont = true;
-            this.aceProduct.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceProduct.ImageOptions.SvgImage")));
-            this.aceProduct.Name = "aceProduct";
-            this.aceProduct.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceProduct.Text = "Danh Sách Sản Phẩm";
-            this.aceProduct.Click += new System.EventHandler(this.aceProduct_Click);
-            // 
             // accordionControlSeparator2
             // 
             this.accordionControlSeparator2.Name = "accordionControlSeparator2";
-            // 
-            // acgInventory
-            // 
-            this.acgInventory.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceSupplier,
-            this.aceImport,
-            this.aceStock});
-            this.acgInventory.Expanded = true;
-            this.acgInventory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgInventory.ImageOptions.SvgImage")));
-            this.acgInventory.Name = "acgInventory";
-            this.acgInventory.Text = "Quản Lý Kho";
-            // 
-            // aceSupplier
-            // 
-            this.aceSupplier.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceSupplier.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceSupplier.Appearance.Hovered.Options.UseFont = true;
-            this.aceSupplier.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceSupplier.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceSupplier.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceSupplier.Appearance.Normal.Options.UseFont = true;
-            this.aceSupplier.Appearance.Normal.Options.UseForeColor = true;
-            this.aceSupplier.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceSupplier.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceSupplier.Appearance.Pressed.Options.UseFont = true;
-            this.aceSupplier.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceSupplier.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceSupplier.ImageOptions.SvgImage")));
-            this.aceSupplier.Name = "aceSupplier";
-            this.aceSupplier.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceSupplier.Text = "Danh Sách NCC";
-            this.aceSupplier.Click += new System.EventHandler(this.aceSupplier_Click);
-            // 
-            // aceImport
-            // 
-            this.aceImport.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceImport.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceImport.Appearance.Hovered.Options.UseFont = true;
-            this.aceImport.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceImport.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceImport.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceImport.Appearance.Normal.Options.UseFont = true;
-            this.aceImport.Appearance.Normal.Options.UseForeColor = true;
-            this.aceImport.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceImport.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceImport.Appearance.Pressed.Options.UseFont = true;
-            this.aceImport.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceImport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceImport.ImageOptions.SvgImage")));
-            this.aceImport.Name = "aceImport";
-            this.aceImport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceImport.Text = "Danh Sách Phiếu Nhập";
-            this.aceImport.Click += new System.EventHandler(this.aceImport_Click);
-            // 
-            // aceStock
-            // 
-            this.aceStock.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceStock.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceStock.Appearance.Hovered.Options.UseFont = true;
-            this.aceStock.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceStock.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceStock.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceStock.Appearance.Normal.Options.UseFont = true;
-            this.aceStock.Appearance.Normal.Options.UseForeColor = true;
-            this.aceStock.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceStock.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceStock.Appearance.Pressed.Options.UseFont = true;
-            this.aceStock.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceStock.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceStock.ImageOptions.SvgImage")));
-            this.aceStock.Name = "aceStock";
-            this.aceStock.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceStock.Text = "Thống Kê Hàng Tồn";
-            this.aceStock.Click += new System.EventHandler(this.aceStock_Click);
             // 
             // accordionControlSeparator1
             // 
@@ -332,11 +139,12 @@
             this.acgSale.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceOrder,
             this.aceDiscount,
-            this.aceStatistical});
+            this.aceStatistical,
+            this.aceCustomer});
             this.acgSale.Expanded = true;
             this.acgSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgSale.ImageOptions.SvgImage")));
             this.acgSale.Name = "acgSale";
-            this.acgSale.Text = "Quản Lý Bán Hàng";
+            this.acgSale.Text = "Bán Hàng";
             // 
             // aceOrder
             // 
@@ -397,91 +205,11 @@
             this.aceStatistical.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceStatistical.Text = "Thống Kê Doanh Thu";
             // 
-            // acgEmployee
-            // 
-            this.acgEmployee.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceDepartment,
-            this.aceEmployee,
-            this.acgPermission});
-            this.acgEmployee.Expanded = true;
-            this.acgEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgEmployee.ImageOptions.SvgImage")));
-            this.acgEmployee.Name = "acgEmployee";
-            this.acgEmployee.Text = "Nhân Sự";
-            this.acgEmployee.Click += new System.EventHandler(this.acgEmployee_Click);
-            // 
-            // aceDepartment
-            // 
-            this.aceDepartment.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceDepartment.ImageOptions.SvgImage")));
-            this.aceDepartment.Name = "aceDepartment";
-            this.aceDepartment.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDepartment.Text = "Danh Sách Chức Vụ";
-            this.aceDepartment.Click += new System.EventHandler(this.aceDepartment_Click);
-            // 
-            // aceEmployee
-            // 
-            this.aceEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceEmployee.ImageOptions.SvgImage")));
-            this.aceEmployee.Name = "aceEmployee";
-            this.aceEmployee.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceEmployee.Text = "Danh Sách Nhân Viên";
-            this.aceEmployee.Click += new System.EventHandler(this.aceEmployee_Click);
-            // 
-            // acgPermission
-            // 
-            this.acgPermission.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.acePermission,
-            this.aceDentralization});
-            this.acgPermission.Expanded = true;
-            this.acgPermission.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgPermission.ImageOptions.SvgImage")));
-            this.acgPermission.Name = "acgPermission";
-            this.acgPermission.Text = "Quản Lý Phân Quyền";
-            // 
-            // acePermission
-            // 
-            this.acePermission.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.acePermission.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.acePermission.Appearance.Hovered.Options.UseFont = true;
-            this.acePermission.Appearance.Hovered.Options.UseForeColor = true;
-            this.acePermission.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.acePermission.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.acePermission.Appearance.Normal.Options.UseFont = true;
-            this.acePermission.Appearance.Normal.Options.UseForeColor = true;
-            this.acePermission.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.acePermission.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.acePermission.Appearance.Pressed.Options.UseFont = true;
-            this.acePermission.Appearance.Pressed.Options.UseForeColor = true;
-            this.acePermission.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acePermission.ImageOptions.SvgImage")));
-            this.acePermission.Name = "acePermission";
-            this.acePermission.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acePermission.Text = "Danh Sách Quyền";
-            this.acePermission.Click += new System.EventHandler(this.acePermission_Click);
-            // 
-            // aceDentralization
-            // 
-            this.aceDentralization.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceDentralization.Appearance.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceDentralization.Appearance.Hovered.Options.UseFont = true;
-            this.aceDentralization.Appearance.Hovered.Options.UseForeColor = true;
-            this.aceDentralization.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceDentralization.Appearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceDentralization.Appearance.Normal.Options.UseFont = true;
-            this.aceDentralization.Appearance.Normal.Options.UseForeColor = true;
-            this.aceDentralization.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aceDentralization.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(176)))), ((int)(((byte)(177)))));
-            this.aceDentralization.Appearance.Pressed.Options.UseFont = true;
-            this.aceDentralization.Appearance.Pressed.Options.UseForeColor = true;
-            this.aceDentralization.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceDentralization.ImageOptions.SvgImage")));
-            this.aceDentralization.Name = "aceDentralization";
-            this.aceDentralization.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDentralization.Text = "Phân Quyền Nhân Viên";
-            this.aceDentralization.Click += new System.EventHandler(this.aceDentralization_Click);
-            // 
             // acgSettings
             // 
             this.acgSettings.ControlFooterAlignment = DevExpress.XtraBars.Navigation.AccordionItemFooterAlignment.Far;
             this.acgSettings.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceTheme,
-            this.aceSync,
-            this.aceCrash,
             this.aceLog,
             this.aceLogout});
             this.acgSettings.Expanded = true;
@@ -495,20 +223,6 @@
             this.aceTheme.Name = "aceTheme";
             this.aceTheme.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceTheme.Text = "Giao Diện";
-            // 
-            // aceSync
-            // 
-            this.aceSync.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceSync.ImageOptions.SvgImage")));
-            this.aceSync.Name = "aceSync";
-            this.aceSync.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceSync.Text = "Đồng Bộ Và Sao Lưu";
-            // 
-            // aceCrash
-            // 
-            this.aceCrash.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceCrash.ImageOptions.SvgImage")));
-            this.aceCrash.Name = "aceCrash";
-            this.aceCrash.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceCrash.Text = "Thùng Rác";
             // 
             // aceLog
             // 
@@ -649,7 +363,7 @@
             this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement3.Text = "Thống Kê Hàng Tồn";
             // 
-            // frmMenu
+            // frmSaleMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -660,7 +374,7 @@
             this.Controls.Add(this.acMenu);
             this.Controls.Add(this.pnHeader);
             this.FluentDesignFormControl = this.pnHeader;
-            this.Name = "frmMenu";
+            this.Name = "frmSaleMenu";
             this.NavigationControl = this.acMenu;
             this.Text = "Nhà Sách BaoBei";
             ((System.ComponentModel.ISupportInitialize)(this.acMenu)).EndInit();
@@ -681,36 +395,18 @@
         private DevExpress.XtraBars.Navigation.AccordionControl acMenu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acgBusiness;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl pnHeader;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDashboard;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceCustomer;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acgEmployee;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acgSettings;
         private DevExpress.XtraEditors.PanelControl pnInfo;
         private DevExpress.XtraEditors.PanelControl pnInfoItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.LabelControl lbName;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acgProduct;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceAuthor;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acePublisher;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceCategories;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceProduct;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acgInventory;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceSupplier;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceImport;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceStock;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acgSale;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceOrder;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceDiscount;
         private DevExpress.XtraEditors.PanelControl pnIcon;
         private DevExpress.XtraEditors.LabelControl lbCurrentListIcon;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDepartment;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceEmployee;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acgPermission;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acePermission;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDentralization;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceTheme;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceSync;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceCrash;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceLog;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceLogout;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;

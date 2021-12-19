@@ -8,12 +8,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-namespace QuanLyNhaSach_291021
+namespace QuanLyNhaSach_291021.View.Business
 {
-    public partial class frmMenu : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+    public partial class frmSaleMenu : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
-        public frmMenu()
+        public frmSaleMenu()
         {
             InitializeComponent();
         }
@@ -195,32 +195,6 @@ namespace QuanLyNhaSach_291021
         private void setImageCurrentPage(string namePage)
         {
             this.lbCurrentListIcon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject(namePage+".ImageOptions.SvgImage")));
-        }
-
-        private void aceEmployee_Click(object sender, EventArgs e)
-        {
-            setImageCurrentPage("aceEmployee");
-            pnContainer.Controls.Clear();
-            View.Employee.ctrEmployeeList ctr = new View.Employee.ctrEmployeeList();
-            ctr.Dock = DockStyle.Fill;
-            pnContainer.Controls.Add(ctr);
-            //if (!pnContainer.Controls.Contains(View.Employee.ctrEmployeeList.instance))
-            //{
-            //    pnContainer.Controls.Add(View.Employee.ctrEmployeeList.instance);
-            //    View.Employee.ctrEmployeeList.instance.Dock = DockStyle.Fill;
-            //    View.Employee.ctrEmployeeList.instance.BringToFront();
-            //}
-            //View.Employee.ctrEmployeeList.instance.BringToFront();
-        }
-
-        private void acePermission_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aceDentralization_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

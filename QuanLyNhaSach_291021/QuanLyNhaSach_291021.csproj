@@ -139,6 +139,12 @@
     <Compile Include="View\Author\ctrAuthorList.Designer.cs">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Business\frmSaleMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Business\frmSaleMenu.Designer.cs">
+      <DependentUpon>frmSaleMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Categories\ctrCategoriesList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +180,18 @@
     </Compile>
     <Compile Include="View\Discount\frmDiscountDetail.Designer.cs">
       <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\ctrEmployeeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Employee\ctrEmployeeList.Designer.cs">
+      <DependentUpon>ctrEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\frmEmployeeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Employee\frmEmployeeDetail.Designer.cs">
+      <DependentUpon>frmEmployeeDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Imports\ctrImportsList.cs">
       <SubType>UserControl</SubType>
@@ -271,6 +289,9 @@
     <EmbeddedResource Include="View\Author\ctrAuthorList.resx">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Business\frmSaleMenu.resx">
+      <DependentUpon>frmSaleMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Categories\ctrCategoriesList.resx">
       <DependentUpon>ctrCategoriesList.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +309,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Discount\frmDiscountDetail.resx">
       <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Employee\ctrEmployeeList.resx">
+      <DependentUpon>ctrEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Employee\frmEmployeeDetail.resx">
+      <DependentUpon>frmEmployeeDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Imports\ctrImportsList.resx">
       <DependentUpon>ctrImportsList.cs</DependentUpon>
@@ -354,6 +381,9 @@
   <ItemGroup>
     <Content Include="Resources\default_customer.png" />
     <Content Include="Resources\default_product.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Authority\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
