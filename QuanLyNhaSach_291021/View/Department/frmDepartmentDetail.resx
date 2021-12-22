@@ -117,14 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Question" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Question.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lbClear.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAABGdBTUEAALGPC/xhBQAAAcdJREFUOE/V
+        lLmKAkEQhsdbWH0DUdPxSA0UAx/HW/DA0NDIiXwnT8QDDEXF4wk0EXa/dQpddx2dNVn2A8H6q7qnuquq
+        lf+D3W5PJpO1Wk3TtFarVa1WE4mEzWYTtxmcTmelUtntdu8/2G63xWLR5XJJ6AOCweBwOGTNdDrNZrOq
+        qr6dCYVCuVwOEVe/3ydMFhjBBw+HQzqdtlgsIn3BarXiOh6Pq9XK5/OJehfWezweMQxIpVLsReLco0gv
+        Q16ckfTFvsAVNBoNMUzAGSeTyWKx4I9IQFG73e7pdIrFYiKZgLsnKXpCbKjX60gwn8/dbreoz4hGoywp
+        FApicyhuTt8Ims2mOIzx+/2dTmc0GhFPuw0Gg3a7rfDj336/R8VHBHGywhi+d/7uJ+RBNuLg/pEikYjY
+        z6C59eYExkhUYKyQMpmM2CagMtSHKt0MIFVcLpfj8fimnM+gY66HulAqlUiKThP7Zeh3up6bYwJEMsDr
+        9d6dxCvM4Xq9Zi/m/u4ZEXEx1df2MSIQCPR6Pc44m82Ipo76MxIOh/P5PCIu2oUwWfAAHja22Gw2rPkG
+        IlfpcDgk1AwUNR6Pl8tl3ln9qcX83VP7pyjKBzEiF+u13FLeAAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="Information" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lbClose.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAABGdBTUEAALGPC/xhBQAAANVJREFUOE+t
+        lEEKgzAQRXOIXMKFHqDQ3smFKyt0U3pUqfQO6TRxTPJJZoQmPDB/8uc7IsQYYxvhH31/Hcd7Uj0FtVAj
+        S2O77rKub+fcsry4qjNND2rZts8w3HzFB1MprHl+HlYBsu0NzvGn+IMQH5Y6V8WsHCN1W9zpWaIhE5JV
+        ew3qcoM6bCGISH8K7UGCmUG9k45wrMosAdQRyBJTCNSRNkFtPg3+EUgwM6gxRSjm5Fpo0LISob5WNPDu
+        xPA/6jbluEDF3PBi+/Oq5WvbV9tc/g0w9gsietjbNVNFlwAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="vali.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

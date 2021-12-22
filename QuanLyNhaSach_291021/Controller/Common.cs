@@ -33,6 +33,11 @@ namespace QuanLyNhaSach_291021.Controller
             return Time.TotalMinutes;
         }
 
+        public int DurationBetween2Date(DateTime dtFrom, DateTime dtTo)
+        {
+            return (int)(dtTo - dtFrom).TotalDays;
+        }
+
         public string removeUnicode(string strInput)
         {
             string stFormD = strInput.Normalize(System.Text.NormalizationForm.FormD);

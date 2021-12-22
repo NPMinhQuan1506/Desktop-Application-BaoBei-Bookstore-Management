@@ -67,7 +67,7 @@
             this.lbCurrentListIcon = new DevExpress.XtraEditors.LabelControl();
             this.pnInfoItem = new DevExpress.XtraEditors.PanelControl();
             this.lbName = new DevExpress.XtraEditors.LabelControl();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.peAvartar = new System.Windows.Forms.PictureBox();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -79,7 +79,7 @@
             this.pnIcon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnInfoItem)).BeginInit();
             this.pnInfoItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peAvartar)).BeginInit();
             this.SuspendLayout();
             // 
             // pnContainer
@@ -258,7 +258,6 @@
             this.aceSupplier,
             this.aceImport,
             this.aceStock});
-            this.acgInventory.Expanded = true;
             this.acgInventory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgInventory.ImageOptions.SvgImage")));
             this.acgInventory.Name = "acgInventory";
             this.acgInventory.Text = "Quản Lý Kho";
@@ -396,6 +395,7 @@
             this.aceStatistical.Name = "aceStatistical";
             this.aceStatistical.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceStatistical.Text = "Thống Kê Doanh Thu";
+            this.aceStatistical.Click += new System.EventHandler(this.aceStatistical_Click);
             // 
             // acgEmployee
             // 
@@ -523,6 +523,7 @@
             this.aceLogout.Name = "aceLogout";
             this.aceLogout.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceLogout.Text = "Đăng Xuất";
+            this.aceLogout.Click += new System.EventHandler(this.aceLogout_Click);
             // 
             // pnHeader
             // 
@@ -568,11 +569,11 @@
             // 
             this.pnInfoItem.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnInfoItem.Controls.Add(this.lbName);
-            this.pnInfoItem.Controls.Add(this.pictureBox1);
+            this.pnInfoItem.Controls.Add(this.peAvartar);
             this.pnInfoItem.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnInfoItem.Location = new System.Drawing.Point(711, 0);
+            this.pnInfoItem.Location = new System.Drawing.Point(609, 0);
             this.pnInfoItem.Name = "pnInfoItem";
-            this.pnInfoItem.Size = new System.Drawing.Size(173, 47);
+            this.pnInfoItem.Size = new System.Drawing.Size(275, 47);
             this.pnInfoItem.TabIndex = 0;
             // 
             // lbName
@@ -580,17 +581,17 @@
             this.lbName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lbName.Location = new System.Drawing.Point(51, 6);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(112, 32);
+            this.lbName.Size = new System.Drawing.Size(212, 32);
             this.lbName.TabIndex = 1;
             this.lbName.Text = "Tên";
             // 
-            // pictureBox1
+            // peAvartar
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.peAvartar.Location = new System.Drawing.Point(6, 6);
+            this.peAvartar.Name = "peAvartar";
+            this.peAvartar.Size = new System.Drawing.Size(38, 32);
+            this.peAvartar.TabIndex = 0;
+            this.peAvartar.TabStop = false;
             // 
             // accordionControlElement1
             // 
@@ -671,7 +672,7 @@
             this.pnIcon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnInfoItem)).EndInit();
             this.pnInfoItem.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peAvartar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -687,7 +688,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acgSettings;
         private DevExpress.XtraEditors.PanelControl pnInfo;
         private DevExpress.XtraEditors.PanelControl pnInfoItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox peAvartar;
         private DevExpress.XtraEditors.LabelControl lbName;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acgProduct;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceAuthor;

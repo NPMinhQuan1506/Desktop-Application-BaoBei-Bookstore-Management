@@ -112,7 +112,7 @@ namespace QuanLyNhaSach_291021.View.Stock
         }
         #endregion
 
-        #region //LoadData
+        #region //LoadData Grid
         private void gcStock_Load(object sender, EventArgs e)
         {
             loadData();
@@ -197,7 +197,7 @@ namespace QuanLyNhaSach_291021.View.Stock
         }
         #endregion
 
-        #region //Load Data
+        #region //Load Data Chart
         private void ctrStockStatistics_Load(object sender, EventArgs e)
         {
             loadChart();

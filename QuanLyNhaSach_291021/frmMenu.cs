@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using QuanLyNhaSach_291021.Controller;
 using QuanLyNhaSach_291021.View.Notification;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace QuanLyNhaSach_291021
         public frmMenu()
         {
             InitializeComponent();
+            lbName.Text = Global.EmpName;
         }
 
         private void aceDashboard_Click(object sender, EventArgs e)
@@ -113,6 +115,13 @@ namespace QuanLyNhaSach_291021
         private void aceDepartment_Click(object sender, EventArgs e)
         {
             setImageCurrentPage("aceDepartment");
+            if (!pnContainer.Controls.Contains(View.Department.ctrDepartmentList.instance))
+            {
+                pnContainer.Controls.Add(View.Department.ctrDepartmentList.instance);
+                View.Department.ctrDepartmentList.instance.Dock = DockStyle.Fill;
+                View.Department.ctrDepartmentList.instance.BringToFront();
+            }
+            View.Department.ctrDepartmentList.instance.BringToFront();
         }
 
         private void aceSupplier_Click(object sender, EventArgs e)
@@ -221,6 +230,31 @@ namespace QuanLyNhaSach_291021
         private void aceDentralization_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void aceLogout_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
+            DialogResult Result = MyMessageBox.ShowMessage("Bạn Có Muốn Thoát Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
+
+            if (Result == DialogResult.Yes)
+            {
+                MyMessageBox.ShowMessage("Yes!");
+                this.Close();
+            }
+            else if (Result == DialogResult.No)
+            {
+                MyMessageBox.ShowMessage("No!");
+            }
+        }
+
+        private void aceStatistical_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceStatistical");
+            pnContainer.Controls.Clear();
+            View.Revenue.ctrRevenueStatistics ctr = new View.Revenue.ctrRevenueStatistics();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
         }
     }
 }

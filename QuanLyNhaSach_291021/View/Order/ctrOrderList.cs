@@ -123,13 +123,13 @@ namespace QuanLyNhaSach_291021.View.Order
         private void loadData()
         {
             //loadData Master
-            query = @"Select pn.MaHD, KH.TenKH as KhachHang, nv.TenNV as NhanVien, pn.TongTien, GiamGia, pn.GhiChu, pn.NgayTao, pn.NgayCapNhat
-                            from HoaDon as pn
-                            inner join KhachHang as KH on pn.MaKH = KH.MaKH
-                            inner join NhanVien as nv on pn.MaNV = nv.MaNV
-                            where pn.HienThi = 1";
+            query = @"Select hd.MaHD, KH.TenKH as KhachHang, nv.TenNV as NhanVien, hd.TongTien, GiamGia, hd.GhiChu, hd.NgayTao, hd.NgayCapNhat
+                            from HoaDon as hd
+                            inner join KhachHang as KH on hd.MaKH = KH.MaKH
+                            inner join NhanVien as nv on hd.MaNV = nv.MaNV
+                            where hd.HienThi = 1";
 
-            dtMaster = conn.loadData(query + "order by pn.NgayTao ASC");
+            dtMaster = conn.loadData(query + "order by hd.NgayTao ASC");
             //loadDataDetail
             string query1 = @"select ct.MaHD, sp.TenSP as SanPham, ct.SoLuong, ct.GiaBan, GiamGia, ct.SKU from ChiTietHoaDon as ct
                                     inner join SanPham as sp on ct.SKU = sp.SKU
@@ -321,7 +321,7 @@ namespace QuanLyNhaSach_291021.View.Order
             if (txtSearch.EditValue != null)
             {
                 string searchInfo = Regex.Replace(txtSearch.EditValue.ToString(), @"[\']+", "").Trim();
-                string field = func.removeUnicode((cbbField.Text).Replace("Hóa Đơn", "PN"))
+                string field = func.removeUnicode((cbbField.Text).Replace("Hóa Đơn", "HD"))
                                                                   .Replace(" ", "");
                 if (searchInfo != txtSearch.Properties.NullText && !string.IsNullOrWhiteSpace(searchInfo))
                 {
@@ -381,7 +381,7 @@ namespace QuanLyNhaSach_291021.View.Order
             //        string fileName = openFileDialog.FileName;
             //        DataTable dtMyExcel = Controller.MyExcel.GetDataTableFromExcel(fileName);
             //        System.Data.DataView view = new System.Data.DataView(dtMyExcel);
-            //        System.Data.DataTable master = view.ToTable("MyTableMaster", false, "MaHD", "ISBN", "TenPN", "MaKH", "MaHT", "MaTL", "NgonNgu", "PhienBan",
+            //        System.Data.DataTable master = view.ToTable("MyTableMaster", false, "MaHD", "ISBN", "TenHD", "MaKH", "MaHT", "MaTL", "NgonNgu", "PhienBan",
             //            "SoLuongTon", "TonToiThieu", "DonViTinh", "GiaBan", "DanhGia", "MoTa");
             //        ConvertColumnType(ref master, "DanhGia", typeof(float));
             //        conn.executeDataSet("uspInsertOrders", master);

@@ -44,9 +44,12 @@
     <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Pdf.v19.2.Drawing, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.SharePoint.2016.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -133,17 +136,22 @@
     <Compile Include="Model\Database.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Authority\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Authority\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Author\ctrAuthorList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Author\ctrAuthorList.Designer.cs">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Business\frmSaleMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Business\frmSaleMenu.Designer.cs">
-      <DependentUpon>frmSaleMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Categories\ctrCategoriesList.cs">
       <SubType>UserControl</SubType>
@@ -168,6 +176,18 @@
     </Compile>
     <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Department\ctrDepartmentList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Department\ctrDepartmentList.Designer.cs">
+      <DependentUpon>ctrDepartmentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Department\frmDepartmentDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Department\frmDepartmentDetail.Designer.cs">
+      <DependentUpon>frmDepartmentDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Discount\ctrDiscountList.cs">
       <SubType>UserControl</SubType>
@@ -230,6 +250,18 @@
     <Compile Include="View\Order\frmOrderDetail.Designer.cs">
       <DependentUpon>frmOrderDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Order\frmPrintOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Order\frmPrintOrder.Designer.cs">
+      <DependentUpon>frmPrintOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Order\InvoiceReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Order\InvoiceReport.Designer.cs">
+      <DependentUpon>InvoiceReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Product\ctrProductList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -253,6 +285,36 @@
     </Compile>
     <Compile Include="View\Publisher\frmPublisherDetail.Designer.cs">
       <DependentUpon>frmPublisherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Revenue\ctrDetailStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Revenue\ctrDetailStatistics.Designer.cs">
+      <DependentUpon>ctrDetailStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Revenue\ctrOverviewStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Revenue\ctrOverviewStatistics.Designer.cs">
+      <DependentUpon>ctrOverviewStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Revenue\ctrRevenueStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Revenue\ctrRevenueStatistics.Designer.cs">
+      <DependentUpon>ctrRevenueStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\ctrSale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Sale\ctrSale.Designer.cs">
+      <DependentUpon>ctrSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\frmSaleMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Sale\frmSaleMenu.Designer.cs">
+      <DependentUpon>frmSaleMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Stock\ctrStockStatistics.cs">
       <SubType>UserControl</SubType>
@@ -278,19 +340,14 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="View\Authority\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Author\ctrAuthorList.resx">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Business\frmSaleMenu.resx">
-      <DependentUpon>frmSaleMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Categories\ctrCategoriesList.resx">
       <DependentUpon>ctrCategoriesList.cs</DependentUpon>
@@ -303,6 +360,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Department\ctrDepartmentList.resx">
+      <DependentUpon>ctrDepartmentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Department\frmDepartmentDetail.resx">
+      <DependentUpon>frmDepartmentDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Discount\ctrDiscountList.resx">
       <DependentUpon>ctrDiscountList.cs</DependentUpon>
@@ -334,6 +397,12 @@
     <EmbeddedResource Include="View\Order\frmOrderDetail.resx">
       <DependentUpon>frmOrderDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\frmPrintOrder.resx">
+      <DependentUpon>frmPrintOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\InvoiceReport.resx">
+      <DependentUpon>InvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Product\ctrProductList.resx">
       <DependentUpon>ctrProductList.cs</DependentUpon>
     </EmbeddedResource>
@@ -345,6 +414,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Publisher\frmPublisherDetail.resx">
       <DependentUpon>frmPublisherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Revenue\ctrDetailStatistics.resx">
+      <DependentUpon>ctrDetailStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Revenue\ctrOverviewStatistics.resx">
+      <DependentUpon>ctrOverviewStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Revenue\ctrRevenueStatistics.resx">
+      <DependentUpon>ctrRevenueStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sale\ctrSale.resx">
+      <DependentUpon>ctrSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sale\frmSaleMenu.resx">
+      <DependentUpon>frmSaleMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Stock\ctrStockStatistics.resx">
       <DependentUpon>ctrStockStatistics.cs</DependentUpon>
@@ -381,9 +465,10 @@
   <ItemGroup>
     <Content Include="Resources\default_customer.png" />
     <Content Include="Resources\default_product.png" />
+    <None Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Authority\" />
+    <Folder Include="View\Permission\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

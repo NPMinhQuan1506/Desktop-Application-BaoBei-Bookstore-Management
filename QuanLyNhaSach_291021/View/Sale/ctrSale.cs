@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using System.IO;
 using QuanLyNhaSach_291021.View.Notification;
-using DevExpress.XtraGrid.Views.Card;
-using DevExpress.XtraLayout;
-using DevExpress.XtraGrid.Views.Grid;
+using System.IO;
 using System.Text.RegularExpressions;
 using QuanLyNhaSach_291021.Controller;
+using QuanLyNhaSach_291021.View.Order;
 
-namespace QuanLyNhaSach_291021.View.Order
+namespace QuanLyNhaSach_291021.View.Sale
 {
-    public partial class frmOrderDetail : DevExpress.XtraEditors.XtraForm
+    public partial class ctrSale : DevExpress.XtraEditors.XtraUserControl
     {
         #region //Define Class and Variable
         Model.Database conn = new Model.Database();
@@ -31,13 +29,11 @@ namespace QuanLyNhaSach_291021.View.Order
         bool checkDiscount;
         decimal orderDiscount = 0;
         DataTable dtCart;
-        //Move Panel
-        Boolean dragging = false;
-        Point startPoint = new Point(0, 0);
         #endregion
 
         #region //Contructor
-        public frmOrderDetail()
+
+        public ctrSale()
         {
             InitializeComponent();
             loadAllLookups();
@@ -47,16 +43,6 @@ namespace QuanLyNhaSach_291021.View.Order
             dtNow = func.DateTimeToString(DateTime.Now);
             checkDiscount = false;
         }
-
-        //public frmOrderDetail(string _id) : this()
-        //{
-        //    this.id = _id;
-        //    loadData();
-
-        //}
-        #endregion
-
-        #region //Load Data For Updating Event
 
         #endregion
 
@@ -184,12 +170,12 @@ namespace QuanLyNhaSach_291021.View.Order
         #endregion
 
         #region //Save Data
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnCheckout_Click(object sender, EventArgs e)
         {
 
             if (doValidate())
             {
-                if(checkDiscount)
+                if (checkDiscount)
                 {
                     var total = gvOrder.Columns["TongTien"].SummaryItem.SummaryValue;
                     String query = String.Format(@"INSERT INTO HoaDon(MaHD, MaKH, MaNV, TongTien, GiamGia, GhiChu, NgayTao) 
@@ -217,7 +203,6 @@ namespace QuanLyNhaSach_291021.View.Order
 
                     }
                     MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
-                    this.Close();
                     frmPrintOrder frm = new frmPrintOrder();
                     frm.printInvoice(OrdID);
                     frm.ShowDialog();
@@ -270,7 +255,10 @@ namespace QuanLyNhaSach_291021.View.Order
                                     where km.ThoiGianBatDau < GetDate() and km.ThoiGianKetThuc > GETDATE()
                                           and km.GiamGiaHoaDon is not Null";
             DataTable checkOrderDiscount = conn.loadData(query);
-
+            if(gvOrder.DataRowCount < 1)
+            {
+                return;
+            }
             var total = (decimal)gvOrder.Columns["TongTien"].SummaryItem.SummaryValue;
             string conditionDiscount = "", op_condition = "";
             decimal condition = 0;
@@ -282,20 +270,20 @@ namespace QuanLyNhaSach_291021.View.Order
                 condition = Convert.ToDecimal(arrListStr[1]);
                 if (Common.Operator(op_condition, total, condition))
                 {
-                    if(dr_discount["DonViGiam"].ToString() == "%")
+                    if (dr_discount["DonViGiam"].ToString() == "%")
                     {
                         orderDiscount = (decimal)dr_discount["GiamGiaHoaDon"];
                         total = (Convert.ToDecimal(((float)total - (float)total * (double)orderDiscount / 100)));
                         orderDiscount = Convert.ToDecimal((float)total * (double)orderDiscount / 100);
-                        txtTotalPrice.Text = total.ToString() +"đ";
+                        txtTotalPrice.Text = total.ToString() + "đ";
                     }
                     else
                     {
                         total = (total - (decimal)dr_discount["GiamGiaHoaDon"]);
                         orderDiscount = (decimal)dr_discount["GiamGiaHoaDon"];
-                        txtTotalPrice.Text = total.ToString()+"đ";
+                        txtTotalPrice.Text = total.ToString() + "đ";
                     }
-                    
+
                 }
 
             }
@@ -452,59 +440,5 @@ namespace QuanLyNhaSach_291021.View.Order
             return check;
         }
         #endregion
-
-        #region //Clear Value of Control
-        private void lbClear_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region //Close Button
-        private void lbClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        #endregion
-
-        #region //Rounded Border Form 
-        private void frmOrderDetail_Resize(object sender, EventArgs e)
-        {
-            this.Region = DevExpress.Utils.Drawing.Helpers.NativeMethods.CreateRoundRegion(new Rectangle(Point.Empty, Size), 9);
-        }
-
-        private void frmOrderDetail_Shown(object sender, EventArgs e)
-        {
-            this.Region = DevExpress.Utils.Drawing.Helpers.NativeMethods.CreateRoundRegion(new Rectangle(Point.Empty, Size), 9);
-        }
-        #endregion
-
-        #region // Move Panel
-        private void pnHeader_MouseDown(object sender, MouseEventArgs e)
-        {
-            dragging = true;
-            startPoint = new Point(e.X, e.Y);
-        }
-
-        private void pnHeader_MouseUp(object sender, MouseEventArgs e)
-        {
-            dragging = false;
-        }
-
-        private void pnHeader_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (dragging)
-            {
-                Point screenPoint = PointToScreen(e.Location);
-                Location = new Point(screenPoint.X - this.startPoint.X, screenPoint.Y - this.startPoint.Y);
-            }
-        }
-        #endregion
-
     }
 }
