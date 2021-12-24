@@ -177,6 +177,12 @@
     <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dashboard\ctrDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Dashboard\ctrDashboard.Designer.cs">
+      <DependentUpon>ctrDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Department\ctrDepartmentList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -360,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dashboard\ctrDashboard.resx">
+      <DependentUpon>ctrDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Department\ctrDepartmentList.resx">
       <DependentUpon>ctrDepartmentList.cs</DependentUpon>

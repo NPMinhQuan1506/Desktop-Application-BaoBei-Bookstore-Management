@@ -599,6 +599,7 @@
             // 
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.btnExport);
             this.panelControl1.Controls.Add(this.btnPrint);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Right;

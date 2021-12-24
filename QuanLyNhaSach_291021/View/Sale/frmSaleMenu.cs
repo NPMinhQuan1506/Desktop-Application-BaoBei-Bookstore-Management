@@ -42,6 +42,8 @@ namespace QuanLyNhaSach_291021.View.Sale
             }
             else if (Result == DialogResult.No)
             {
+                string s = Controller.EncryptDecrypt.Encrypt("admin123");
+            
                 MyMessageBox.ShowMessage("Cảm Ơn!");
             }
         }

@@ -206,6 +206,7 @@ namespace QuanLyNhaSach_291021.View.Sale
                     frmPrintOrder frm = new frmPrintOrder();
                     frm.printInvoice(OrdID);
                     frm.ShowDialog();
+                    this.Refresh();
                 }
                 else
                 {
@@ -325,7 +326,15 @@ namespace QuanLyNhaSach_291021.View.Sale
                 dr[2] = dataRow["SanPham"].ToString();
                 dr[3] = 1;
                 dr[4] = (decimal)dataRow["GiaBan"];
-                dr[5] = (decimal)dataRow["GiamGia"];
+                
+                if(!dataRow.IsNull("GiamGia"))
+                {
+                    dr[5] = (decimal)dataRow["GiamGia"];
+                }
+                else
+                {
+                    dr[5] = 0;
+                }
                 dr[6] = Convert.ToDecimal(((int)dr[3] * ((Decimal)dr[4] - (Decimal)dr[5])));
 
                 dtCart.Rows.Add(dr);

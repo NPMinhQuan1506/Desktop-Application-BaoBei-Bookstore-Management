@@ -43,6 +43,7 @@ namespace QuanLyNhaSach_291021.View.Discount
             loadDataProduct();
             initDatatable();
             dtNow = func.DateTimeToString(DateTime.Now);
+            rdTypeDiscount.SelectedIndex = 0;
         }
 
         public frmDiscountDetail(string _id) : this()
@@ -102,12 +103,12 @@ namespace QuanLyNhaSach_291021.View.Discount
                         dteStartTime.EditValue = func.StringToDateTime(strDte);
                         strDte = (dtContent.Rows[0]["ThoiGianKetThuc"]).ToString();
                         dteEndTime.EditValue = func.StringToDateTime(strDte);
-                        spOrderDiscount.EditValue = (decimal)(dtContent.Rows[0]["GiamGiaHoaDon"]);
-                        cbbDiscountUnit.EditValue = (dtContent.Rows[0]["DonViGiam"]).ToString();
                         string conditionDiscount = (dtContent.Rows[0]["DieuKien"]).ToString();
                         string[] arrListStr = conditionDiscount.Split(' ');
                         spCondition.EditValue = Convert.ToInt32(arrListStr[1]);
                         cbbConditionUnit.EditValue = arrListStr[0].ToString();
+                        cbbDiscountUnit.EditValue = (dtContent.Rows[0]["DonViGiam"]).ToString();
+                        spOrderDiscount.EditValue = (decimal)(dtContent.Rows[0]["GiamGiaHoaDon"]);
                         mmeNote.Text = (dtContent.Rows[0]["GhiChu"]).ToString();
                     }
                 }
@@ -118,9 +119,13 @@ namespace QuanLyNhaSach_291021.View.Discount
         #region //Set Rule Of Control
         private void rdTypeDiscount_SelectedIndexChanged(object sender, EventArgs e)
         {
+            setUpDiscountType();
+        }
+
+        private void setUpDiscountType()
+        {
             if (rdTypeDiscount.SelectedIndex == 0)
             {
-
                 gcProduct.Enabled = false;
                 gcDiscount.Enabled = false;
                 lbProduct.Enabled = false;
@@ -132,7 +137,7 @@ namespace QuanLyNhaSach_291021.View.Discount
             }
             else
             {
-             
+
                 gcProduct.Enabled = true;
                 gcDiscount.Enabled = true;
                 lbProduct.Enabled = true;
@@ -143,7 +148,6 @@ namespace QuanLyNhaSach_291021.View.Discount
                 cbbConditionUnit.Enabled = false;
             }
         }
-
 
         private void cbbDiscountUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -294,7 +298,43 @@ namespace QuanLyNhaSach_291021.View.Discount
 
         private void saveOrderDiscount()
         {
+            if (flag)
+            {
 
+                String query = String.Format(@"INSERT INTO KhuyenMai(MaKM, TenKM, ThoiGianBatDau, ThoiGianKetThuc, GiamGiaHoaDon, DonViGiam, DieuKien, GhiChu, NgayTao) 
+                                                            values ('{0}', N'{1}', '{2}', '{3}',{4}, N'{5}', '{6}', N'{7}', '{8}')",
+                                                            InitDiscountID(),
+                                                            txtDiscountName.Text,
+                                                            func.DateTimeToString((DateTime)dteStartTime.EditValue),
+                                                            func.DateTimeToString((DateTime)dteEndTime.EditValue),
+                                                            (decimal)spOrderDiscount.EditValue,
+                                                            cbbDiscountUnit.Text,
+                                                            cbbConditionUnit.Text + " " + spCondition.EditValue.ToString(),
+                                                            mmeNote.Text,
+                                                            dtNow);
+
+                conn.executeDatabase(query);
+                MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
+                this.Close();
+            }
+            else
+            {
+                String query = String.Format(@"Update KhuyenMai Set TenKM = N'{0}', ThoiGianBatDau = '{1}', ThoiGianKetThuc = '{2}', 
+                                                                    GiamGiaHoaDon = {3}, DonViGiam = N'{4}', DieuKien = '{5}', GhiChu = N'{6}'
+                                                                    Where MaKM = '{7}'",
+                                            txtDiscountName.Text,
+                                            func.DateTimeToString((DateTime)dteStartTime.EditValue),
+                                            func.DateTimeToString((DateTime)dteEndTime.EditValue),
+                                            (decimal)spOrderDiscount.EditValue,
+                                            cbbDiscountUnit.Text,
+                                            cbbConditionUnit.Text + " " + spCondition.EditValue.ToString(),
+                                            mmeNote.Text,
+                                            DiscountID);
+
+                conn.executeDatabase(query);
+                MyMessageBox.ShowMessage("Sửa Dữ Liệu Thành Công!");
+                this.Close();
+            }
         }
 
         private void saveProductDiscount()
@@ -339,7 +379,6 @@ namespace QuanLyNhaSach_291021.View.Discount
                     }
                 }
                 conn.executeDataSet("uspUpdateDiscountDetails", dtProductDiscount);
-
                 MyMessageBox.ShowMessage("Sửa Dữ Liệu Thành Công!");
                 this.Close();
             }

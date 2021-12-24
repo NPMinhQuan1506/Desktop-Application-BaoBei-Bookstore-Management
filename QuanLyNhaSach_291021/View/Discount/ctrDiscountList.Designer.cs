@@ -572,7 +572,6 @@
             this.DiscountUnit.AppearanceHeader.Options.UseTextOptions = true;
             this.DiscountUnit.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.DiscountUnit.Caption = "Đơn Vị Giảm";
-            this.DiscountUnit.ColumnEdit = this.dteDate;
             this.DiscountUnit.FieldName = "DonViGiam";
             this.DiscountUnit.MaxWidth = 90;
             this.DiscountUnit.MinWidth = 100;
@@ -599,6 +598,7 @@
             this.ConditionDiscount.AppearanceHeader.Options.UseTextOptions = true;
             this.ConditionDiscount.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.ConditionDiscount.Caption = "Điều Kiện Giảm";
+            this.ConditionDiscount.FieldName = "DieuKien";
             this.ConditionDiscount.MinWidth = 120;
             this.ConditionDiscount.Name = "ConditionDiscount";
             this.ConditionDiscount.OptionsColumn.AllowEdit = false;

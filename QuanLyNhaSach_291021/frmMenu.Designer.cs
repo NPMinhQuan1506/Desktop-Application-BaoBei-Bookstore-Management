@@ -164,6 +164,7 @@
             this.acePublisher,
             this.aceCategories,
             this.aceProduct});
+            this.acgProduct.Expanded = true;
             this.acgProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgProduct.ImageOptions.SvgImage")));
             this.acgProduct.Name = "acgProduct";
             this.acgProduct.Text = "Quản Lý Sản Phẩm";
@@ -258,6 +259,7 @@
             this.aceSupplier,
             this.aceImport,
             this.aceStock});
+            this.acgInventory.Expanded = true;
             this.acgInventory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgInventory.ImageOptions.SvgImage")));
             this.acgInventory.Name = "acgInventory";
             this.acgInventory.Text = "Quản Lý Kho";
@@ -502,6 +504,7 @@
             this.aceSync.Name = "aceSync";
             this.aceSync.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceSync.Text = "Đồng Bộ Và Sao Lưu";
+            this.aceSync.Visible = false;
             // 
             // aceCrash
             // 
@@ -509,6 +512,7 @@
             this.aceCrash.Name = "aceCrash";
             this.aceCrash.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceCrash.Text = "Thùng Rác";
+            this.aceCrash.Visible = false;
             // 
             // aceLog
             // 
