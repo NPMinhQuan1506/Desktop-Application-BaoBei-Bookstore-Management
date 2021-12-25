@@ -14,6 +14,9 @@ namespace QuanLyNhaSach_291021.View.Sale
     public partial class frmSaleMenu : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSaleMenu));
+        private static Model.Database conn = new Model.Database();
+        private static Controller.Common func = new Controller.Common();
+
         public frmSaleMenu()
         {
             InitializeComponent();
@@ -38,12 +41,14 @@ namespace QuanLyNhaSach_291021.View.Sale
             if (Result == DialogResult.Yes)
             {
                 MyMessageBox.ShowMessage("Xin chào! Hẹn Gặp Lại");
+                DateTime dtNow = DateTime.Now;
+                string query_log = String.Format(@"Update Employee_log set ThoiGianDangXuat = '{0}', TrangThai = 0 where id = {1}", func.DateTimeToString(dtNow), Controller.Global.IdLog);
+                conn.executeDatabase(query_log);
+                Controller.Global.destroy();
                 this.Close();
             }
             else if (Result == DialogResult.No)
             {
-                string s = Controller.EncryptDecrypt.Encrypt("admin123");
-            
                 MyMessageBox.ShowMessage("Cảm Ơn!");
             }
         }

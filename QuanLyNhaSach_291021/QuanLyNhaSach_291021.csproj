@@ -177,6 +177,12 @@
     <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dashboard\ctrDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Dashboard\ctrDashboard.Designer.cs">
+      <DependentUpon>ctrDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Department\ctrDepartmentList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -367,6 +373,9 @@
     <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Dashboard\ctrDashboard.resx">
+      <DependentUpon>ctrDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Department\ctrDepartmentList.resx">
       <DependentUpon>ctrDepartmentList.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,12 +481,15 @@
     <None Include="Resources\Question.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\employee.png" />
+    <None Include="Resources\Revenue.png" />
+    <None Include="Resources\customer.jpg" />
     <Content Include="Resources\default_customer.png" />
     <Content Include="Resources\default_product.png" />
+    <None Include="Resources\salesmoney.png" />
     <None Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Dashboard\" />
     <Folder Include="View\Permission\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

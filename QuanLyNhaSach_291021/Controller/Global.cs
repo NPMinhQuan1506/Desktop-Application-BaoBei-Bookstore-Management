@@ -13,8 +13,9 @@ namespace QuanLyNhaSach_291021.Controller
         private static Model.Database conn = new Model.Database();
         private static Controller.Common func = new Controller.Common();
         //static variable
-        public static string EmpName;
-        public static string EmpId = "NV000001";
+        public static string EmpName = "";
+        public static string EmpId = "";
+        public static int IdLog = 0;
 
         public static bool AuthorityLogin(string account, string password, string mode)
         {
@@ -49,8 +50,12 @@ namespace QuanLyNhaSach_291021.Controller
                 {
                     if ((dtContent.Rows[0]["MatKhau"]).ToString() == Controller.EncryptDecrypt.Encrypt(password))
                     {
+                        DateTime dtNow = DateTime.Now;
                         EmpName = (dtContent.Rows[0]["TenNV"]).ToString();
                         EmpId = (dtContent.Rows[0]["MaNV"]).ToString();
+                        string query_log = String.Format(@"Insert into Employee_log(MaNV, ThoiGianDangNhap, TrangThai) values('{0}', '{1}', 1)", EmpId, func.DateTimeToString(dtNow));
+                        conn.executeDatabase(query_log);
+                        IdLog = Convert.ToInt32(conn.getLastInsertedValue());
                         return true;
                     }
                     else
@@ -68,6 +73,13 @@ namespace QuanLyNhaSach_291021.Controller
                 MyMessageBox.ShowMessage("Vui Lòng! Nhập Đầy Đủ Thông Tin");
             }
             return false;
+        }
+
+        public static void destroy()
+        {
+            EmpName = "";
+            EmpId = "";
+            IdLog = 0;
         }
     }
 }

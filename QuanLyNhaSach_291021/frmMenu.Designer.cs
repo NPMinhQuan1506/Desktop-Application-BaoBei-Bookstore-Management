@@ -669,6 +669,7 @@
             this.Name = "frmMenu";
             this.NavigationControl = this.acMenu;
             this.Text = "Nhà Sách BaoBei";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.acMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnInfo)).EndInit();

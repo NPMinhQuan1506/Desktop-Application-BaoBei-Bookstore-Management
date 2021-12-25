@@ -14,26 +14,26 @@ namespace QuanLyNhaSach_291021
     public partial class frmMenu : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
+        private static Model.Database conn = new Model.Database();
+        private static Controller.Common func = new Controller.Common();
         public frmMenu()
         {
             InitializeComponent();
             lbName.Text = Global.EmpName;
+            setImageCurrentPage("aceDashboard");
+            pnContainer.Controls.Clear();
+            View.Dashboard.ctrDashboard ctr = new View.Dashboard.ctrDashboard();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
         }
 
         private void aceDashboard_Click(object sender, EventArgs e)
         {
             setImageCurrentPage("aceDashboard");
-            MessageBoxButtons Bouton = MessageBoxButtons.YesNo;
-            DialogResult Result = MyMessageBox.ShowMessage("Dashboard Không?", "Thông Báo!", Bouton, MessageBoxIcon.Question);
-
-            if (Result == DialogResult.Yes)
-            {
-                MyMessageBox.ShowMessage("Yes!");
-            }
-            else if (Result == DialogResult.No)
-            {
-                MyMessageBox.ShowMessage("No!");
-            }
+            pnContainer.Controls.Clear();
+            View.Dashboard.ctrDashboard ctr = new View.Dashboard.ctrDashboard();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
 
         }
 
@@ -239,12 +239,16 @@ namespace QuanLyNhaSach_291021
 
             if (Result == DialogResult.Yes)
             {
-                MyMessageBox.ShowMessage("Yes!");
+                MyMessageBox.ShowMessage("Xin chào! Hẹn Gặp Lại");
+                DateTime dtNow = DateTime.Now;
+                string query_log = String.Format(@"Update Employee_log set ThoiGianDangXuat = '{0}', TrangThai = 0 where id = {1}", func.DateTimeToString(dtNow), Controller.Global.IdLog);
+                conn.executeDatabase(query_log);
+                Controller.Global.destroy();
                 this.Close();
             }
             else if (Result == DialogResult.No)
             {
-                MyMessageBox.ShowMessage("No!");
+                MyMessageBox.ShowMessage("Cảm Ơn!");
             }
         }
 
