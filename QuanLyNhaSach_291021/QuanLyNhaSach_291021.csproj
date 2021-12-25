@@ -346,6 +346,12 @@
     <Compile Include="View\Supplier\frmSupplierDetail.Designer.cs">
       <DependentUpon>frmSupplierDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ThemeSetting\ctrThemeSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ThemeSetting\ctrThemeSetting.Designer.cs">
+      <DependentUpon>ctrThemeSetting.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -456,6 +462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Supplier\frmSupplierDetail.resx">
       <DependentUpon>frmSupplierDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ThemeSetting\ctrThemeSetting.resx">
+      <DependentUpon>ctrThemeSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

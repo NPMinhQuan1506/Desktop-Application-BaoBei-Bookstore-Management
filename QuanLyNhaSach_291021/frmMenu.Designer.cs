@@ -85,9 +85,9 @@
             // pnContainer
             // 
             this.pnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContainer.Location = new System.Drawing.Point(289, 78);
+            this.pnContainer.Location = new System.Drawing.Point(289, 81);
             this.pnContainer.Name = "pnContainer";
-            this.pnContainer.Size = new System.Drawing.Size(884, 473);
+            this.pnContainer.Size = new System.Drawing.Size(884, 470);
             this.pnContainer.TabIndex = 0;
             // 
             // acMenu
@@ -164,7 +164,6 @@
             this.acePublisher,
             this.aceCategories,
             this.aceProduct});
-            this.acgProduct.Expanded = true;
             this.acgProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgProduct.ImageOptions.SvgImage")));
             this.acgProduct.Name = "acgProduct";
             this.acgProduct.Text = "Quản Lý Sản Phẩm";
@@ -259,7 +258,6 @@
             this.aceSupplier,
             this.aceImport,
             this.aceStock});
-            this.acgInventory.Expanded = true;
             this.acgInventory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgInventory.ImageOptions.SvgImage")));
             this.acgInventory.Name = "acgInventory";
             this.acgInventory.Text = "Quản Lý Kho";
@@ -334,7 +332,6 @@
             this.aceOrder,
             this.aceDiscount,
             this.aceStatistical});
-            this.acgSale.Expanded = true;
             this.acgSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgSale.ImageOptions.SvgImage")));
             this.acgSale.Name = "acgSale";
             this.acgSale.Text = "Quản Lý Bán Hàng";
@@ -409,7 +406,6 @@
             this.acgEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgEmployee.ImageOptions.SvgImage")));
             this.acgEmployee.Name = "acgEmployee";
             this.acgEmployee.Text = "Nhân Sự";
-            this.acgEmployee.Click += new System.EventHandler(this.acgEmployee_Click);
             // 
             // aceDepartment
             // 
@@ -432,7 +428,6 @@
             this.acgPermission.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.acePermission,
             this.aceDentralization});
-            this.acgPermission.Expanded = true;
             this.acgPermission.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acgPermission.ImageOptions.SvgImage")));
             this.acgPermission.Name = "acgPermission";
             this.acgPermission.Text = "Quản Lý Phân Quyền";
@@ -497,6 +492,7 @@
             this.aceTheme.Name = "aceTheme";
             this.aceTheme.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceTheme.Text = "Giao Diện";
+            this.aceTheme.Click += new System.EventHandler(this.aceTheme_Click);
             // 
             // aceSync
             // 
@@ -547,7 +543,7 @@
             this.pnInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnInfo.Location = new System.Drawing.Point(289, 31);
             this.pnInfo.Name = "pnInfo";
-            this.pnInfo.Size = new System.Drawing.Size(884, 47);
+            this.pnInfo.Size = new System.Drawing.Size(884, 50);
             this.pnInfo.TabIndex = 3;
             // 
             // pnIcon
@@ -557,7 +553,7 @@
             this.pnIcon.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnIcon.Location = new System.Drawing.Point(0, 0);
             this.pnIcon.Name = "pnIcon";
-            this.pnIcon.Size = new System.Drawing.Size(47, 47);
+            this.pnIcon.Size = new System.Drawing.Size(47, 50);
             this.pnIcon.TabIndex = 1;
             // 
             // lbCurrentListIcon
@@ -578,7 +574,7 @@
             this.pnInfoItem.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnInfoItem.Location = new System.Drawing.Point(609, 0);
             this.pnInfoItem.Name = "pnInfoItem";
-            this.pnInfoItem.Size = new System.Drawing.Size(275, 47);
+            this.pnInfoItem.Size = new System.Drawing.Size(275, 50);
             this.pnInfoItem.TabIndex = 0;
             // 
             // lbName

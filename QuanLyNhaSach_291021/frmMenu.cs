@@ -27,16 +27,9 @@ namespace QuanLyNhaSach_291021
             pnContainer.Controls.Add(ctr);
         }
 
-        private void aceDashboard_Click(object sender, EventArgs e)
-        {
-            setImageCurrentPage("aceDashboard");
-            pnContainer.Controls.Clear();
-            View.Dashboard.ctrDashboard ctr = new View.Dashboard.ctrDashboard();
-            ctr.Dock = DockStyle.Fill;
-            pnContainer.Controls.Add(ctr);
+        #region //CRM
 
-        }
-
+        //CRM
         private void aceCustomer_Click(object sender, EventArgs e)
         {
             setImageCurrentPage("aceCustomer");
@@ -106,24 +99,7 @@ namespace QuanLyNhaSach_291021
             //View.Product.ctrProductList.BringToFront();
         }
 
-        private void acgEmployee_Click(object sender, EventArgs e)
-        {
-            setImageCurrentPage("acgEmployee");
-        }
-
-        //CRM
-        private void aceDepartment_Click(object sender, EventArgs e)
-        {
-            setImageCurrentPage("aceDepartment");
-            if (!pnContainer.Controls.Contains(View.Department.ctrDepartmentList.instance))
-            {
-                pnContainer.Controls.Add(View.Department.ctrDepartmentList.instance);
-                View.Department.ctrDepartmentList.instance.Dock = DockStyle.Fill;
-                View.Department.ctrDepartmentList.instance.BringToFront();
-            }
-            View.Department.ctrDepartmentList.instance.BringToFront();
-        }
-
+        //Stock
         private void aceSupplier_Click(object sender, EventArgs e)
         {
             setImageCurrentPage("aceSupplier");
@@ -168,7 +144,7 @@ namespace QuanLyNhaSach_291021
             //View.Stock.ctrStockStatistics.instance.BringToFront();
         }
 
-
+        //Sales
         private void aceDiscount_Click(object sender, EventArgs e)
         {
             setImageCurrentPage("aceDiscount");
@@ -201,10 +177,18 @@ namespace QuanLyNhaSach_291021
             //View.Order.ctrOrderList.instance.BringToFront();
         }
 
-        private void setImageCurrentPage(string namePage)
+        private void aceStatistical_Click(object sender, EventArgs e)
         {
-            this.lbCurrentListIcon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject(namePage+".ImageOptions.SvgImage")));
+            setImageCurrentPage("aceStatistical");
+            pnContainer.Controls.Clear();
+            View.Revenue.ctrRevenueStatistics ctr = new View.Revenue.ctrRevenueStatistics();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
         }
+
+        #endregion
+
+        #region //HRM
 
         private void aceEmployee_Click(object sender, EventArgs e)
         {
@@ -231,6 +215,50 @@ namespace QuanLyNhaSach_291021
         {
 
         }
+        private void aceDepartment_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceDepartment");
+            if (!pnContainer.Controls.Contains(View.Department.ctrDepartmentList.instance))
+            {
+                pnContainer.Controls.Add(View.Department.ctrDepartmentList.instance);
+                View.Department.ctrDepartmentList.instance.Dock = DockStyle.Fill;
+                View.Department.ctrDepartmentList.instance.BringToFront();
+            }
+            View.Department.ctrDepartmentList.instance.BringToFront();
+        }
+        #endregion
+
+        #region //Setting
+        private void aceDashboard_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceDashboard");
+            pnContainer.Controls.Clear();
+            View.Dashboard.ctrDashboard ctr = new View.Dashboard.ctrDashboard();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
+
+        }
+
+        private void aceLog_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceLog");
+            pnContainer.Controls.Clear();
+            View.EmployeeLog.ctrEmployeeLog ctr = new View.EmployeeLog.ctrEmployeeLog();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
+        }
+
+        private void aceTheme_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceTheme");
+            if (!pnContainer.Controls.Contains(View.ThemeSetting.ctrThemeSetting.instance))
+            {
+                pnContainer.Controls.Add(View.ThemeSetting.ctrThemeSetting.instance);
+                View.ThemeSetting.ctrThemeSetting.instance.Dock = DockStyle.Fill;
+                View.ThemeSetting.ctrThemeSetting.instance.BringToFront();
+            }
+            View.ThemeSetting.ctrThemeSetting.instance.BringToFront();
+        }
 
         private void aceLogout_Click(object sender, EventArgs e)
         {
@@ -252,22 +280,10 @@ namespace QuanLyNhaSach_291021
             }
         }
 
-        private void aceStatistical_Click(object sender, EventArgs e)
+        private void setImageCurrentPage(string namePage)
         {
-            setImageCurrentPage("aceStatistical");
-            pnContainer.Controls.Clear();
-            View.Revenue.ctrRevenueStatistics ctr = new View.Revenue.ctrRevenueStatistics();
-            ctr.Dock = DockStyle.Fill;
-            pnContainer.Controls.Add(ctr);
+            this.lbCurrentListIcon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject(namePage + ".ImageOptions.SvgImage")));
         }
-
-        private void aceLog_Click(object sender, EventArgs e)
-        {
-            setImageCurrentPage("aceLog");
-            pnContainer.Controls.Clear();
-            View.EmployeeLog.ctrEmployeeLog ctr = new View.EmployeeLog.ctrEmployeeLog();
-            ctr.Dock = DockStyle.Fill;
-            pnContainer.Controls.Add(ctr);
-        }
+        #endregion
     }
 }
