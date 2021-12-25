@@ -520,6 +520,7 @@
             this.aceLog.Name = "aceLog";
             this.aceLog.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceLog.Text = "Lịch Sử Hoạt Động";
+            this.aceLog.Click += new System.EventHandler(this.aceLog_Click);
             // 
             // aceLogout
             // 

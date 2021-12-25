@@ -177,12 +177,6 @@
     <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Dashboard\ctrDashboard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Dashboard\ctrDashboard.Designer.cs">
-      <DependentUpon>ctrDashboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Department\ctrDepartmentList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -206,6 +200,12 @@
     </Compile>
     <Compile Include="View\Discount\frmDiscountDetail.Designer.cs">
       <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeLog\ctrEmployeeLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeLog\ctrEmployeeLog.Designer.cs">
+      <DependentUpon>ctrEmployeeLog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Employee\ctrEmployeeList.cs">
       <SubType>UserControl</SubType>
@@ -367,9 +367,6 @@
     <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Dashboard\ctrDashboard.resx">
-      <DependentUpon>ctrDashboard.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Department\ctrDepartmentList.resx">
       <DependentUpon>ctrDepartmentList.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Discount\frmDiscountDetail.resx">
       <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeLog\ctrEmployeeLog.resx">
+      <DependentUpon>ctrEmployeeLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Employee\ctrEmployeeList.resx">
       <DependentUpon>ctrEmployeeList.cs</DependentUpon>
@@ -477,6 +477,7 @@
     <None Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="View\Dashboard\" />
     <Folder Include="View\Permission\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

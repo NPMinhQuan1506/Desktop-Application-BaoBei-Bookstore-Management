@@ -256,5 +256,14 @@ namespace QuanLyNhaSach_291021
             ctr.Dock = DockStyle.Fill;
             pnContainer.Controls.Add(ctr);
         }
+
+        private void aceLog_Click(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceLog");
+            pnContainer.Controls.Clear();
+            View.EmployeeLog.ctrEmployeeLog ctr = new View.EmployeeLog.ctrEmployeeLog();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
+        }
     }
 }

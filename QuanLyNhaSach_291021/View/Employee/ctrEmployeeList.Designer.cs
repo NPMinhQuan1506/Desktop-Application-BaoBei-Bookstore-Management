@@ -81,6 +81,9 @@
             this.EmployeeAccount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DateOfBirth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dteDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.Salary = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.HiredDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Email = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Phone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Address = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -89,9 +92,6 @@
             this.btnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Delete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.HiredDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Salary = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).BeginInit();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel.Properties)).BeginInit();
@@ -108,9 +108,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mmField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteDate.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnHeader
@@ -674,6 +674,75 @@
             this.dteDate.Mask.UseMaskAsDisplayFormat = true;
             this.dteDate.Name = "dteDate";
             // 
+            // Salary
+            // 
+            this.Salary.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Salary.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.Salary.AppearanceCell.Options.UseFont = true;
+            this.Salary.AppearanceCell.Options.UseForeColor = true;
+            this.Salary.AppearanceCell.Options.UseTextOptions = true;
+            this.Salary.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.Salary.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.Salary.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.Salary.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.Salary.AppearanceHeader.Options.UseFont = true;
+            this.Salary.AppearanceHeader.Options.UseForeColor = true;
+            this.Salary.AppearanceHeader.Options.UseTextOptions = true;
+            this.Salary.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.Salary.Caption = "Lương (VNĐ)";
+            this.Salary.ColumnEdit = this.repositoryItemSpinEdit1;
+            this.Salary.DisplayFormat.FormatString = "n0";
+            this.Salary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.Salary.FieldName = "Luong";
+            this.Salary.MinWidth = 120;
+            this.Salary.Name = "Salary";
+            this.Salary.OptionsColumn.AllowEdit = false;
+            this.Salary.OptionsColumn.AllowFocus = false;
+            this.Salary.OptionsColumn.AllowMove = false;
+            this.Salary.OptionsColumn.AllowSize = false;
+            this.Salary.Visible = true;
+            this.Salary.VisibleIndex = 9;
+            this.Salary.Width = 120;
+            // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit1.EditFormat.FormatString = "n0";
+            this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "n0";
+            this.repositoryItemSpinEdit1.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            // 
+            // HiredDate
+            // 
+            this.HiredDate.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.HiredDate.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.HiredDate.AppearanceCell.Options.UseFont = true;
+            this.HiredDate.AppearanceCell.Options.UseForeColor = true;
+            this.HiredDate.AppearanceCell.Options.UseTextOptions = true;
+            this.HiredDate.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.HiredDate.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.HiredDate.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.HiredDate.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.HiredDate.AppearanceHeader.Options.UseFont = true;
+            this.HiredDate.AppearanceHeader.Options.UseForeColor = true;
+            this.HiredDate.AppearanceHeader.Options.UseTextOptions = true;
+            this.HiredDate.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.HiredDate.Caption = "Ngày Thuê";
+            this.HiredDate.ColumnEdit = this.dteDate;
+            this.HiredDate.FieldName = "NgayThue";
+            this.HiredDate.MinWidth = 120;
+            this.HiredDate.Name = "HiredDate";
+            this.HiredDate.OptionsColumn.AllowEdit = false;
+            this.HiredDate.OptionsColumn.AllowFocus = false;
+            this.HiredDate.OptionsColumn.AllowMove = false;
+            this.HiredDate.OptionsColumn.AllowSize = false;
+            this.HiredDate.Visible = true;
+            this.HiredDate.VisibleIndex = 10;
+            this.HiredDate.Width = 120;
+            // 
             // Email
             // 
             this.Email.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -834,75 +903,6 @@
             this.btnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // HiredDate
-            // 
-            this.HiredDate.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.HiredDate.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.HiredDate.AppearanceCell.Options.UseFont = true;
-            this.HiredDate.AppearanceCell.Options.UseForeColor = true;
-            this.HiredDate.AppearanceCell.Options.UseTextOptions = true;
-            this.HiredDate.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.HiredDate.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.HiredDate.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.HiredDate.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.HiredDate.AppearanceHeader.Options.UseFont = true;
-            this.HiredDate.AppearanceHeader.Options.UseForeColor = true;
-            this.HiredDate.AppearanceHeader.Options.UseTextOptions = true;
-            this.HiredDate.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.HiredDate.Caption = "Ngày Thuê";
-            this.HiredDate.ColumnEdit = this.dteDate;
-            this.HiredDate.FieldName = "NgayThue";
-            this.HiredDate.MinWidth = 120;
-            this.HiredDate.Name = "HiredDate";
-            this.HiredDate.OptionsColumn.AllowEdit = false;
-            this.HiredDate.OptionsColumn.AllowFocus = false;
-            this.HiredDate.OptionsColumn.AllowMove = false;
-            this.HiredDate.OptionsColumn.AllowSize = false;
-            this.HiredDate.Visible = true;
-            this.HiredDate.VisibleIndex = 10;
-            this.HiredDate.Width = 120;
-            // 
-            // Salary
-            // 
-            this.Salary.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Salary.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.Salary.AppearanceCell.Options.UseFont = true;
-            this.Salary.AppearanceCell.Options.UseForeColor = true;
-            this.Salary.AppearanceCell.Options.UseTextOptions = true;
-            this.Salary.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.Salary.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.Salary.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.Salary.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.Salary.AppearanceHeader.Options.UseFont = true;
-            this.Salary.AppearanceHeader.Options.UseForeColor = true;
-            this.Salary.AppearanceHeader.Options.UseTextOptions = true;
-            this.Salary.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.Salary.Caption = "Lương (VNĐ)";
-            this.Salary.ColumnEdit = this.repositoryItemSpinEdit1;
-            this.Salary.DisplayFormat.FormatString = "n0";
-            this.Salary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.Salary.FieldName = "Luong";
-            this.Salary.MinWidth = 120;
-            this.Salary.Name = "Salary";
-            this.Salary.OptionsColumn.AllowEdit = false;
-            this.Salary.OptionsColumn.AllowFocus = false;
-            this.Salary.OptionsColumn.AllowMove = false;
-            this.Salary.OptionsColumn.AllowSize = false;
-            this.Salary.Visible = true;
-            this.Salary.VisibleIndex = 9;
-            this.Salary.Width = 120;
-            // 
-            // repositoryItemSpinEdit1
-            // 
-            this.repositoryItemSpinEdit1.AutoHeight = false;
-            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSpinEdit1.EditFormat.FormatString = "n0";
-            this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemSpinEdit1.Mask.EditMask = "n0";
-            this.repositoryItemSpinEdit1.Mask.UseMaskAsDisplayFormat = true;
-            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
-            // 
             // ctrEmployeeList
             // 
             this.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -932,9 +932,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mmField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteDate.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
