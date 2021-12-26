@@ -97,7 +97,7 @@ namespace QuanLyNhaSach_291021.View.Revenue
                 }
                 else
                 {
-                    chartOverview.Series["Doanh Thu"].Points.Add(1);
+                    chartOverview.Series["Doanh Thu"].Points.Add(0);
                     chartOverview.Series["Doanh Thu"].Points[dteDiff - i].AxisLabel = Convert.ToDateTime(date).ToString("dd-MM-yyyy");
                     chartOverview.Series["Doanh Thu"].Points[dteDiff - i].LegendText = Convert.ToDateTime(date).ToString("dd-MM-yyyy");
                     chartOverview.Series["Doanh Thu"].Points[dteDiff - i].Label = "0";

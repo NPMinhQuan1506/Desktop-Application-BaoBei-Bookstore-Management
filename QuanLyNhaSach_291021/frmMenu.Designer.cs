@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::QuanLyNhaSach_291021.View.Authority.frmSplashScreen), true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.pnContainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.acMenu = new DevExpress.XtraBars.Navigation.AccordionControl();
@@ -81,6 +82,10 @@
             this.pnInfoItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peAvartar)).BeginInit();
             this.SuspendLayout();
+            // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 150;
             // 
             // pnContainer
             // 
@@ -666,6 +671,7 @@
             this.NavigationControl = this.acMenu;
             this.Text = "Nhà Sách BaoBei";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.acMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnInfo)).EndInit();

@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 namespace QuanLyNhaSach_291021
 {
@@ -20,11 +21,6 @@ namespace QuanLyNhaSach_291021
         {
             InitializeComponent();
             lbName.Text = Global.EmpName;
-            setImageCurrentPage("aceDashboard");
-            pnContainer.Controls.Clear();
-            View.Dashboard.ctrDashboard ctr = new View.Dashboard.ctrDashboard();
-            ctr.Dock = DockStyle.Fill;
-            pnContainer.Controls.Add(ctr);
         }
 
         #region //CRM
@@ -285,5 +281,18 @@ namespace QuanLyNhaSach_291021
             this.lbCurrentListIcon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject(namePage + ".ImageOptions.SvgImage")));
         }
         #endregion
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceDashboard");
+            pnContainer.Controls.Clear();
+            View.Dashboard.ctrDashboard ctr = new View.Dashboard.ctrDashboard();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
+            for (int i = 0; i< 100; i++)
+            {
+                Thread.Sleep(100);
+            }
+        }
     }
 }

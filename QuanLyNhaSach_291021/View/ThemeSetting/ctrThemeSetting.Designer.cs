@@ -62,8 +62,8 @@
             this.tgThemeMode.Properties.Appearance.Options.UseFont = true;
             this.tgThemeMode.Properties.Appearance.Options.UseForeColor = true;
             this.tgThemeMode.Properties.AutoHeight = false;
-            this.tgThemeMode.Properties.OffText = "Dark";
-            this.tgThemeMode.Properties.OnText = "Light";
+            this.tgThemeMode.Properties.OffText = "Light";
+            this.tgThemeMode.Properties.OnText = "Dark";
             this.tgThemeMode.Size = new System.Drawing.Size(135, 30);
             this.tgThemeMode.TabIndex = 8;
             this.tgThemeMode.Toggled += new System.EventHandler(this.tgThemeMode_Toggled);

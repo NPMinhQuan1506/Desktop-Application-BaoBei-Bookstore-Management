@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 namespace QuanLyNhaSach_291021.View.Sale
 {
@@ -68,6 +69,19 @@ namespace QuanLyNhaSach_291021.View.Sale
             ctr.Dock = DockStyle.Fill;
             ctr.BringToFront();
             pnContainer.Controls.Add(ctr);
+        }
+
+        private void frmSaleMenu_Load(object sender, EventArgs e)
+        {
+            setImageCurrentPage("aceSale");
+            pnContainer.Controls.Clear();
+            ctrSale ctr = new ctrSale();
+            ctr.Dock = DockStyle.Fill;
+            pnContainer.Controls.Add(ctr);
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(100);
+            }
         }
     }
 }

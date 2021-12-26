@@ -54,11 +54,11 @@ namespace QuanLyNhaSach_291021.View.ThemeSetting
         {
             if (tgThemeMode.IsOn == true)
             {
-                WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Office 2019 Black");
+                WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Office 2019 White");
             }
             else
             {
-                WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Office 2019 White");
+                WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Office 2019 Black");
             }
         }
     }

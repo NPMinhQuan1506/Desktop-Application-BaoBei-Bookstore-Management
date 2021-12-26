@@ -147,6 +147,12 @@
     <Compile Include="View\Authority\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Authority\frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Authority\frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Author\ctrAuthorList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     <EmbeddedResource Include="View\Authority\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Authority\frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Author\ctrAuthorList.resx">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
     </EmbeddedResource>
@@ -493,6 +502,7 @@
     <None Include="Resources\employee.png" />
     <None Include="Resources\Revenue.png" />
     <None Include="Resources\customer.jpg" />
+    <None Include="Resources\Background_Spash.png" />
     <Content Include="Resources\default_customer.png" />
     <Content Include="Resources\default_product.png" />
     <None Include="Resources\salesmoney.png" />

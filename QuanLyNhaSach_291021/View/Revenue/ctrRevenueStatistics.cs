@@ -60,20 +60,26 @@ namespace QuanLyNhaSach_291021.View.Revenue
         #region //Setup min value date edit
         private void dteFrom_EditValueChanged(object sender, EventArgs e)
         {
-            dteTo.Properties.MinValue = (DateTime)dteFrom.EditValue;
-            DateTime dtTo = (DateTime)dteTo.EditValue;
-            dteFrom.Properties.MaxValue = dtTo;
-            dteFrom.Properties.MinValue = dtTo.AddDays(-18);
+            if (func.DateTimeToString(((DateTime)dteFrom.EditValue).Date).Length >= 10)
+            {
+                dteTo.Properties.MinValue = (DateTime)dteFrom.EditValue;
+                DateTime dtTo = (DateTime)dteTo.EditValue;
+                dteFrom.Properties.MaxValue = dtTo;
+                dteFrom.Properties.MinValue = dtTo.AddDays(-18);
+            }
+
         }
 
 
         private void dteTo_EditValueChanged(object sender, EventArgs e)
         {
-            
-            DateTime dtTo = (DateTime)dteTo.EditValue;
-            dteFrom.Properties.MaxValue = dtTo;
-            dteFrom.Properties.MinValue = dtTo.AddDays(-18);
-            dteTo.Properties.MinValue = (DateTime)dteFrom.EditValue;
+            if (func.DateTimeToString(((DateTime)dteFrom.EditValue).Date).Length >= 10)
+            {
+                DateTime dtTo = (DateTime)dteTo.EditValue;
+                dteFrom.Properties.MaxValue = dtTo;
+                dteFrom.Properties.MinValue = dtTo.AddDays(-18);
+                dteTo.Properties.MinValue = (DateTime)dteFrom.EditValue;
+            }
         }
         #endregion
 
