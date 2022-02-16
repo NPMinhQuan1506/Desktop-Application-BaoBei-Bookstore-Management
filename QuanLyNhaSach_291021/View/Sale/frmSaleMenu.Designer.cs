@@ -62,7 +62,7 @@
             // 
             // splashScreenManager1
             // 
-            splashScreenManager1.ClosingDelay = 100;
+            splashScreenManager1.ClosingDelay = 70;
             // 
             // pnContainer
             // 

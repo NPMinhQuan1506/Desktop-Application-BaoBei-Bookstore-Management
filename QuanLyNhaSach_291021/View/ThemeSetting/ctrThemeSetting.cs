@@ -54,10 +54,12 @@ namespace QuanLyNhaSach_291021.View.ThemeSetting
         {
             if (tgThemeMode.IsOn == true)
             {
+                tgThemeMode.ForeColor = Color.FromArgb(0, 0, 20);
                 WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Office 2019 White");
             }
             else
             {
+                tgThemeMode.ForeColor = Color.FromArgb(252, 250, 252);
                 WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Office 2019 Black");
             }
         }

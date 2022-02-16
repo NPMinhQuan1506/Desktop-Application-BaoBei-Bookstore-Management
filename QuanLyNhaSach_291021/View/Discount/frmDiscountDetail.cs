@@ -44,6 +44,7 @@ namespace QuanLyNhaSach_291021.View.Discount
             initDatatable();
             dtNow = func.DateTimeToString(DateTime.Now);
             rdTypeDiscount.SelectedIndex = 0;
+            cbbDiscountUnit.SelectedIndex = 0;
         }
 
         public frmDiscountDetail(string _id) : this()
@@ -151,13 +152,14 @@ namespace QuanLyNhaSach_291021.View.Discount
 
         private void cbbDiscountUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbbConditionUnit.Text == "%")
+            if(cbbDiscountUnit.SelectedIndex == 0)
             {
                 spOrderDiscount.Properties.MaxValue = 100;
             }
             else
             {
                 spOrderDiscount.Properties.MaxValue = (decimal)spCondition.EditValue;
+                //spOrderDiscount.Properties.MaxValue = 99999999999;
             }
         }
 
@@ -165,9 +167,13 @@ namespace QuanLyNhaSach_291021.View.Discount
         private void spCondition_EditValueChanged(object sender, EventArgs e)
         {
 
-            if (cbbConditionUnit.Text == "VNĐ")
+            if (cbbDiscountUnit.Text == "VNĐ")
             {
                 spOrderDiscount.Properties.MaxValue = (decimal)spCondition.EditValue;
+            }
+            else
+            {
+                spOrderDiscount.Properties.MaxValue = 100;
             }
         }
 

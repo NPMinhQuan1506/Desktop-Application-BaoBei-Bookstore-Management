@@ -22,12 +22,11 @@ namespace QuanLyNhaSach_291021.View.Author
         Model.Database conn = new Model.Database();
         Controller.Common func = new Controller.Common();
         //defind variable
-        string id = "";
         string emptyGridText = "Không có dữ liệu";
 
         //defind variable search and filter
 
-        //defind generate instance   
+        //defind generate instance 
 
         private static ctrAuthorList _instance;
 
@@ -50,8 +49,8 @@ namespace QuanLyNhaSach_291021.View.Author
         {
             InitializeComponent();
 
-            string placehoder = txtAuthorName.Properties.NullText;
-            func.createPlaceHolderControl(txtAuthorName, placehoder);
+            string placehoder = txtSearch.Properties.NullText;
+            func.createPlaceHolderControl(txtSearch, placehoder);
         }
 
         #endregion
@@ -98,74 +97,11 @@ namespace QuanLyNhaSach_291021.View.Author
         #endregion
 
         #region //Create
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            saveData();
+            frmAuthorDetail frm = new frmAuthorDetail();
+            frm.ShowDialog();
             loadData();
-        }
-
-        private void saveData()
-        {
-            var dtNow = func.DateTimeToString(DateTime.Now);
-            // Event Add Data
-            if ((txtAuthorName.EditValue).ToString().Trim() != "")
-            {
-                if (this.id == "")
-                {
-                    if (checkExistence())
-                    {
-                        String query = String.Format(@"INSERT INTO TacGia(TenTG, NgayTao) 
-                                                values (N'{0}', '{1}')",
-                                txtAuthorName.EditValue, dtNow);
-
-                        conn.executeDatabase(query);
-                        MyMessageBox.ShowMessage("Thêm Dữ Liệu Thành Công!");
-                        txtAuthorName.EditValue = String.Empty;
-                    }
-                    else
-                    {
-                        MyMessageBox.ShowMessage("Tên Tác Giả Đã Tồn Tại!");
-                    }
-
-                }
-                // Event Update Data
-                else
-                {
-                    String query = String.Format(@"UPDATE TacGia SET TenTG = N'{0}',
-                                                                    NgayCapNhat = N'{1}' 
-                                               WHERE MaTG = '{2}'",
-                                                   txtAuthorName.EditValue,
-                                                   dtNow,
-                                                   this.id);
-                    conn.executeDatabase(query);
-                    MyMessageBox.ShowMessage("Sửa Dữ Liệu Thành Công!");
-                    txtAuthorName.EditValue = String.Empty;
-                    this.id = "";
-                    txtAuthorName.EditValue = "";
-                }
-            }
-            else
-            {
-                MyMessageBox.ShowMessage("Không Được Để Trống Tên Tác Giả!");
-            }
-        }
-
-        private bool checkExistence()
-        {
-            string query = String.Format("select count(MaTG) as count from TacGia where TenTG = N'{0}'", txtAuthorName.EditValue);
-            DataTable dt = new DataTable();
-            dt = conn.loadData(query);
-            if ((int)(dt.Rows[0]["count"]) > 0)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.id = "";
-            txtAuthorName.EditValue = "";
         }
         #endregion
 
@@ -184,31 +120,34 @@ namespace QuanLyNhaSach_291021.View.Author
             gcAuthor.DataSource = dtContent;
         }
 
+        private void loadData(string _query)
+        {
+            DataTable dtContent = new DataTable();
+            dtContent = conn.loadData(_query);
+            gcAuthor.DataSource = dtContent;
+        }
+
         #endregion
 
         #region //Update
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            loadDataUpdating();
+            update();
         }
 
         private void gvAuthor_DoubleClick(object sender, EventArgs e)
         {
-            loadDataUpdating();
+            update();
         }
 
-        private void loadDataUpdating()
+        private void update()
         {
-            this.id = getID();
-            if (this.id != "")
+            if (getID() != "")
             {
-                string query = String.Format(@"Select * from TacGia where HienThi = 1 and MaTG = {0}", this.id);
-                DataTable dtContent = new DataTable();
-                dtContent = conn.loadData(query);
-                if (dtContent.Rows.Count > 0)
-                {
-                    txtAuthorName.EditValue = (dtContent.Rows[0]["TenTG"]).ToString();
-                }
+                string ID = getID();
+                frmAuthorDetail frm = new frmAuthorDetail(ID);
+                frm.ShowDialog();
+                loadData();
             }
         }
 
@@ -237,8 +176,6 @@ namespace QuanLyNhaSach_291021.View.Author
 
         private void delete(string IdDeleting)
         {
-            this.id = "";
-            txtAuthorName.EditValue = "";
             if (checkConstraints(IdDeleting))
             {
 
@@ -267,7 +204,7 @@ namespace QuanLyNhaSach_291021.View.Author
 
         private bool checkConstraints(string IdDeleting)
         {
-            string query = String.Format("select count(MaTG) as count from ChiTietSach where MaTG = '{0}'", IdDeleting);
+            string query = String.Format("select count(MaTG) as count from ChiTietSach where MaTG = {0}", IdDeleting);
             DataTable dt = new DataTable();
             dt = conn.loadData(query);
             if ((int)(dt.Rows[0]["count"]) > 0)
@@ -281,6 +218,7 @@ namespace QuanLyNhaSach_291021.View.Author
         #region //Get Id
         private string getID()
         {
+
             if (gvAuthor.GetRowCellValue(gvAuthor.FocusedRowHandle, AuthorId) != null)
             {
                 string ID = gvAuthor.GetRowCellValue(gvAuthor.FocusedRowHandle, AuthorId).ToString();
@@ -292,22 +230,26 @@ namespace QuanLyNhaSach_291021.View.Author
 
         #region //Search and Filter
 
-        private void txtAuthorName_EditValueChanged(object sender, EventArgs e)
+        private void txtSearch_EditValueChanged(object sender, EventArgs e)
         {
-            if (txtAuthorName.Text != txtAuthorName.Properties.NullText)
+            if (txtSearch.Text != txtSearch.Properties.NullText)
             {
-                if(txtAuthorName.Text == "")
+                if (txtSearch.Text == "")
                 {
-                    txtAuthorName.EditValue = "";
+                    txtSearch.EditValue = "";
                 }
-                txtAuthorName.ForeColor = Color.FromArgb(0, 0, 20);
+                txtSearch.ForeColor = Color.FromArgb(0, 0, 20);
             }
             else
             {
-                txtAuthorName.ForeColor = Color.FromArgb(144, 142, 144);
+                txtSearch.ForeColor = Color.FromArgb(144, 142, 144);
             }
-            gvAuthor.FindFilterText = string.Format("\"{0}\"", txtAuthorName.EditValue);
+            gvAuthor.FindFilterText = string.Format("\"{0}\"", txtSearch.EditValue);
+        }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtSearch.EditValue = "";
         }
         #endregion
     }

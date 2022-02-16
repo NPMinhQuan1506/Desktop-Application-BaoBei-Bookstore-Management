@@ -19,6 +19,10 @@ namespace QuanLyNhaSach_291021
         private static Controller.Common func = new Controller.Common();
         public frmMenu()
         {
+            for (int i = 0; i < 70; i++)
+            {
+                Thread.Sleep(70);
+            }
             InitializeComponent();
             lbName.Text = Global.EmpName;
         }
@@ -289,10 +293,17 @@ namespace QuanLyNhaSach_291021
             View.Dashboard.ctrDashboard ctr = new View.Dashboard.ctrDashboard();
             ctr.Dock = DockStyle.Fill;
             pnContainer.Controls.Add(ctr);
-            for (int i = 0; i< 100; i++)
+        }
+
+        private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(Global.IdLog != 0)
             {
-                Thread.Sleep(100);
-            }
+                DateTime dtNow = DateTime.Now;
+                string query_log = String.Format(@"Update Employee_log set ThoiGianDangXuat = '{0}', TrangThai = 0 where id = {1}", func.DateTimeToString(dtNow), Controller.Global.IdLog);
+                conn.executeDatabase(query_log);
+                Controller.Global.destroy();
+            }  
         }
     }
 }

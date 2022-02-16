@@ -159,6 +159,12 @@
     <Compile Include="View\Author\ctrAuthorList.Designer.cs">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Author\frmAuthorDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Author\frmAuthorDetail.Designer.cs">
+      <DependentUpon>frmAuthorDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Categories\ctrCategoriesList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -375,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Author\ctrAuthorList.resx">
       <DependentUpon>ctrAuthorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Author\frmAuthorDetail.resx">
+      <DependentUpon>frmAuthorDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Categories\ctrCategoriesList.resx">
       <DependentUpon>ctrCategoriesList.cs</DependentUpon>

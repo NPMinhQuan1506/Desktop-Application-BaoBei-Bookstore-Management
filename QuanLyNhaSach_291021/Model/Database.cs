@@ -24,11 +24,23 @@ namespace QuanLyNhaSach_291021.Model
 
         public DataTable loadData(string s)
         {
-            SqlCommand cmdSelect = new SqlCommand(@s, con);
-            SqlDataAdapter daSelect = new SqlDataAdapter(cmdSelect);
-            DataTable tableSelect = new DataTable("mytable");
-            daSelect.Fill(tableSelect);
-            return tableSelect;
+            try
+            {
+                SqlCommand cmdSelect = new SqlCommand(@s, con);
+                SqlDataAdapter daSelect = new SqlDataAdapter(cmdSelect);
+                DataTable tableSelect = new DataTable("mytable");
+                daSelect.Fill(tableSelect);
+                return tableSelect;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("there was an sql issue when load Database: " + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("there was another issue when load Database: " + ex.ToString());
+            }
+            return null;
         }
 
         public string getLastInsertedValue()

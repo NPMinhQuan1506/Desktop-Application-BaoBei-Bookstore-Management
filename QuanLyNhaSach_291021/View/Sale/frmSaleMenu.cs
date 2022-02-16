@@ -20,6 +20,10 @@ namespace QuanLyNhaSach_291021.View.Sale
 
         public frmSaleMenu()
         {
+            for (int i = 0; i < 70; i++)
+            {
+                Thread.Sleep(70);
+            }
             InitializeComponent();
             lbName.Text = Global.EmpName;
         }
@@ -78,10 +82,6 @@ namespace QuanLyNhaSach_291021.View.Sale
             ctrSale ctr = new ctrSale();
             ctr.Dock = DockStyle.Fill;
             pnContainer.Controls.Add(ctr);
-            for (int i = 0; i < 100; i++)
-            {
-                Thread.Sleep(100);
-            }
         }
     }
 }

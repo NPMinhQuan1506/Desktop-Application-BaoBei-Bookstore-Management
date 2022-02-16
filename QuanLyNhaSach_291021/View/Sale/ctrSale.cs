@@ -206,7 +206,7 @@ namespace QuanLyNhaSach_291021.View.Sale
                     frmPrintOrder frm = new frmPrintOrder();
                     frm.printInvoice(OrdID);
                     frm.ShowDialog();
-                    this.Refresh();
+                    refresh();
                 }
                 else
                 {
@@ -219,6 +219,17 @@ namespace QuanLyNhaSach_291021.View.Sale
             }
         }
 
+        private void refresh()
+        {
+            OrdID = ""; dtNow = "";
+            checkDiscount = false;
+            orderDiscount = 0;
+            luCustomer.EditValue = null;
+            mmeNote.Text = "";
+            txtTotalPrice.Text = "";
+            dtCart.Reset();
+            this.Refresh();
+        }
         private string InitOrderID()
         {
             string query = @"select top 1 MaHD from HoaDon order by MaHD desc";
@@ -288,6 +299,7 @@ namespace QuanLyNhaSach_291021.View.Sale
                 }
 
             }
+            txtTotalPrice.Text = total.ToString() + "đ";
         }
 
         #endregion

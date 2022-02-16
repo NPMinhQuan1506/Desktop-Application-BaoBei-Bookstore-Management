@@ -14,7 +14,7 @@ namespace QuanLyNhaSach_291021.View.Authority
         public frmSplashScreen()
         {
             InitializeComponent();
-            this.labelCopyright.Text = "Copyright © 1998-" + DateTime.Now.Year.ToString();
+            this.labelCopyright.Text = "Copyright © 2020-" + DateTime.Now.Year.ToString();
         }
 
         #region Overrides

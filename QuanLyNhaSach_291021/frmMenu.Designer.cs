@@ -85,7 +85,7 @@
             // 
             // splashScreenManager1
             // 
-            splashScreenManager1.ClosingDelay = 150;
+            splashScreenManager1.ClosingDelay = 70;
             // 
             // pnContainer
             // 
@@ -671,6 +671,7 @@
             this.NavigationControl = this.acMenu;
             this.Text = "Nhà Sách BaoBei";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMenu_FormClosed);
             this.Load += new System.EventHandler(this.frmMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.acMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnHeader)).EndInit();
