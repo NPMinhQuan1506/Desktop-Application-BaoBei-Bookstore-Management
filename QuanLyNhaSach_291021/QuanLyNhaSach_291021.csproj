@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ADFB7281-1ED6-4D86-91F7-DF1A78EB7ED4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLyNhaSach_291021</RootNamespace>
+    <AssemblyName>QuanLyNhaSach_291021</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.Designer.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeConverter.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v21.2.Win, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v21.2.Drawing, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Export, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SharePoint.2016.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v21.2.UI, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.Extensions, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.UI, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.Wizard, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDiagram.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGantt.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Presets, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Win, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraMap.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2.CodeCompletion, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2.Extensions, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2.Service, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Core.Desktop, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Extensions, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.GoogleCalendar, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Reporting, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Reporting.Extensions, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeMap.v21.2.UI, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeMap.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EPPlus, Version=5.8.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.8.3\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\Common.cs" />
+    <Compile Include="Controller\EncryptDecrypt.cs" />
+    <Compile Include="Controller\Global.cs" />
+    <Compile Include="Controller\InjectionSQL.cs" />
+    <Compile Include="Controller\MyExcel.cs" />
+    <Compile Include="Controller\Validation.cs" />
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Database.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Authority\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Authority\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Authority\frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Authority\frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Author\ctrAuthorList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Author\ctrAuthorList.Designer.cs">
+      <DependentUpon>ctrAuthorList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Author\frmAuthorDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Author\frmAuthorDetail.Designer.cs">
+      <DependentUpon>frmAuthorDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Categories\ctrCategoriesList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Categories\ctrCategoriesList.Designer.cs">
+      <DependentUpon>ctrCategoriesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Categories\frmCategoriesDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Categories\frmCategoriesDetail.Designer.cs">
+      <DependentUpon>frmCategoriesDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\ctrCustomerList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Customer\ctrCustomerList.Designer.cs">
+      <DependentUpon>ctrCustomerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\frmCustomerDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Customer\frmCustomerDetail.Designer.cs">
+      <DependentUpon>frmCustomerDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dashboard\ctrDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Dashboard\ctrDashboard.Designer.cs">
+      <DependentUpon>ctrDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Department\ctrDepartmentList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Department\ctrDepartmentList.Designer.cs">
+      <DependentUpon>ctrDepartmentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Department\frmDepartmentDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Department\frmDepartmentDetail.Designer.cs">
+      <DependentUpon>frmDepartmentDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Discount\ctrDiscountList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Discount\ctrDiscountList.Designer.cs">
+      <DependentUpon>ctrDiscountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Discount\frmDiscountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Discount\frmDiscountDetail.Designer.cs">
+      <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeLog\ctrEmployeeLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeLog\ctrEmployeeLog.Designer.cs">
+      <DependentUpon>ctrEmployeeLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\ctrEmployeeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Employee\ctrEmployeeList.Designer.cs">
+      <DependentUpon>ctrEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\frmEmployeeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Employee\frmEmployeeDetail.Designer.cs">
+      <DependentUpon>frmEmployeeDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Imports\ctrImportsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Imports\ctrImportsList.Designer.cs">
+      <DependentUpon>ctrImportsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Imports\frmImportsDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Imports\frmImportsDetail.Designer.cs">
+      <DependentUpon>frmImportsDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notification\frmMessageOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Notification\frmMessageOK.Designer.cs">
+      <DependentUpon>frmMessageOK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notification\frmMessageYesNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Notification\frmMessageYesNo.Designer.cs">
+      <DependentUpon>frmMessageYesNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notification\MyMessageBox.cs" />
+    <Compile Include="View\Order\ctrOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Order\ctrOrderList.Designer.cs">
+      <DependentUpon>ctrOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Order\frmOrderDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Order\frmOrderDetail.Designer.cs">
+      <DependentUpon>frmOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Order\frmPrintOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Order\frmPrintOrder.Designer.cs">
+      <DependentUpon>frmPrintOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Order\InvoiceReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Order\InvoiceReport.Designer.cs">
+      <DependentUpon>InvoiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\ctrProductList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Product\ctrProductList.Designer.cs">
+      <DependentUpon>ctrProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\frmProductDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Product\frmProductDetail.Designer.cs">
+      <DependentUpon>frmProductDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Publisher\ctrPublisherList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Publisher\ctrPublisherList.Designer.cs">
+      <DependentUpon>ctrPublisherList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Publisher\frmPublisherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Publisher\frmPublisherDetail.Designer.cs">
+      <DependentUpon>frmPublisherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Revenue\ctrDetailStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Revenue\ctrDetailStatistics.Designer.cs">
+      <DependentUpon>ctrDetailStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Revenue\ctrOverviewStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Revenue\ctrOverviewStatistics.Designer.cs">
+      <DependentUpon>ctrOverviewStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Revenue\ctrRevenueStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Revenue\ctrRevenueStatistics.Designer.cs">
+      <DependentUpon>ctrRevenueStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\ctrSale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Sale\ctrSale.Designer.cs">
+      <DependentUpon>ctrSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\frmSaleMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Sale\frmSaleMenu.Designer.cs">
+      <DependentUpon>frmSaleMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Stock\ctrStockStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Stock\ctrStockStatistics.Designer.cs">
+      <DependentUpon>ctrStockStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Supplier\ctrSupplierList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Supplier\ctrSupplierList.Designer.cs">
+      <DependentUpon>ctrSupplierList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Supplier\frmSupplierDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Supplier\frmSupplierDetail.Designer.cs">
+      <DependentUpon>frmSupplierDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThemeSetting\ctrThemeSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ThemeSetting\ctrThemeSetting.Designer.cs">
+      <DependentUpon>ctrThemeSetting.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Authority\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Authority\frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Author\ctrAuthorList.resx">
+      <DependentUpon>ctrAuthorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Author\frmAuthorDetail.resx">
+      <DependentUpon>frmAuthorDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Categories\ctrCategoriesList.resx">
+      <DependentUpon>ctrCategoriesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Categories\frmCategoriesDetail.resx">
+      <DependentUpon>frmCategoriesDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Customer\ctrCustomerList.resx">
+      <DependentUpon>ctrCustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Customer\frmCustomerDetail.resx">
+      <DependentUpon>frmCustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dashboard\ctrDashboard.resx">
+      <DependentUpon>ctrDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Department\ctrDepartmentList.resx">
+      <DependentUpon>ctrDepartmentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Department\frmDepartmentDetail.resx">
+      <DependentUpon>frmDepartmentDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Discount\ctrDiscountList.resx">
+      <DependentUpon>ctrDiscountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Discount\frmDiscountDetail.resx">
+      <DependentUpon>frmDiscountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeLog\ctrEmployeeLog.resx">
+      <DependentUpon>ctrEmployeeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Employee\ctrEmployeeList.resx">
+      <DependentUpon>ctrEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Employee\frmEmployeeDetail.resx">
+      <DependentUpon>frmEmployeeDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Imports\ctrImportsList.resx">
+      <DependentUpon>ctrImportsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Imports\frmImportsDetail.resx">
+      <DependentUpon>frmImportsDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Notification\frmMessageOK.resx">
+      <DependentUpon>frmMessageOK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Notification\frmMessageYesNo.resx">
+      <DependentUpon>frmMessageYesNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\ctrOrderList.resx">
+      <DependentUpon>ctrOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\frmOrderDetail.resx">
+      <DependentUpon>frmOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\frmPrintOrder.resx">
+      <DependentUpon>frmPrintOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\InvoiceReport.resx">
+      <DependentUpon>InvoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Product\ctrProductList.resx">
+      <DependentUpon>ctrProductList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Product\frmProductDetail.resx">
+      <DependentUpon>frmProductDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Publisher\ctrPublisherList.resx">
+      <DependentUpon>ctrPublisherList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Publisher\frmPublisherDetail.resx">
+      <DependentUpon>frmPublisherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Revenue\ctrDetailStatistics.resx">
+      <DependentUpon>ctrDetailStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Revenue\ctrOverviewStatistics.resx">
+      <DependentUpon>ctrOverviewStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Revenue\ctrRevenueStatistics.resx">
+      <DependentUpon>ctrRevenueStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sale\ctrSale.resx">
+      <DependentUpon>ctrSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sale\frmSaleMenu.resx">
+      <DependentUpon>frmSaleMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Stock\ctrStockStatistics.resx">
+      <DependentUpon>ctrStockStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Supplier\ctrSupplierList.resx">
+      <DependentUpon>ctrSupplierList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Supplier\frmSupplierDetail.resx">
+      <DependentUpon>frmSupplierDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ThemeSetting\ctrThemeSetting.resx">
+      <DependentUpon>ctrThemeSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\employee.png" />
+    <None Include="Resources\Revenue.png" />
+    <None Include="Resources\customer.jpg" />
+    <None Include="Resources\Background_Spash.png" />
+    <Content Include="Resources\default_customer.png" />
+    <Content Include="Resources\default_product.png" />
+    <None Include="Resources\salesmoney.png" />
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Permission\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
