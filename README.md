@@ -12,9 +12,7 @@
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-  - [This is a desktop application built **Winform C#** and **Devexpress version 21.2 Library** that provides the main function you'd expect from bookstore management such as CRM, HRM, etc.](#this-is-a-desktop-application-built-winform-c-and-devexpress-version-212-library-that-provides-the-main-function-youd-expect-from-bookstore-management-such-as-crm-hrm-etc)
 - [Technologies](#technologies)
-  - [Project create with:](#project-create-with)
 - [Setup](#setup)
 - [Features](#features)
 - [Build Process](#build-process)
