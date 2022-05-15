@@ -55,6 +55,13 @@ You can read more analysis document in [[Design Analysis Document](https://drive
 
 ![Login Form](./image_demo/LoginForm.png)
 
+   |UserName | Pass    |  Role      |
+   | :------ | :------ | :-------- |
+   | admin1 | admin1 | Management |
+   | user1  | user1  | Sale |
+   | sudo  | sudo  | Administrator |
+
+
 - Dashboard
 
 ![Dashboard](./image_demo/Dashboard.png)
